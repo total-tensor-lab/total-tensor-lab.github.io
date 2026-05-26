@@ -1,16 +1,7 @@
 import { motion } from "motion/react";
-import { Brain, Code2, Eye, MessageSquare, Server, Shield } from "lucide-react";
+import { Code2, Eye, Server, Shield } from "lucide-react";
 
 const SERVICES = [
-  {
-    icon: Brain,
-    title: "Deep Learning Research",
-    description:
-      "Advancing state-of-the-art neural architectures and training methodologies tailored to complex real-world challenges.",
-    accent: "from-brand-primary/20 to-brand-primary/5",
-    iconColor: "text-brand-primary",
-    iconBg: "bg-brand-primary/10",
-  },
   {
     icon: Code2,
     title: "AI Product Development",
@@ -28,15 +19,6 @@ const SERVICES = [
     accent: "from-blue-400/20 to-blue-500/5",
     iconColor: "text-blue-400",
     iconBg: "bg-blue-500/10",
-  },
-  {
-    icon: MessageSquare,
-    title: "Natural Language Processing",
-    description:
-      "Creating language models and NLP pipelines that extract insights, automate workflows, and power conversational AI.",
-    accent: "from-emerald-400/20 to-emerald-500/5",
-    iconColor: "text-emerald-400",
-    iconBg: "bg-emerald-500/10",
   },
   {
     icon: Server,
