@@ -71,7 +71,7 @@ export default function Services() {
         </motion.div>
 
         {/* Cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {SERVICES.map((svc, i) => {
             const Icon = svc.icon;
             return (
@@ -81,15 +81,15 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="gradient-border p-6 group hover:scale-[1.02] transition-transform duration-300 cursor-default"
+                className="gradient-border p-10 group hover:scale-[1.02] transition-transform duration-300 cursor-default"
               >
                 {/* Icon */}
-                <div className={`w-12 h-12 rounded-xl ${svc.iconBg} flex items-center justify-center mb-5`}>
-                  <Icon className={`w-6 h-6 ${svc.iconColor}`} />
+                <div className={`w-16 h-16 rounded-2xl ${svc.iconBg} flex items-center justify-center mb-7`}>
+                  <Icon className={`w-8 h-8 ${svc.iconColor}`} />
                 </div>
 
-                <h3 className="text-white font-bold text-lg mb-3">{svc.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{svc.description}</p>
+                <h3 className="text-white font-bold text-2xl mb-4">{svc.title}</h3>
+                <p className="text-slate-400 text-base leading-relaxed">{svc.description}</p>
 
                 {/* Hover gradient overlay */}
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${svc.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
