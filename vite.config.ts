@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/totaltensorlabs.github.io/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
