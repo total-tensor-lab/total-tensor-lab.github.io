@@ -10,13 +10,26 @@ const AnimatedBackground: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    const dpr = window.devicePixelRatio || 1;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    const setSize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.scale(dpr, dpr);
+    };
+
+    setSize();
     let nodes: Node[] = [];
 
     const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      setSize();
     };
 
     window.addEventListener("resize", handleResize);
@@ -34,8 +47,8 @@ const AnimatedBackground: React.FC = () => {
         this.y = y;
         this.vx = Math.random() * 0.4 - 0.2;
         this.vy = Math.random() * 0.4 - 0.2;
-        this.radius = Math.random() * 1.5 + 0.5;
-        this.color = `rgba(200, 115, 255, ${Math.random() * 0.6 + 0.2})`;
+        this.radius = Math.random() * 2 + 1;
+        this.color = `rgba(200, 115, 255, ${Math.random() * 0.5 + 0.4})`;
       }
 
       update() {
@@ -56,7 +69,7 @@ const AnimatedBackground: React.FC = () => {
 
     const init = () => {
       nodes = [];
-      const nodeCount = Math.floor((width * height) / 15000);
+      const nodeCount = Math.floor((width * height) / 12000);
       for (let i = 0; i < nodeCount; i++) {
         nodes.push(new Node(Math.random() * width, Math.random() * height));
       }
@@ -70,12 +83,12 @@ const AnimatedBackground: React.FC = () => {
               Math.pow(nodes[i].y - nodes[j].y, 2)
           );
 
-          if (distance < 120) {
+          if (distance < 160) {
             ctx!.beginPath();
             ctx!.moveTo(nodes[i].x, nodes[i].y);
             ctx!.lineTo(nodes[j].x, nodes[j].y);
-            ctx!.strokeStyle = `rgba(139, 92, 246, ${1 - distance / 120})`;
-            ctx!.lineWidth = 0.3;
+            ctx!.strokeStyle = `rgba(139, 92, 246, ${(1 - distance / 160) * 0.8})`;
+            ctx!.lineWidth = 0.7;
             ctx!.stroke();
           }
         }
