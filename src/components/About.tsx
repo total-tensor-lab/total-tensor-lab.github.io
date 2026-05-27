@@ -10,11 +10,11 @@ const DATA_SOURCES = [
 ];
 
 const RUNTIME_CAPABILITIES = [
-  { label: "Detection", x: 390, y: 220, color: "#06B6D4" },
+  { label: "Detection", x: 390, y: 220, color: "#e73714" },
   { label: "Classification", x: 552, y: 220, color: "#8B5CF6" },
-  { label: "Policy Engine", x: 390, y: 272, color: "#8B5CF6" },
-  { label: "Sanitization", x: 552, y: 272, color: "#06B6D4" },
-  { label: "Audit Logging", x: 471, y: 324, color: "#10B981" },
+  { label: "Policy Engine", x: 390, y: 272, color: "#21e316" },
+  { label: "Sanitization", x: 552, y: 272, color: "#ceed21" },
+  { label: "Audit Logging", x: 471, y: 324, color: "#12b6e9" },
 ];
 
 const AI_SYSTEMS = [
@@ -124,7 +124,7 @@ function ArchitectureDiagram() {
           GOVERNANCE LAYER
         </text>
         <text x="550" y="188" textAnchor="middle" fill="#F8FAFC" fontSize="21" fontFamily="Inter,system-ui,sans-serif" fontWeight="700">
-          PromptShield Runtime
+          PromptShield
         </text>
         <text x="550" y="208" textAnchor="middle" fill="#64748B" fontSize="11" fontFamily="Inter,system-ui,sans-serif">
           Detect, govern, and protect sensitive enterprise data in motion.
@@ -140,11 +140,6 @@ function ArchitectureDiagram() {
           </g>
         ))}
 
-        <line x1="426" y1="386" x2="674" y2="386" stroke="rgba(148,163,184,0.16)" strokeWidth="1" />
-        <circle cx="446" cy="386" r="3" fill="#10B981" />
-        <text x="460" y="390" fill="#10B981" fontSize="10" fontFamily="Inter,system-ui,sans-serif" fontWeight="600" letterSpacing="0.06em">
-          DATA NEVER LEAVES YOUR ENVIRONMENT
-        </text>
 
         {AI_SYSTEMS.map((system, index) => (
           <g key={system.label}>
