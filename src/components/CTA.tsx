@@ -46,7 +46,7 @@ const INTEGRATION_GROUPS = [
 
 export default function CTA() {
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section id="integrations" className="py-32 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div className="absolute left-1/4 top-16 w-[420px] h-[420px] rounded-full bg-brand-primary/[0.03] blur-[150px] pointer-events-none" />
       <div className="absolute right-0 bottom-0 w-[420px] h-[420px] rounded-full bg-brand-secondary/[0.03] blur-[150px] pointer-events-none" />
@@ -128,23 +128,6 @@ export default function CTA() {
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.25 }}
-          className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-[22px] border border-white/10 bg-white/[0.03] px-6 py-4 backdrop-blur-sm"
-        >
-          <p className="text-brand-muted text-sm">
-            Need a custom connector or deployment integration?
-          </p>
-          <a
-            href="mailto:hello@totaltensorlabs.ai"
-            className="text-sm font-semibold text-brand-primary hover:text-brand-primary/80 transition-colors"
-          >
-            hello@totaltensorlabs.ai
-          </a>
-        </motion.div>
       </div>
     </section>
   );

@@ -1,36 +1,63 @@
 import { motion } from "motion/react";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Github,
+  HeartPulse,
+  Landmark,
+  Mail,
+  ShieldCheck,
+  RadioTower,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
+import { useState } from "react";
 
 const TRUST_CARDS = [
   {
+    icon: Landmark,
     title: "Finance",
     detail: "Protect transaction intelligence, trading workflows, and customer financial data with runtime governance.",
     accent: "border-brand-primary/20 hover:border-brand-primary/40",
     glow: "radial-gradient(circle at 18% 18%, rgba(139,92,246,0.12), transparent 52%)",
+    iconBg: "bg-brand-primary/10",
+    iconColor: "text-brand-primary",
   },
   {
+    icon: HeartPulse,
     title: "Healthcare",
     detail: "Keep patient records, clinical knowledge, and care workflows inside governed healthcare infrastructure.",
     accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
     glow: "radial-gradient(circle at 82% 18%, rgba(6,182,212,0.12), transparent 52%)",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
   },
   {
+    icon: Building2,
     title: "Government",
     detail: "Support sovereign deployments for public sector environments with strict locality and audit requirements.",
     accent: "border-brand-success/20 hover:border-brand-success/40",
     glow: "radial-gradient(circle at 20% 80%, rgba(16,185,129,0.1), transparent 55%)",
+    iconBg: "bg-brand-success/10",
+    iconColor: "text-brand-success",
   },
   {
+    icon: RadioTower,
     title: "Telecom",
     detail: "Govern subscriber data, network operations context, and AI-powered service workflows at runtime.",
     accent: "border-brand-primary/20 hover:border-brand-primary/40",
     glow: "radial-gradient(circle at 78% 78%, rgba(139,92,246,0.1), transparent 55%)",
+    iconBg: "bg-brand-primary/10",
+    iconColor: "text-brand-primary",
   },
   {
+    icon: ShieldCheck,
     title: "Insurance",
     detail: "Control access to claims, underwriting models, and internal data flows with full traceability.",
     accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
     glow: "radial-gradient(circle at 78% 20%, rgba(6,182,212,0.12), transparent 52%)",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
   },
 ];
 
@@ -47,7 +74,7 @@ const LINKS = {
     { label: "Runtime Protection", href: "#process" },
     { label: "Architecture", href: "#about" },
     { label: "Deployment Models", href: "#why-us" },
-    { label: "Integrations", href: "#contact" },
+    { label: "Integrations", href: "#integrations" },
   ],
   Resources: [
     { label: "Documentation", href: "#" },
@@ -70,6 +97,17 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSent(true);
+      setEmail("");
+    }
+  };
+
   return (
     <footer className="relative border-t border-white/[0.05] pt-20 pb-10 overflow-hidden">
       <div className="absolute left-1/4 top-0 w-[420px] h-[420px] rounded-full bg-brand-primary/[0.03] blur-[150px] pointer-events-none" />
@@ -120,33 +158,100 @@ export default function Footer() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
-          {TRUST_CARDS.map((card, i) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
-              className={`group relative overflow-hidden rounded-[22px] border bg-white/[0.03] p-6 backdrop-blur-sm shadow-[0_18px_60px_rgba(2,6,23,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] ${card.accent}`}
-            >
-              <div
-                className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
-                style={{ background: card.glow }}
-              />
-              <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
-              <div className="relative z-10">
-                <div className="mb-8 flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-slate-500">
-                    Trusted Sector
-                  </span>
-                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-brand-primary/80 shadow-[0_0_16px_rgba(139,92,246,0.45)]" />
+          {TRUST_CARDS.map((card, i) => {
+            const Icon = card.icon;
+            return (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                className={`group relative overflow-hidden rounded-[22px] border bg-white/[0.03] p-6 backdrop-blur-sm shadow-[0_18px_60px_rgba(2,6,23,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] ${card.accent}`}
+              >
+                <div
+                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                  style={{ background: card.glow }}
+                />
+                <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
+                <div className="relative z-10">
+                  <div className="mb-6 flex justify-end">
+                    <div className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/8 ${card.iconBg}`}>
+                      <Icon className={`h-4.5 w-4.5 ${card.iconColor}`} />
+                    </div>
+                  </div>
+                  <h3 className="text-white font-semibold text-lg mb-3">{card.title}</h3>
+                  <p className="text-brand-muted text-sm leading-relaxed">{card.detail}</p>
                 </div>
-                <h3 className="text-white font-semibold text-lg mb-3">{card.title}</h3>
-                <p className="text-brand-muted text-sm leading-relaxed">{card.detail}</p>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
+
+        <motion.div
+          id="contact"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] px-6 py-14 md:px-10 md:py-16 mb-16 text-center backdrop-blur-sm"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(139,92,246,0.14),_transparent_32%),radial-gradient(circle_at_80%_30%,_rgba(6,182,212,0.08),_transparent_24%)] pointer-events-none" />
+          <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
+
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-5">
+              Let&apos;s Build Together
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-[3.75rem] font-bold text-white leading-[1.02] tracking-tight mb-5">
+              Ready to unlock the{" "}
+              <span className="gradient-text">power of AI?</span>
+            </h2>
+            <p className="text-brand-muted text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+              Tell us about your project and we&apos;ll be in touch within 24 hours.
+              No commitment, just a conversation about what&apos;s possible.
+            </p>
+
+            {!sent ? (
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col md:flex-row items-stretch justify-center gap-3 max-w-[680px] mx-auto mb-8"
+              >
+                <div className="relative flex-1">
+                  <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full h-full pl-12 pr-5 py-4 rounded-full bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-brand-primary/40 focus:ring-1 focus:ring-brand-primary/20 transition-all"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white text-slate-950 font-semibold text-sm shadow-[0_18px_60px_rgba(255,255,255,0.08)] hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Get Started <ArrowRight className="w-4 h-4" />
+                </button>
+              </form>
+            ) : (
+              <div className="max-w-md mx-auto mb-8 py-4 px-6 rounded-full bg-brand-success/10 border border-brand-success/20 text-brand-success text-sm font-medium">
+                Thanks. We&apos;ll reach out within 24 hours.
+              </div>
+            )}
+
+            <p className="text-slate-500 text-sm">
+              Prefer email?{" "}
+              <a
+                href="mailto:hello@totaltensorlabs.ai"
+                className="text-brand-primary hover:text-brand-primary/80 underline underline-offset-2 transition-colors"
+              >
+                hello@totaltensorlabs.ai
+              </a>
+            </p>
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 mb-12">
           <div>
