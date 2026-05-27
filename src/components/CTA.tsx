@@ -19,7 +19,7 @@ const INTEGRATION_GROUPS = [
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
     glow: "radial-gradient(circle at 82% 18%, rgba(6,182,212,0.14), transparent 52%)",
-    items: ["PostgreSQL", "MongoDB", "Snowflake"],
+    items: ["PostgreSQL", "MongoDB"],
     span: "",
   },
   {
@@ -71,7 +71,7 @@ export default function CTA() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {INTEGRATION_GROUPS.map((group, i) => {
             const Icon = group.icon;
             return (
@@ -82,7 +82,7 @@ export default function CTA() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className={[
-                  "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-7 backdrop-blur-sm",
+                  "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-6 backdrop-blur-sm",
                   "shadow-[0_20px_70px_rgba(2,6,23,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045]",
                   group.accent,
                   group.span,
@@ -94,8 +94,8 @@ export default function CTA() {
                 />
                 <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
 
-                <div className="relative z-10 flex h-full flex-col">
-                  <div className="flex items-start justify-between gap-4 mb-8">
+                <div className="relative z-10 flex flex-col gap-5">
+                  <div className="flex items-start justify-between gap-4">
                     <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${group.iconBg}`}>
                       <Icon className={`h-5 w-5 ${group.iconColor}`} />
                     </div>
@@ -104,20 +104,20 @@ export default function CTA() {
                     </span>
                   </div>
 
-                  <div className="mb-8">
+                  <div>
                     <h3 className="text-white font-semibold text-xl mb-2">
                       {group.title}
                     </h3>
                     <div className="h-px w-16 bg-gradient-to-r from-white/15 to-transparent" />
                   </div>
 
-                  <div className="mt-auto flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2.5">
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="inline-flex items-center rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-3 text-sm font-medium text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-transform duration-300 group-hover:-translate-y-0.5"
+                        className="inline-flex items-center rounded-xl border border-white/[0.08] bg-white/[0.02] px-3.5 py-2.5 text-sm font-medium text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-transform duration-300 group-hover:-translate-y-0.5"
                       >
-                        <span className="mr-3 inline-block h-2 w-2 rounded-full bg-slate-500/70" />
+                        <span className="mr-2.5 inline-block h-2 w-2 rounded-full bg-slate-500/70" />
                         {item}
                       </span>
                     ))}

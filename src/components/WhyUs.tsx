@@ -44,20 +44,6 @@ const DEPLOYMENTS = [
   },
 ];
 
-function InfrastructureVisual() {
-  return (
-    <div className="relative h-16 w-full overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02]">
-      <div className="absolute left-6 right-6 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-white/12 to-transparent" />
-      <div className="absolute left-[18%] top-1/2 h-6 w-px -translate-y-1/2 bg-gradient-to-b from-brand-secondary/40 to-transparent" />
-      <div className="absolute left-1/2 top-1/2 h-8 w-px -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-brand-primary/50 to-transparent" />
-      <div className="absolute right-[18%] top-1/2 h-6 w-px -translate-y-1/2 bg-gradient-to-b from-brand-success/40 to-transparent" />
-      <div className="absolute left-[18%] top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-secondary/80 shadow-[0_0_18px_rgba(6,182,212,0.45)]" />
-      <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-primary/80 shadow-[0_0_22px_rgba(139,92,246,0.55)]" />
-      <div className="absolute right-[18%] top-1/2 h-2.5 w-2.5 translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-success/80 shadow-[0_0_18px_rgba(16,185,129,0.45)]" />
-    </div>
-  );
-}
-
 export default function WhyUs() {
   return (
     <section id="why-us" className="py-32 relative overflow-hidden">
@@ -129,11 +115,9 @@ export default function WhyUs() {
                   <h3 className="text-white font-semibold text-xl mb-3 leading-snug">
                     {deployment.title}
                   </h3>
-                  <p className="text-brand-muted text-sm leading-relaxed mb-6 max-w-md">
+                  <p className="text-brand-muted text-sm leading-relaxed max-w-md">
                     {deployment.description}
                   </p>
-
-                  <InfrastructureVisual />
                 </div>
               </motion.div>
             );

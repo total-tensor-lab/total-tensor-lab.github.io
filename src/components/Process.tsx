@@ -113,7 +113,7 @@ export default function Process() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {CAPABILITIES.map((capability, i) => {
             const Icon = capability.icon;
             return (
@@ -124,7 +124,7 @@ export default function Process() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className={[
-                  "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-7 backdrop-blur-sm",
+                  "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-6 backdrop-blur-sm",
                   "shadow-[0_20px_70px_rgba(2,6,23,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045]",
                   capability.border,
                   capability.span,
@@ -137,15 +137,15 @@ export default function Process() {
                 <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
                 <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-brand-primary/12 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
 
-                <div className="relative z-10 flex h-full flex-col">
+                <div className="relative z-10 flex flex-col gap-6">
                   <div
-                    className={`mb-12 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${capability.iconBg}`}
+                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${capability.iconBg}`}
                   >
                     <Icon className={`h-4.5 w-4.5 ${capability.iconColor}`} />
                   </div>
 
-                  <div className="mt-auto">
-                    <h3 className="text-white font-semibold text-xl leading-snug mb-3 max-w-sm">
+                  <div>
+                    <h3 className="text-white font-semibold text-xl leading-snug mb-2.5 max-w-sm">
                       {capability.title}
                     </h3>
                     <p className="text-brand-muted text-sm leading-relaxed max-w-md">
