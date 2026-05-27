@@ -10,11 +10,11 @@ const DATA_SOURCES = [
 ];
 
 const RUNTIME_CAPABILITIES = [
-  { label: "Detection", x: 392, y: 174, color: "#06B6D4" },
-  { label: "Classification", x: 554, y: 174, color: "#8B5CF6" },
-  { label: "Policy Engine", x: 392, y: 232, color: "#8B5CF6" },
-  { label: "Sanitization", x: 554, y: 232, color: "#06B6D4" },
-  { label: "Audit Logging", x: 473, y: 290, color: "#10B981" },
+  { label: "Detection", x: 390, y: 220, color: "#06B6D4" },
+  { label: "Classification", x: 552, y: 220, color: "#8B5CF6" },
+  { label: "Policy Engine", x: 390, y: 272, color: "#8B5CF6" },
+  { label: "Sanitization", x: 552, y: 272, color: "#06B6D4" },
+  { label: "Audit Logging", x: 471, y: 324, color: "#10B981" },
 ];
 
 const AI_SYSTEMS = [
@@ -117,16 +117,16 @@ function ArchitectureDiagram() {
           </g>
         ))}
 
-        <rect x="382" y="112" width="336" height="296" rx="20" fill="#0F172A" stroke="#8B5CF6" strokeWidth="1.5" filter="url(#about-glow)" />
-        <rect x="398" y="128" width="304" height="264" rx="16" fill="rgba(15,23,42,0.72)" stroke="rgba(255,255,255,0.05)" />
+        <rect x="372" y="110" width="356" height="318" rx="20" fill="#0F172A" stroke="#8B5CF6" strokeWidth="1.5" filter="url(#about-glow)" />
+        <rect x="390" y="128" width="320" height="282" rx="16" fill="rgba(15,23,42,0.72)" stroke="rgba(255,255,255,0.05)" />
 
-        <text x="550" y="154" textAnchor="middle" fill="#A78BFA" fontSize="11" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.16em">
+        <text x="550" y="160" textAnchor="middle" fill="#A78BFA" fontSize="11" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.16em">
           GOVERNANCE LAYER
         </text>
-        <text x="550" y="178" textAnchor="middle" fill="#F8FAFC" fontSize="23" fontFamily="Inter,system-ui,sans-serif" fontWeight="700">
+        <text x="550" y="188" textAnchor="middle" fill="#F8FAFC" fontSize="21" fontFamily="Inter,system-ui,sans-serif" fontWeight="700">
           PromptShield Runtime
         </text>
-        <text x="550" y="202" textAnchor="middle" fill="#64748B" fontSize="11" fontFamily="Inter,system-ui,sans-serif">
+        <text x="550" y="208" textAnchor="middle" fill="#64748B" fontSize="11" fontFamily="Inter,system-ui,sans-serif">
           Detect, govern, and protect sensitive enterprise data in motion.
         </text>
 
@@ -140,9 +140,9 @@ function ArchitectureDiagram() {
           </g>
         ))}
 
-        <line x1="430" y1="340" x2="670" y2="340" stroke="rgba(148,163,184,0.16)" strokeWidth="1" />
-        <circle cx="448" cy="340" r="3" fill="#10B981" />
-        <text x="462" y="344" fill="#10B981" fontSize="10" fontFamily="Inter,system-ui,sans-serif" fontWeight="600" letterSpacing="0.06em">
+        <line x1="426" y1="386" x2="674" y2="386" stroke="rgba(148,163,184,0.16)" strokeWidth="1" />
+        <circle cx="446" cy="386" r="3" fill="#10B981" />
+        <text x="460" y="390" fill="#10B981" fontSize="10" fontFamily="Inter,system-ui,sans-serif" fontWeight="600" letterSpacing="0.06em">
           DATA NEVER LEAVES YOUR ENVIRONMENT
         </text>
 
