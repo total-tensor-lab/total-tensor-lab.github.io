@@ -1,46 +1,58 @@
 import { motion } from "motion/react";
+import { Plug, SlidersHorizontal, Server, BarChart3 } from "lucide-react";
 
 const STEPS = [
   {
     number: "01",
-    title: "Discovery",
+    icon: Plug,
+    title: "Connect",
     description:
-      "We work closely with you to understand your challenges, goals, data landscape, and success criteria — building a shared foundation.",
-    color: "from-brand-primary/30 to-brand-primary/5",
-    dot: "bg-brand-primary",
-  },
-  {
-    number: "02",
-    title: "Research & Design",
-    description:
-      "Our research team identifies optimal AI approaches, surveys the literature, and designs the model architecture and data pipeline.",
-    color: "from-blue-500/30 to-blue-500/5",
-    dot: "bg-blue-500",
-  },
-  {
-    number: "03",
-    title: "Build & Train",
-    description:
-      "We develop, experiment, and iterate — training models with rigorous evaluation, ablation studies, and benchmark comparisons.",
-    color: "from-brand-secondary/30 to-brand-secondary/5",
+      "Integrate TTL with your existing AI stack in minutes. Drop-in SDK for LangChain, LlamaIndex, and direct OpenAI/Anthropic clients. No architecture changes required.",
+    color: "from-brand-secondary/20 to-transparent",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
     dot: "bg-brand-secondary",
   },
   {
-    number: "04",
-    title: "Deploy & Scale",
+    number: "02",
+    icon: SlidersHorizontal,
+    title: "Configure",
     description:
-      "We ship your solution with production-grade infrastructure — including monitoring, drift detection, and ongoing optimization.",
-    color: "from-pink-500/30 to-pink-500/5",
-    dot: "bg-pink-500",
+      "Define data governance policies as code. Set redaction rules, access controls, content filters, and model allow-lists through a declarative YAML or API-driven interface.",
+    color: "from-brand-primary/20 to-transparent",
+    iconBg: "bg-brand-primary/10",
+    iconColor: "text-brand-primary",
+    dot: "bg-brand-primary",
+  },
+  {
+    number: "03",
+    icon: Server,
+    title: "Deploy",
+    description:
+      "Self-host the privacy runtime inside your own infrastructure — on-prem, private cloud, or air-gapped environments. Docker, Kubernetes, and Helm charts provided.",
+    color: "from-brand-success/15 to-transparent",
+    iconBg: "bg-brand-success/10",
+    iconColor: "text-brand-success",
+    dot: "bg-brand-success",
+  },
+  {
+    number: "04",
+    icon: BarChart3,
+    title: "Monitor",
+    description:
+      "Continuous compliance audit and real-time alerting. Query your AI interaction logs, export reports, and receive anomaly alerts before they become incidents.",
+    color: "from-violet-500/15 to-transparent",
+    iconBg: "bg-violet-500/10",
+    iconColor: "text-violet-400",
+    dot: "bg-violet-400",
   },
 ];
 
 export default function Process() {
   return (
-    <section id="process" className="py-28 relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      </div>
+    <section id="process" className="py-32 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-brand-primary/[0.03] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
@@ -50,48 +62,53 @@ export default function Process() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-brand-primary text-sm font-semibold tracking-widest uppercase mb-4">
-            How We Work
+          <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
+            How It Works
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-5">
-            Our{" "}
-            <span className="gradient-text">Engagement Process</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-5">
+            From integration to{" "}
+            <span className="gradient-text">compliance in four steps.</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            A proven four-step process that takes you from idea to
-            production-ready AI system.
+          <p className="text-brand-muted text-base max-w-xl mx-auto">
+            A simple, predictable deployment model built for platform engineering teams.
           </p>
         </motion.div>
 
         {/* Steps */}
         <div className="relative">
-          {/* Connecting line (desktop) */}
-          <div className="hidden lg:block absolute top-12 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Connecting line on desktop */}
+          <div className="hidden lg:block absolute top-[2.6rem] left-[calc(12.5%-0.5px)] right-[calc(12.5%-0.5px)] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent z-0" />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {STEPS.map((step, i) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.1 }}
-                className="relative"
-              >
-                {/* Step number bubble */}
-                <div className="relative z-10 flex items-center gap-3 mb-5">
-                  <div className={`w-10 h-10 rounded-full ${step.dot} flex items-center justify-center shadow-lg`}>
-                    <span className="text-white font-bold text-sm">{i + 1}</span>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {STEPS.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.1 }}
+                  className="relative z-10"
+                >
+                  {/* Step bubble */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className={`w-10 h-10 rounded-full ${step.dot} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                      <span className="text-white font-bold text-sm">{i + 1}</span>
+                    </div>
+                    <span className="text-slate-600 font-mono text-xs">{step.number}</span>
                   </div>
-                  <span className="text-slate-600 font-mono text-sm">{step.number}</span>
-                </div>
 
-                <div className={`bg-gradient-to-br ${step.color} border border-white/[0.06] rounded-2xl p-6 h-full`}>
-                  <h3 className="text-white font-bold text-lg mb-3">{step.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{step.description}</p>
-                </div>
-              </motion.div>
-            ))}
+                  <div className={`bg-gradient-to-b ${step.color} border border-white/[0.06] rounded-2xl p-6 h-full`}>
+                    <div className={`w-9 h-9 rounded-lg ${step.iconBg} flex items-center justify-center mb-4`}>
+                      <Icon className={`w-4.5 h-4.5 ${step.iconColor}`} />
+                    </div>
+                    <h3 className="text-white font-semibold text-base mb-2.5">{step.title}</h3>
+                    <p className="text-brand-muted text-sm leading-relaxed">{step.description}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>

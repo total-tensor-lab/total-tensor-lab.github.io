@@ -48,7 +48,7 @@ const AnimatedBackground: React.FC = () => {
         this.vx = Math.random() * 0.4 - 0.2;
         this.vy = Math.random() * 0.4 - 0.2;
         this.radius = Math.random() * 2 + 1;
-        this.color = `rgba(200, 115, 255, ${Math.random() * 0.5 + 0.4})`;
+        this.color = `rgba(139, 92, 246, ${Math.random() * 0.35 + 0.25})`;
       }
 
       update() {
@@ -87,7 +87,7 @@ const AnimatedBackground: React.FC = () => {
             ctx!.beginPath();
             ctx!.moveTo(nodes[i].x, nodes[i].y);
             ctx!.lineTo(nodes[j].x, nodes[j].y);
-            ctx!.strokeStyle = `rgba(139, 92, 246, ${(1 - distance / 160) * 0.8})`;
+            ctx!.strokeStyle = `rgba(6, 182, 212, ${(1 - distance / 160) * 0.25})`;
             ctx!.lineWidth = 0.7;
             ctx!.stroke();
           }
