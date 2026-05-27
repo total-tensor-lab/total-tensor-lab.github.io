@@ -1,50 +1,91 @@
 import { motion } from "motion/react";
-import { Plug, SlidersHorizontal, Server, BarChart3 } from "lucide-react";
+import {
+  ClipboardList,
+  Database,
+  Search,
+  Server,
+  Shield,
+  SlidersHorizontal,
+} from "lucide-react";
 
-const STEPS = [
+const CAPABILITIES = [
   {
-    number: "01",
-    icon: Plug,
-    title: "Connect",
+    id: "runtime",
+    icon: Shield,
+    title: "Runtime AI Protection",
     description:
-      "Integrate TTL with your existing AI stack in minutes. Drop-in SDK for LangChain, LlamaIndex, and direct OpenAI/Anthropic clients. No architecture changes required.",
-    color: "from-brand-secondary/20 to-transparent",
-    iconBg: "bg-brand-secondary/10",
-    iconColor: "text-brand-secondary",
-    dot: "bg-brand-secondary",
-  },
-  {
-    number: "02",
-    icon: SlidersHorizontal,
-    title: "Configure",
-    description:
-      "Define data governance policies as code. Set redaction rules, access controls, content filters, and model allow-lists through a declarative YAML or API-driven interface.",
-    color: "from-brand-primary/20 to-transparent",
+      "Monitor and govern prompts, responses, agents, and AI workflows in real time.",
+    border: "border-brand-primary/20 hover:border-brand-primary/40",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
-    dot: "bg-brand-primary",
+    gradient:
+      "radial-gradient(circle at 18% 22%, rgba(139,92,246,0.14), transparent 52%)",
+    span: "md:col-span-2 lg:col-span-2",
   },
   {
-    number: "03",
-    icon: Server,
-    title: "Deploy",
+    id: "vector",
+    icon: Database,
+    title: "Vector Database Governance",
     description:
-      "Self-host the privacy runtime inside your own infrastructure — on-prem, private cloud, or air-gapped environments. Docker, Kubernetes, and Helm charts provided.",
-    color: "from-brand-success/15 to-transparent",
+      "Detect sensitive embeddings, unsafe retrieval patterns, and data leakage risks.",
+    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
+    gradient:
+      "radial-gradient(circle at 82% 22%, rgba(6,182,212,0.14), transparent 52%)",
+    span: "",
+  },
+  {
+    id: "scanning",
+    icon: Search,
+    title: "Structured & Unstructured Data Scanning",
+    description:
+      "Scan databases, documents, logs, APIs, and object storage for sensitive AI data.",
+    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
+    gradient:
+      "radial-gradient(circle at 20% 80%, rgba(6,182,212,0.12), transparent 55%)",
+    span: "md:col-span-2",
+  },
+  {
+    id: "local",
+    icon: Server,
+    title: "Local Processing Engine",
+    description:
+      "All scanning and governance can run fully inside your infrastructure.",
+    border: "border-brand-success/20 hover:border-brand-success/40",
     iconBg: "bg-brand-success/10",
     iconColor: "text-brand-success",
-    dot: "bg-brand-success",
+    gradient:
+      "radial-gradient(circle at 80% 78%, rgba(16,185,129,0.12), transparent 55%)",
+    span: "",
   },
   {
-    number: "04",
-    icon: BarChart3,
-    title: "Monitor",
+    id: "policy",
+    icon: SlidersHorizontal,
+    title: "Policy Enforcement Engine",
     description:
-      "Continuous compliance audit and real-time alerting. Query your AI interaction logs, export reports, and receive anomaly alerts before they become incidents.",
-    color: "from-violet-500/15 to-transparent",
-    iconBg: "bg-violet-500/10",
-    iconColor: "text-violet-400",
-    dot: "bg-violet-400",
+      "Create granular governance policies for AI systems and data flows.",
+    border: "border-brand-primary/20 hover:border-brand-primary/40",
+    iconBg: "bg-brand-primary/10",
+    iconColor: "text-brand-primary",
+    gradient:
+      "radial-gradient(circle at 78% 18%, rgba(139,92,246,0.14), transparent 52%)",
+    span: "",
+  },
+  {
+    id: "audit",
+    icon: ClipboardList,
+    title: "Audit & Traceability",
+    description:
+      "Track how AI systems access, retrieve, and process enterprise data.",
+    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
+    gradient:
+      "radial-gradient(circle at 22% 20%, rgba(6,182,212,0.14), transparent 52%)",
+    span: "lg:col-span-2",
   },
 ];
 
@@ -52,7 +93,8 @@ export default function Process() {
   return (
     <section id="process" className="py-32 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 section-divider" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-brand-primary/[0.03] rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute left-1/4 top-20 w-[420px] h-[420px] bg-brand-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute right-0 bottom-10 w-[420px] h-[420px] bg-brand-secondary/[0.03] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
@@ -60,56 +102,60 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-16 max-w-4xl"
         >
           <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
-            How It Works
+            Capabilities
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-5">
-            From integration to{" "}
-            <span className="gradient-text">compliance in four steps.</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+            Built for Enterprise{" "}
+            <span className="gradient-text">AI Governance</span>
           </h2>
-          <p className="text-brand-muted text-base max-w-xl mx-auto">
-            A simple, predictable deployment model built for platform engineering teams.
-          </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connecting line on desktop */}
-          <div className="hidden lg:block absolute top-[2.6rem] left-[calc(12.5%-0.5px)] right-[calc(12.5%-0.5px)] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent z-0" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+          {CAPABILITIES.map((capability, i) => {
+            const Icon = capability.icon;
+            return (
+              <motion.div
+                key={capability.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                className={[
+                  "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-7 backdrop-blur-sm",
+                  "shadow-[0_20px_70px_rgba(2,6,23,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045]",
+                  capability.border,
+                  capability.span,
+                ].join(" ")}
+              >
+                <div
+                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                  style={{ background: capability.gradient }}
+                />
+                <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-brand-primary/12 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {STEPS.map((step, i) => {
-              const Icon = step.icon;
-              return (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.1 }}
-                  className="relative z-10"
-                >
-                  {/* Step bubble */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className={`w-10 h-10 rounded-full ${step.dot} flex items-center justify-center shadow-lg flex-shrink-0`}>
-                      <span className="text-white font-bold text-sm">{i + 1}</span>
-                    </div>
-                    <span className="text-slate-600 font-mono text-xs">{step.number}</span>
+                <div className="relative z-10 flex h-full flex-col">
+                  <div
+                    className={`mb-12 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${capability.iconBg}`}
+                  >
+                    <Icon className={`h-4.5 w-4.5 ${capability.iconColor}`} />
                   </div>
 
-                  <div className={`bg-gradient-to-b ${step.color} border border-white/[0.06] rounded-2xl p-6 h-full`}>
-                    <div className={`w-9 h-9 rounded-lg ${step.iconBg} flex items-center justify-center mb-4`}>
-                      <Icon className={`w-4.5 h-4.5 ${step.iconColor}`} />
-                    </div>
-                    <h3 className="text-white font-semibold text-base mb-2.5">{step.title}</h3>
-                    <p className="text-brand-muted text-sm leading-relaxed">{step.description}</p>
+                  <div className="mt-auto">
+                    <h3 className="text-white font-semibold text-xl leading-snug mb-3 max-w-sm">
+                      {capability.title}
+                    </h3>
+                    <p className="text-brand-muted text-sm leading-relaxed max-w-md">
+                      {capability.description}
+                    </p>
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
