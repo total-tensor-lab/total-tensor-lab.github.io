@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 
-const ROTATING_WORDS = ["Reads", "Listens", "Sees"];
+const ROTATING_WORDS = ["Read", "Listen", "See"];
 
 function RotatingWord() {
   const [index, setIndex] = useState(0);
@@ -15,20 +15,25 @@ function RotatingWord() {
   }, []);
 
   return (
-    <span className="inline-block relative" style={{ minWidth: "3ch" }}>
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={index}
-          initial={{ y: "100%", opacity: 0 }}
-          animate={{ y: "0%", opacity: 1 }}
-          exit={{ y: "-100%", opacity: 0 }}
-          transition={{ duration: 0.42, ease: [0.33, 1, 0.68, 1] }}
-          className="inline-block gradient-text"
-          style={{ display: "inline-block" }}
-        >
-          {ROTATING_WORDS[index]}
-        </motion.span>
-      </AnimatePresence>
+    <span className="inline-grid overflow-hidden align-bottom">
+      {/* Hidden reference word — sets container width to the longest word */}
+      <span className="invisible pointer-events-none" style={{ gridArea: "1/1" }}>Listens</span>
+      {/* Animated word sits on top, clipped to the same cell */}
+      <span className="overflow-hidden flex items-end justify-start" style={{ gridArea: "1/1" }}>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={index}
+            initial={{ y: "100%", opacity: 0 }}
+            animate={{ y: "0%", opacity: 1 }}
+            exit={{ y: "-100%", opacity: 0 }}
+            transition={{ duration: 0.42, ease: [0.33, 1, 0.68, 1] }}
+            className="gradient-text"
+            style={{ display: "inline-block" }}
+          >
+            {ROTATING_WORDS[index]}
+          </motion.span>
+        </AnimatePresence>
+      </span>
     </span>
   );
 }
@@ -198,10 +203,9 @@ export default function Hero() {
             >
               Control What
               <br />
-              <span className="overflow-hidden inline-flex items-baseline gap-[0.22em]">
+              <span className="whitespace-nowrap inline-flex items-baseline gap-[0.22em]">
                 <span className="gradient-text">Your AI</span>
                 <RotatingWord />
-                <span className="gradient-text">.</span>
               </span>
             </motion.h1>
 
@@ -263,10 +267,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Right: Topology diagram ── */}
-          <div className="hidden lg:flex items-center justify-end">
-            <TopologyDiagram />
-          </div>
+
         </div>
       </div>
 
