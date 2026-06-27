@@ -1,5 +1,37 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
+
+const ROTATING_WORDS = ["Reads", "Listens", "Sees"];
+
+function RotatingWord() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % ROTATING_WORDS.length);
+    }, 2000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="inline-block relative" style={{ minWidth: "3ch" }}>
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={index}
+          initial={{ y: "100%", opacity: 0 }}
+          animate={{ y: "0%", opacity: 1 }}
+          exit={{ y: "-100%", opacity: 0 }}
+          transition={{ duration: 0.42, ease: [0.33, 1, 0.68, 1] }}
+          className="inline-block gradient-text"
+          style={{ display: "inline-block" }}
+        >
+          {ROTATING_WORDS[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
 
 const TRUST_BADGES = [
   "Local Processing",
@@ -166,7 +198,11 @@ export default function Hero() {
             >
               Control What
               <br />
-              <span className="gradient-text">Your AI Sees.</span>
+              <span className="overflow-hidden inline-flex items-baseline gap-[0.22em]">
+                <span className="gradient-text">Your AI</span>
+                <RotatingWord />
+                <span className="gradient-text">.</span>
+              </span>
             </motion.h1>
 
             {/* Sub-headline */}
