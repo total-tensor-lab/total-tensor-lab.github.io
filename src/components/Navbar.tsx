@@ -4,8 +4,7 @@ import { Menu, X, Github } from "lucide-react";
 import Logo from "./Logo";
 
 const NAV_LINKS = [
-  { label: "Platform", href: "#services" },
-  { label: "Security", href: "#why-us" },
+  { label: "Security", href: "#security" },
   { label: "GitHub", href: "https://github.com/totaltensorlabs", target: "_blank", icon: true },
 ];
 
@@ -113,4 +112,3 @@ export default function Navbar() {
     </>
   );
 }
-
