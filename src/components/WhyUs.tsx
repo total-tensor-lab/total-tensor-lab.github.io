@@ -1,56 +1,55 @@
 import { motion } from "motion/react";
-import { FlaskConical, Rocket, Handshake, Cpu } from "lucide-react";
+import { Cloud, Server, ShieldCheck, Workflow } from "lucide-react";
 
-const PILLARS = [
+const DEPLOYMENTS = [
   {
-    icon: FlaskConical,
-    title: "Research-First Thinking",
+    icon: Server,
+    title: "Self-Hosted Runtime",
     description:
-      "Every solution starts with rigorous research. We don't retrofit off-the-shelf models — we understand the problem deeply and choose or build the right approach from first principles.",
-    gradient: "from-brand-primary/20 via-brand-primary/5 to-transparent",
+      "Deploy PromptShield directly inside your own infrastructure so prompts, context, and governance telemetry remain entirely under customer control.",
+    border: "border-brand-primary/20 hover:border-brand-primary/40",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
-    border: "hover:border-brand-primary/20",
+    glow: "radial-gradient(circle at 20% 18%, rgba(139,92,246,0.14), transparent 52%)",
   },
   {
-    icon: Rocket,
-    title: "Production-Ready from Day One",
+    icon: Workflow,
+    title: "Kubernetes Deployment",
     description:
-      "Research stays research unless it ships. We engineer with deployment in mind — scalable infrastructure, monitoring, and CI/CD baked in from the first commit.",
-    gradient: "from-brand-secondary/20 via-brand-secondary/5 to-transparent",
+      "Run PromptShield on Kubernetes for standardized enterprise orchestration while data stays within your cluster boundaries and operational guardrails.",
+    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
-    border: "hover:border-brand-secondary/20",
+    glow: "radial-gradient(circle at 82% 20%, rgba(6,182,212,0.14), transparent 52%)",
   },
   {
-    icon: Handshake,
-    title: "Fully Transparent Collaboration",
+    icon: Cloud,
+    title: "Private Cloud",
     description:
-      "No black boxes, no surprises. You get full visibility into experiments, tradeoffs, and progress. We work as an extension of your team, not a distant vendor.",
-    gradient: "from-emerald-500/20 via-emerald-500/5 to-transparent",
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-400",
-    border: "hover:border-emerald-500/20",
+      "Operate in your private cloud environment with full locality, governance enforcement, and isolation so enterprise data never leaves approved infrastructure.",
+    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
+    glow: "radial-gradient(circle at 18% 78%, rgba(6,182,212,0.12), transparent 55%)",
   },
   {
-    icon: Cpu,
-    title: "State-of-the-Art Infrastructure",
+    icon: ShieldCheck,
+    title: "Air-Gapped Infrastructure",
     description:
-      "Access to high-performance GPU clusters, modern MLOps tooling, and cutting-edge frameworks — without the overhead of building and maintaining it yourself.",
-    gradient: "from-orange-500/20 via-orange-500/5 to-transparent",
-    iconBg: "bg-orange-500/10",
-    iconColor: "text-orange-400",
-    border: "hover:border-orange-500/20",
+      "Support high-security environments with fully disconnected deployments where sensitive enterprise data remains sealed inside customer-controlled networks.",
+    border: "border-brand-success/20 hover:border-brand-success/40",
+    iconBg: "bg-brand-success/10",
+    iconColor: "text-brand-success",
+    glow: "radial-gradient(circle at 78% 78%, rgba(16,185,129,0.12), transparent 55%)",
   },
 ];
 
 export default function WhyUs() {
   return (
-    <section className="py-28 relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-secondary/4 rounded-full blur-[140px]" />
-      </div>
+    <section id="why-us" className="py-32 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-secondary/[0.035] rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute right-0 bottom-0 w-[480px] h-[480px] bg-brand-primary/[0.035] rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
@@ -58,44 +57,67 @@ export default function WhyUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-12 max-w-4xl"
         >
-          <span className="inline-block text-brand-primary text-sm font-semibold tracking-widest uppercase mb-4">
-            Our Edge
+          <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
+            Deployment Options
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-5">
-            Why{" "}
-            <span className="gradient-text">Total Tensor Labs</span>?
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+            Deploy Anywhere. Keep Data{" "}
+            <span className="gradient-text">Sovereign.</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            We're a focused team that cares deeply about doing AI right — with
-            the craft, transparency, and ambition that great work demands.
+          <p className="text-brand-muted text-base md:text-lg leading-relaxed max-w-3xl">
+            PromptShield is designed for enterprise environments where data privacy,
+            locality, and governance are mandatory.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
-          {PILLARS.map((p, i) => {
-            const Icon = p.icon;
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-5 shadow-[0_20px_70px_rgba(2,6,23,0.32)] backdrop-blur-sm"
+        >
+          <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
+            Bring compute to data <span className="text-brand-muted">— not data to compute.</span>
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {DEPLOYMENTS.map((deployment, i) => {
+            const Icon = deployment.icon;
             return (
               <motion.div
-                key={p.title}
+                key={deployment.title}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.1 }}
-                className={`relative bg-brand-surface border border-white/[0.06] ${p.border} rounded-2xl p-8 overflow-hidden group transition-colors duration-300`}
+                className={`group relative overflow-hidden rounded-[24px] border bg-brand-surface/80 p-8 shadow-[0_20px_70px_rgba(2,6,23,0.34)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${deployment.border}`}
               >
-                {/* Background gradient on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${p.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div
+                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                  style={{ background: deployment.glow }}
+                />
+                <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
 
-                <div className="relative z-10 flex gap-5">
-                  <div className={`w-12 h-12 rounded-xl ${p.iconBg} flex items-center justify-center flex-shrink-0 mt-1`}>
-                    <Icon className={`w-6 h-6 ${p.iconColor}`} />
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between gap-4 mb-6">
+                    <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${deployment.iconBg}`}>
+                      <Icon className={`h-5 w-5 ${deployment.iconColor}`} />
+                    </div>
+                    <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-slate-500">
+                      Customer Infra
+                    </span>
                   </div>
-                  <div>
-                    <h3 className="text-white font-bold text-lg mb-2">{p.title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">{p.description}</p>
-                  </div>
+
+                  <h3 className="text-white font-semibold text-xl mb-3 leading-snug">
+                    {deployment.title}
+                  </h3>
+                  <p className="text-brand-muted text-sm leading-relaxed max-w-md">
+                    {deployment.description}
+                  </p>
                 </div>
               </motion.div>
             );
