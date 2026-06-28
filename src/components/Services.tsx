@@ -78,7 +78,7 @@ export default function Services() {
             Enterprise AI Introduces{" "}
             <span className="gradient-text">New Risks.</span>
           </h2>
-          <p className="text-brand-muted text-base md:text-lg leading-relaxed max-w-3xl">
+          <p className="text-brand-muted text-base md:text-lg text-white leading-relaxed max-w-3xl">
             Modern AI systems process sensitive enterprise data across prompts,
             vector databases, agents, and retrieval pipelines — often without
             governance or visibility.
