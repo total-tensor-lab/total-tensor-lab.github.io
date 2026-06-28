@@ -185,7 +185,7 @@ export default function About() {
             The Governance Layer for{" "}
             <span className="gradient-text">Enterprise AI</span>
           </h2>
-          <p className="text-brand-muted text-base md:text-lg leading-relaxed max-w-3xl mb-8">
+          <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-3xl mb-8">
             PromptShield connects to your AI stack to detect, govern, and protect
             sensitive data at runtime.
           </p>
