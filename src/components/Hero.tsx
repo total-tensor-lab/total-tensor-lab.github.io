@@ -658,7 +658,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-brand-muted text-lg leading-relaxed max-w-xl mb-12"
+              className="text-brand-muted text-lg text-white leading-relaxed max-w-xl mb-12"
             >
               Runtime privacy and governance infrastructure for enterprise AI systems.
               Detect, govern, and protect sensitive data across prompts, vector

@@ -128,7 +128,7 @@ export default function Footer() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
             Built for <span className="gradient-text">Regulated Industries</span>
           </h2>
-          <p className="text-brand-muted text-base md:text-lg max-w-3xl leading-relaxed mb-8">
+          <p className="text-brand-muted text-base text-white md:text-lg max-w-3xl leading-relaxed mb-8">
             Designed for environments where privacy, governance, and auditability
             are non-negotiable.
           </p>
@@ -208,7 +208,7 @@ export default function Footer() {
               Ready to unlock the{" "}
               <span className="gradient-text">power of AI?</span>
             </h2>
-            <p className="text-brand-muted text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+            <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               Tell us about your project and we&apos;ll be in touch within 24 hours.
               No commitment, just a conversation about what&apos;s possible.
             </p>
@@ -260,7 +260,7 @@ export default function Footer() {
               <Logo size={60} />
               <span className="font-semibold text-white text-base">Total Tensor Labs</span>
             </a>
-            <p className="text-slate-500 text-sm leading-relaxed max-w-md mb-6">
+            <p className="text-slate-500 text-base text-white leading-relaxed max-w-md mb-6">
               Privacy infrastructure for enterprise AI systems operating in highly
               regulated environments.
             </p>

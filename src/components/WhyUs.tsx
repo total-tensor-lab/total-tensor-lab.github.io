@@ -66,7 +66,7 @@ export default function WhyUs() {
             Deploy Anywhere. Keep Data{" "}
             <span className="gradient-text">Sovereign.</span>
           </h2>
-          <p className="text-brand-muted text-base md:text-lg leading-relaxed max-w-3xl">
+          <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-3xl">
             PromptShield is designed for enterprise environments where data privacy,
             locality, and governance are mandatory.
           </p>
