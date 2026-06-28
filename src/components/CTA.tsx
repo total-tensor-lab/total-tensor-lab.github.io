@@ -66,7 +66,7 @@ export default function CTA() {
             Built for Modern{" "}
             <span className="gradient-text">AI Infrastructure</span>
           </h2>
-          <p className="text-brand-muted text-base md:text-lg max-w-3xl leading-relaxed">
+          <p className="text-brand-muted text-base text-white md:text-lg max-w-3xl leading-relaxed">
             Integrate PromptShield into existing AI pipelines without changing your architecture.
           </p>
         </motion.div>
