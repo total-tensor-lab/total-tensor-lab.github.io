@@ -54,12 +54,16 @@ const PROBLEMS = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-32 relative overflow-hidden">
+    <section
+      id="services"
+      className="py-32 relative overflow-hidden"
+    >
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div className="absolute left-1/3 top-24 w-[420px] h-[420px] bg-brand-primary/[0.03] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute right-0 bottom-0 w-[380px] h-[380px] bg-brand-secondary/[0.03] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
+        {/* Header block */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,6 +85,7 @@ export default function Services() {
           </p>
         </motion.div>
 
+        {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
           {PROBLEMS.map((problem, i) => {
             const Icon = problem.icon;
@@ -90,7 +95,7 @@ export default function Services() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
+                transition={{ duration: 0.45, delay: i * 0.1 }}
                 className={[
                   "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-7 backdrop-blur-sm transition-all duration-300",
                   "shadow-[0_18px_60px_rgba(2,6,23,0.32)] hover:-translate-y-1 hover:bg-white/[0.04]",

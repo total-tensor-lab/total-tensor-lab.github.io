@@ -2,27 +2,27 @@ import { motion } from "motion/react";
 import { Check } from "lucide-react";
 
 const DATA_SOURCES = [
-  { label: "Databases", y: 84 },
-  { label: "PDFs & Documents", y: 150 },
-  { label: "APIs", y: 216 },
-  { label: "Vector Databases", y: 282 },
-  { label: "Logs & Streams", y: 348 },
+  { label: "Databases", y: 121 },
+  { label: "PDFs & Documents", y: 187 },
+  { label: "APIs", y: 253 },
+  { label: "Vector Databases", y: 319 },
+  { label: "Logs & Streams", y: 385 },
 ];
 
 const RUNTIME_CAPABILITIES = [
-  { label: "Detection", x: 390, y: 220, color: "#e73714" },
-  { label: "Classification", x: 552, y: 220, color: "#8B5CF6" },
-  { label: "Policy Engine", x: 390, y: 272, color: "#21e316" },
-  { label: "Sanitization", x: 552, y: 272, color: "#ceed21" },
-  { label: "Audit Logging", x: 471, y: 324, color: "#12b6e9" },
+  { label: "Detection", x: 390, y: 257, color: "#e73714" },
+  { label: "Classification", x: 552, y: 257, color: "#8B5CF6" },
+  { label: "Policy Engine", x: 390, y: 309, color: "#21e316" },
+  { label: "Sanitization", x: 552, y: 309, color: "#ceed21" },
+  { label: "Audit Logging", x: 471, y: 361, color: "#12b6e9" },
 ];
 
 const AI_SYSTEMS = [
-  { label: "LLM Applications", y: 84 },
-  { label: "RAG Pipelines", y: 150 },
-  { label: "AI Agents", y: 216 },
-  { label: "Analytics", y: 282 },
-  { label: "Fine-Tuning", y: 348 },
+  { label: "LLM Applications", y: 121 },
+  { label: "RAG Pipelines", y: 187 },
+  { label: "AI Agents", y: 253 },
+  { label: "Analytics", y: 319 },
+  { label: "Fine-Tuning", y: 385 },
 ];
 
 const DEPLOYMENT_BADGES = [
@@ -87,15 +87,15 @@ function ArchitectureDiagram() {
         </defs>
 
         <rect x="0" y="0" width="1100" height="520" rx="22" fill="url(#about-topology-grid)" />
-        <ellipse cx="550" cy="260" rx="190" ry="132" fill="url(#about-runtime-glow)" />
+        <ellipse cx="550" cy="297" rx="190" ry="132" fill="url(#about-runtime-glow)" />
 
-        <text x="138" y="44" textAnchor="middle" fill="#06B6D4" fontSize="10" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
+        <text x="138" y="81" textAnchor="middle" fill="#06B6D4" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
           DATA SOURCES
         </text>
-        <text x="550" y="44" textAnchor="middle" fill="#94A3B8" fontSize="10" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.7">
-          PROMPTSHIELD RUNTIME
+        <text x="550" y="81" textAnchor="middle" fill="#94A3B8" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.7">
+          RUNTIME
         </text>
-        <text x="962" y="44" textAnchor="middle" fill="#8B5CF6" fontSize="10" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
+        <text x="962" y="81" textAnchor="middle" fill="#8B5CF6" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
           AI SYSTEMS
         </text>
 
@@ -103,11 +103,11 @@ function ArchitectureDiagram() {
           <g key={source.label}>
             <rect x="38" y={source.y} width="200" height="42" rx="10" fill="#0F172A" stroke="#06B6D4" strokeWidth="1" opacity="0.92" />
             <rect x="38" y={source.y} width="4" height="42" rx="2" fill="#06B6D4" />
-            <text x="58" y={source.y + 25} fill="#CBD5E1" fontSize="12" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
+            <text x="58" y={source.y + 25} fill="#CBD5E1" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
               {source.label}
             </text>
             <path
-              d={`M 238 ${source.y + 21} C 302 ${source.y + 21}, 338 ${210 + index * 12}, 380 ${210 + index * 12}`}
+              d={`M 238 ${source.y + 21} C 302 ${source.y + 21}, 338 ${247 + index * 12}, 380 ${247 + index * 12}`}
               fill="none"
               stroke="url(#about-flow-in)"
               strokeWidth="1.6"
@@ -117,24 +117,24 @@ function ArchitectureDiagram() {
           </g>
         ))}
 
-        <rect x="372" y="110" width="356" height="318" rx="20" fill="#0F172A" stroke="#8B5CF6" strokeWidth="1.5" filter="url(#about-glow)" />
-        <rect x="390" y="128" width="320" height="282" rx="16" fill="rgba(15,23,42,0.72)" stroke="rgba(255,255,255,0.05)" />
+        <rect x="372" y="121" width="356" height="318" rx="20" fill="#0F172A" stroke="#8B5CF6" strokeWidth="1.5" filter="url(#about-glow)" />
+        <rect x="390" y="139" width="320" height="282" rx="16" fill="rgba(15,23,42,0.72)" stroke="rgba(255,255,255,0.05)" />
 
-        <text x="550" y="160" textAnchor="middle" fill="#A78BFA" fontSize="11" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.16em">
+        <text x="550" y="197" textAnchor="middle" fill="#A78BFA" fontSize="13" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.16em">
           GOVERNANCE LAYER
         </text>
-        <text x="550" y="188" textAnchor="middle" fill="#F8FAFC" fontSize="21" fontFamily="Inter,system-ui,sans-serif" fontWeight="700">
-          PromptShield
+        <text x="550" y="225" textAnchor="middle" fill="#F8FAFC" fontSize="20" fontFamily="Inter,system-ui,sans-serif" fontWeight="700">
+          TTL-Shield
         </text>
-        <text x="550" y="208" textAnchor="middle" fill="#64748B" fontSize="11" fontFamily="Inter,system-ui,sans-serif">
-          Detect, govern, and protect sensitive enterprise data in motion.
+        <text x="550" y="247" textAnchor="middle" fill="#64748B" fontSize="13" fontFamily="Inter,system-ui,sans-serif">
+          Detect, govern, and protect sensitive data in motion.
         </text>
 
         {RUNTIME_CAPABILITIES.map((capability) => (
           <g key={capability.label}>
             <rect x={capability.x} y={capability.y} width="154" height="38" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
             <circle cx={capability.x + 16} cy={capability.y + 19} r="4" fill={capability.color} />
-            <text x={capability.x + 30} y={capability.y + 24} fill="#E2E8F0" fontSize="11.5" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
+            <text x={capability.x + 30} y={capability.y + 24} fill="#E2E8F0" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
               {capability.label}
             </text>
           </g>
@@ -145,11 +145,11 @@ function ArchitectureDiagram() {
           <g key={system.label}>
             <rect x="862" y={system.y} width="200" height="42" rx="10" fill="#0F172A" stroke="#8B5CF6" strokeWidth="1" opacity="0.92" />
             <rect x="1058" y={system.y} width="4" height="42" rx="2" fill="#8B5CF6" />
-            <text x="880" y={system.y + 25} fill="#CBD5E1" fontSize="12" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
+            <text x="880" y={system.y + 25} fill="#CBD5E1" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
               {system.label}
             </text>
             <path
-              d={`M 718 ${210 + index * 12} C 764 ${210 + index * 12}, 798 ${system.y + 21}, 862 ${system.y + 21}`}
+              d={`M 718 ${247 + index * 12} C 764 ${247 + index * 12}, 798 ${system.y + 21}, 862 ${system.y + 21}`}
               fill="none"
               stroke="url(#about-flow-out)"
               strokeWidth="1.6"
