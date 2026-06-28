@@ -1,0 +1,66 @@
+import { useId } from "react";
+import { motion } from "motion/react";
+
+interface LogoProps {
+  size?: number;
+  className?: string;
+  animated?: boolean;
+}
+
+export default function Logo({ size = 64, className = "", animated = false }: LogoProps) {
+  const uid = useId().replace(/:/g, "");
+  const gradId = `ttl-grad-${uid}`;
+
+  const LogoContent = (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 200 200"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <defs>
+        <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#8B5CF6" />
+          <stop offset="100%" stopColor="#06B6D4" />
+        </linearGradient>
+      </defs>
+
+      {/* Rounded diamond background */}
+      <path
+        d="M 100,14 Q 136,62 186,100 Q 136,138 100,186 Q 64,138 14,100 Q 64,62 100,14 Z"
+        fill={`url(#${gradId})`}
+      />
+
+      {/* Crosshair spokes connecting circles through center */}
+      <line x1="36" y1="100" x2="164" y2="100" stroke="white" strokeWidth="1.5" opacity="0.5" />
+      <line x1="100" y1="36" x2="100" y2="164" stroke="white" strokeWidth="1.5" opacity="0.5" />
+
+      {/* 4-pointed concave star — cubic bezier with strongly inward-curving sides */}
+      <path
+        d="M 100,48 C 100,92 122,100 152,100 C 122,100 100,108 100,152 C 100,108 78,100 48,100 C 78,100 100,92 100,48 Z"
+        fill="white"
+      />
+
+      {/* Cardinal point circles */}
+      <circle cx="100" cy="36" r="7" fill="white" />
+      <circle cx="164" cy="100" r="7" fill="white" />
+      <circle cx="100" cy="164" r="7" fill="white" />
+      <circle cx="36" cy="100" r="7" fill="white" />
+    </svg>
+  );
+
+  if (animated) {
+    return (
+      <motion.div
+        whileHover={{ rotate: 360 }}
+        transition={{ duration: 0.8 }}
+      >
+        {LogoContent}
+      </motion.div>
+    );
+  }
+
+  return LogoContent;
+}
