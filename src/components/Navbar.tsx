@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Github } from "lucide-react";
+import Logo from "./Logo";
 
 const NAV_LINKS = [
   { label: "Platform", href: "#services" },
@@ -34,13 +35,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-brand-primary/15 border border-brand-primary/30 flex items-center justify-center group-hover:bg-brand-primary/20 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M8 2L14 5.5V10.5L8 14L2 10.5V5.5L8 2Z" stroke="#8B5CF6" strokeWidth="1.4" strokeLinejoin="round"/>
-                <circle cx="8" cy="8" r="2" fill="#8B5CF6" opacity="0.8"/>
-              </svg>
-            </div>
-            <span className="font-semibold text-white text-sm tracking-tight hidden sm:block">
+            <Logo size={60} animated />
+            <span className="font-semibold text-white text-base tracking-tight hidden sm:block">
               Total Tensor Labs
             </span>
           </a>
