@@ -1,46 +1,100 @@
 import { motion } from "motion/react";
+import {
+  ClipboardList,
+  Database,
+  Search,
+  Server,
+  Shield,
+  SlidersHorizontal,
+} from "lucide-react";
 
-const STEPS = [
+const CAPABILITIES = [
   {
-    number: "01",
-    title: "Discovery",
+    id: "runtime",
+    icon: Shield,
+    title: "Runtime AI Protection",
     description:
-      "We work closely with you to understand your challenges, goals, data landscape, and success criteria — building a shared foundation.",
-    color: "from-brand-primary/30 to-brand-primary/5",
-    dot: "bg-brand-primary",
+      "Monitor and govern prompts, responses, agents, and AI workflows in real time.",
+    border: "border-brand-primary/20 hover:border-brand-primary/40",
+    iconBg: "bg-brand-primary/10",
+    iconColor: "text-brand-primary",
+    gradient:
+      "radial-gradient(circle at 18% 22%, rgba(139,92,246,0.14), transparent 52%)",
+    span: "md:col-span-2 lg:col-span-2",
   },
   {
-    number: "02",
-    title: "Research & Design",
+    id: "vector",
+    icon: Database,
+    title: "Vector Database Governance",
     description:
-      "Our research team identifies optimal AI approaches, surveys the literature, and designs the model architecture and data pipeline.",
-    color: "from-blue-500/30 to-blue-500/5",
-    dot: "bg-blue-500",
+      "Detect sensitive embeddings, unsafe retrieval patterns, and data leakage risks.",
+    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
+    gradient:
+      "radial-gradient(circle at 82% 22%, rgba(6,182,212,0.14), transparent 52%)",
+    span: "",
   },
   {
-    number: "03",
-    title: "Build & Train",
+    id: "scanning",
+    icon: Search,
+    title: "Structured & Unstructured Data Scanning",
     description:
-      "We develop, experiment, and iterate — training models with rigorous evaluation, ablation studies, and benchmark comparisons.",
-    color: "from-brand-secondary/30 to-brand-secondary/5",
-    dot: "bg-brand-secondary",
+      "Scan databases, documents, logs, APIs, and object storage for sensitive AI data.",
+    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
+    gradient:
+      "radial-gradient(circle at 20% 80%, rgba(6,182,212,0.12), transparent 55%)",
+    span: "md:col-span-2",
   },
   {
-    number: "04",
-    title: "Deploy & Scale",
+    id: "local",
+    icon: Server,
+    title: "Local Processing Engine",
     description:
-      "We ship your solution with production-grade infrastructure — including monitoring, drift detection, and ongoing optimization.",
-    color: "from-pink-500/30 to-pink-500/5",
-    dot: "bg-pink-500",
+      "All scanning and governance can run fully inside your infrastructure.",
+    border: "border-brand-success/20 hover:border-brand-success/40",
+    iconBg: "bg-brand-success/10",
+    iconColor: "text-brand-success",
+    gradient:
+      "radial-gradient(circle at 80% 78%, rgba(16,185,129,0.12), transparent 55%)",
+    span: "",
+  },
+  {
+    id: "policy",
+    icon: SlidersHorizontal,
+    title: "Policy Enforcement Engine",
+    description:
+      "Create granular governance policies for AI systems and data flows.",
+    border: "border-brand-primary/20 hover:border-brand-primary/40",
+    iconBg: "bg-brand-primary/10",
+    iconColor: "text-brand-primary",
+    gradient:
+      "radial-gradient(circle at 78% 18%, rgba(139,92,246,0.14), transparent 52%)",
+    span: "",
+  },
+  {
+    id: "audit",
+    icon: ClipboardList,
+    title: "Audit & Traceability",
+    description:
+      "Track how AI systems access, retrieve, and process enterprise data.",
+    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
+    iconBg: "bg-brand-secondary/10",
+    iconColor: "text-brand-secondary",
+    gradient:
+      "radial-gradient(circle at 22% 20%, rgba(6,182,212,0.14), transparent 52%)",
+    span: "lg:col-span-2",
   },
 ];
 
 export default function Process() {
   return (
-    <section id="process" className="py-28 relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      </div>
+    <section id="process" className="py-32 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div className="absolute left-1/4 top-20 w-[420px] h-[420px] bg-brand-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute right-0 bottom-10 w-[420px] h-[420px] bg-brand-secondary/[0.03] rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
@@ -48,51 +102,60 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-16 max-w-4xl"
         >
-          <span className="inline-block text-brand-primary text-sm font-semibold tracking-widest uppercase mb-4">
-            How We Work
+          <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
+            Capabilities
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-5">
-            Our{" "}
-            <span className="gradient-text">Engagement Process</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+            Built for Enterprise{" "}
+            <span className="gradient-text">AI Governance</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            A proven four-step process that takes you from idea to
-            production-ready AI system.
-          </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="relative">
-          {/* Connecting line (desktop) */}
-          <div className="hidden lg:block absolute top-12 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {STEPS.map((step, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {CAPABILITIES.map((capability, i) => {
+            const Icon = capability.icon;
+            return (
               <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 28 }}
+                key={capability.id}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.1 }}
-                className="relative"
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                className={[
+                  "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-6 backdrop-blur-sm",
+                  "shadow-[0_20px_70px_rgba(2,6,23,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045]",
+                  capability.border,
+                  capability.span,
+                ].join(" ")}
               >
-                {/* Step number bubble */}
-                <div className="relative z-10 flex items-center gap-3 mb-5">
-                  <div className={`w-10 h-10 rounded-full ${step.dot} flex items-center justify-center shadow-lg`}>
-                    <span className="text-white font-bold text-sm">{i + 1}</span>
-                  </div>
-                  <span className="text-slate-600 font-mono text-sm">{step.number}</span>
-                </div>
+                <div
+                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                  style={{ background: capability.gradient }}
+                />
+                <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-brand-primary/12 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
 
-                <div className={`bg-gradient-to-br ${step.color} border border-white/[0.06] rounded-2xl p-6 h-full`}>
-                  <h3 className="text-white font-bold text-lg mb-3">{step.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{step.description}</p>
+                <div className="relative z-10 flex flex-col gap-6">
+                  <div
+                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${capability.iconBg}`}
+                  >
+                    <Icon className={`h-4.5 w-4.5 ${capability.iconColor}`} />
+                  </div>
+
+                  <div>
+                    <h3 className="text-white font-semibold text-xl leading-snug mb-2.5 max-w-sm">
+                      {capability.title}
+                    </h3>
+                    <p className="text-brand-muted text-sm leading-relaxed max-w-md">
+                      {capability.description}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
