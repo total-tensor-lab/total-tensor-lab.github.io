@@ -4,28 +4,36 @@ import { ChevronDown } from "lucide-react";
 
 const FAQS = [
   {
-    q: "What types of AI projects does Total Tensor Labs undertake?",
-    a: "We work across the full spectrum of applied AI — from custom deep learning models and computer vision systems to NLP pipelines, recommendation engines, and end-to-end MLOps infrastructure. Whether you need a proof-of-concept or a production-grade system serving millions of users, we can help.",
+    q: "What exactly does PromptShield do?",
+    a: "PromptShield is a runtime governance layer that sits between your data sources and AI systems. It automatically detects, classifies, and sanitizes sensitive data — PII, PHI, credentials, proprietary content — before it reaches an LLM, RAG pipeline, or AI agent. It also enforces policies, logs every interaction for audit, and ensures sensitive data never leaves your environment.",
   },
   {
-    q: "How do you ensure model quality and reliability?",
-    a: "We follow rigorous ML engineering practices: systematic experimentation, cross-validation, held-out test sets, and bias/fairness auditing. Every model goes through staged rollouts with monitoring for performance drift, data quality degradation, and operational anomalies.",
+    q: "Does PromptShield require sending our data to the cloud?",
+    a: "No. PromptShield is designed exclusively for on-premises and private cloud deployments. It runs entirely within your infrastructure — on bare metal, private cloud, Kubernetes, or air-gapped environments. Your prompts, context, and governance telemetry never leave your control boundary.",
   },
   {
-    q: "Do you offer AI research collaboration?",
-    a: "Absolutely. We actively collaborate with universities, research institutions, and enterprise R&D labs. We can contribute to joint publications, provide compute resources, or embed our researchers into your team for focused research sprints.",
+    q: "Which AI systems and pipelines does it integrate with?",
+    a: "PromptShield integrates with any AI system via a lightweight SDK or API proxy — including LLM applications (OpenAI-compatible APIs, custom models), RAG pipelines (LangChain, LlamaIndex, custom), AI agents, analytics platforms, and fine-tuning workflows. Integration requires no architectural changes to your existing stack.",
   },
   {
-    q: "What industries have you worked with?",
-    a: "Our work spans healthcare (medical imaging, diagnostics), finance (fraud detection, forecasting), retail (demand planning, personalization), manufacturing (defect detection, predictive maintenance), and technology (search, recommendations, LLM applications).",
+    q: "What data sources can PromptShield monitor?",
+    a: "PromptShield can inspect data flowing from databases, PDFs and documents, REST/GraphQL APIs, vector databases (Pinecone, Weaviate, pgvector, etc.), log streams, and message queues. It intercepts data in motion — at the point it enters your AI pipeline — regardless of source.",
   },
   {
-    q: "How do you handle data privacy and security?",
-    a: "Data security is fundamental to everything we do. We operate under strict NDAs, support on-premise or private-cloud deployments, apply differential privacy and federated learning where appropriate, and comply with GDPR, HIPAA, and other relevant regulations.",
+    q: "Which compliance frameworks does PromptShield support?",
+    a: "PromptShield is built for regulated industries. Its detection and policy engine covers GDPR, HIPAA, SOC 2, PCI-DSS, and CCPA requirements out of the box. Audit logging provides tamper-evident records suitable for compliance reporting. Custom classification rules can be added for internal data governance policies.",
   },
   {
-    q: "How long does a typical engagement take?",
-    a: "A proof-of-concept typically runs 4–8 weeks. A full production system typically takes 3–6 months depending on data readiness, scope, and integration complexity. We provide detailed project plans after the discovery phase.",
+    q: "How is sensitive data handled — is it blocked or redacted?",
+    a: "That depends on your configured policy. PromptShield supports multiple enforcement modes: block (reject the request), redact (replace sensitive tokens with anonymized placeholders), tokenize (reversible pseudonymization), or alert-only (pass through but log and alert). Policies are configurable per data category, per pipeline, and per user role.",
+  },
+  {
+    q: "What performance overhead does PromptShield introduce?",
+    a: "PromptShield is engineered for low-latency production workloads. In standard deployments, the governance layer adds under 10ms of overhead per request. It scales horizontally on Kubernetes to match throughput requirements without becoming a bottleneck in high-volume inference pipelines.",
+  },
+  {
+    q: "How long does a typical deployment take?",
+    a: "Most organizations are fully operational within 2–4 weeks. This includes infrastructure provisioning, integration with existing AI pipelines, classification rule tuning for your data environment, and policy configuration aligned with your compliance requirements. We provide hands-on support throughout onboarding.",
   },
 ];
 
@@ -52,7 +60,7 @@ export default function FAQ() {
             <span className="gradient-text">Questions</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Everything you need to know about working with Total Tensor Labs.
+            Everything you need to know about deploying PromptShield in your enterprise AI environment.
           </p>
         </motion.div>
 
