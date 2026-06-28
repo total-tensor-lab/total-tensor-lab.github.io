@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import Logo from "./Logo";
 import {
   ArrowRight,
   Building2,
@@ -256,13 +257,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 mb-12">
           <div>
             <a href="#" className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-brand-primary/15 border border-brand-primary/30 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M8 2L14 5.5V10.5L8 14L2 10.5V5.5L8 2Z" stroke="#8B5CF6" strokeWidth="1.4" strokeLinejoin="round" />
-                  <circle cx="8" cy="8" r="2" fill="#8B5CF6" opacity="0.8" />
-                </svg>
-              </div>
-              <span className="font-semibold text-white text-sm">Total Tensor Labs</span>
+              <Logo size={60} />
+              <span className="font-semibold text-white text-base">Total Tensor Labs</span>
             </a>
             <p className="text-slate-500 text-sm leading-relaxed max-w-md mb-6">
               Privacy infrastructure for enterprise AI systems operating in highly
