@@ -1,4 +1,4 @@
-import { Shield, Cpu, FileCheck, ArrowRight } from "lucide-react";
+import { CheckCircle2, Scale, Globe, Lock, FileText, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function SecurityPage() {
@@ -34,7 +34,7 @@ export default function SecurityPage() {
           className="flex flex-wrap items-center gap-2.5 mb-10"
         >
           <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/25 text-brand-primary text-xs font-semibold tracking-widest uppercase">
-            Security & Compliance
+            Compliance & Certifications
           </span>
         </motion.div>
 
@@ -45,9 +45,9 @@ export default function SecurityPage() {
           transition={{ delay: 0.2 }}
           className="text-5xl md:text-6xl lg:text-[3.6rem] xl:text-[4.1rem] leading-[1.04] tracking-[-0.04em] mb-10 font-bold max-w-2xl"
         >
-          Enterprise-Grade
+          Regulatory
           <br />
-          <span className="gradient-text">Security</span>
+          <span className="gradient-text">Compliance Made Easy</span>
         </motion.h1>
 
         {/* Divider accent */}
@@ -65,20 +65,23 @@ export default function SecurityPage() {
           transition={{ delay: 0.3 }}
           className="text-brand-muted text-lg leading-relaxed max-w-xl mb-12"
         >
-          At Total Tensor Labs, we prioritize security by design. Our infrastructure is built with enterprise-grade protocols, zero-trust architecture, and advanced threat detection systems to keep your data protected.
+          Our platform helps enterprises achieve and maintain compliance with global regulatory standards. Streamline your path to certification across multiple jurisdictions and frameworks.
         </motion.p>
 
-        {/* Security Features Grid */}
+        {/* Compliance Standards Grid */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 w-full"
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full"
         >
           {[
-            { icon: Shield, title: "Zero Trust Architecture", desc: "Identity-centric security model with strict access controls." },
-            { icon: Cpu, title: "End-to-End Encryption", desc: "Military-grade encryption for all data in transit and at rest." },
-            { icon: FileCheck, title: "Regular Audits", desc: "Third-party penetration testing and compliance verification." },
+            { icon: CheckCircle2, title: "HIPAA", desc: "Healthcare data protection and privacy compliance for covered entities and business associates." },
+            { icon: Scale, title: "GDPR", desc: "European data protection and privacy regulations ensuring lawful processing of personal data." },
+            { icon: Globe, title: "CCPA", desc: "California consumer privacy rights with transparency and user control over personal information." },
+            { icon: FileText, title: "EU AI Act", desc: "European Union AI regulatory framework for responsible and trustworthy AI deployment." },
+            { icon: Lock, title: "DPDP-Act", desc: "Digital Personal Data Protection Act compliance for handling personal data in India." },
+            { icon: CheckCircle2, title: "SOC 2 Type II", desc: "Security, availability, processing integrity, confidentiality, and privacy compliance audits." },
           ].map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
@@ -115,7 +118,7 @@ export default function SecurityPage() {
           >
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary" />
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary opacity-0 group-hover:opacity-80 transition-opacity duration-200 blur-xl" />
-            <span className="relative z-10">Request Security Details</span>
+            <span className="relative z-10">Explore Compliance Solutions</span>
             <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
           </a>
         </motion.div>
