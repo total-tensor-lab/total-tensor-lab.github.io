@@ -6,7 +6,6 @@ import Logo from "./Logo";
 const NAV_LINKS = [
   { label: "Platform", href: "#services" },
   { label: "Security", href: "#why-us" },
-  { label: "How It Works", href: "#process" },
   { label: "GitHub", href: "https://github.com/totaltensorlabs", target: "_blank", icon: true },
 ];
 
@@ -33,35 +32,37 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <Logo size={60} animated />
-            <span className="font-semibold text-white text-base tracking-tight hidden sm:block">
-              Total Tensor Labs
-            </span>
-          </a>
+          {/* Logo + Nav Links */}
+          <div className="flex items-center gap-8">
+            <a href="#" className="flex items-center gap-2.5 group flex-shrink-0">
+              <Logo size={60} />
+              <span className="font-semibold text-white text-base tracking-tight hidden sm:block">
+                Total Tensor Labs
+              </span>
+            </a>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.target}
-                rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-brand-muted hover:text-white hover:bg-white/[0.04] text-sm font-medium transition-all duration-200"
-              >
-                {link.icon && <Github className="w-3.5 h-3.5" />}
-                {link.label}
-              </a>
-            ))}
+            {/* Desktop links */}
+            <div className="hidden md:flex items-center gap-1">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.target}
+                  rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/[0.06] text-sm font-medium transition-colors duration-150"
+                >
+                  {link.icon && <Github className="w-3.5 h-3.5" />}
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* CTA + mobile toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <a
               href="#contact"
-              className="hidden md:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-brand-primary text-white shadow-lg shadow-brand-primary/20 hover:bg-brand-primary/90 hover:-translate-y-0.5 transition-all duration-200"
+              className="px-4 py-2 rounded-lg text-sm font-semibold bg-brand-primary text-white shadow-lg shadow-brand-primary/20 hover:bg-brand-primary/90 transition-colors duration-150"
             >
               Request Demo
             </a>
@@ -80,10 +81,10 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.18 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.12 }}
             className="fixed inset-x-0 top-16 z-40 bg-brand-surface/98 backdrop-blur-xl border-b border-white/[0.05] px-6 py-5 flex flex-col gap-1 md:hidden"
           >
             {NAV_LINKS.map((link) => (
@@ -92,7 +93,7 @@ export default function Navbar() {
                 href={link.href}
                 target={link.target}
                 rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
-                className="flex items-center gap-2 text-brand-muted hover:text-white font-medium text-base py-2.5 px-2 rounded-lg hover:bg-white/[0.04] transition-all"
+                className="flex items-center gap-2 text-slate-300 hover:text-white font-medium text-base py-2.5 px-2 rounded-lg hover:bg-white/[0.06] transition-colors duration-150"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.icon && <Github className="w-4 h-4" />}
@@ -112,3 +113,4 @@ export default function Navbar() {
     </>
   );
 }
+
