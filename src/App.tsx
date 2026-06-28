@@ -8,6 +8,8 @@ import WhyUs from "@/components/WhyUs";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import SecurityPage from "@/pages/Security";
+import ProductsPage from "@/pages/Products";
+import BlogsPage from "@/pages/Blogs";
 import { useEffect, useState } from "react";
 
 export default function App() {
@@ -23,6 +25,10 @@ export default function App() {
 
   const renderContent = () => {
     switch (view) {
+      case "products":
+        return <ProductsPage />;
+      case "blogs":
+        return <BlogsPage />;
       case "security":
         return <SecurityPage />;
       case "home":
