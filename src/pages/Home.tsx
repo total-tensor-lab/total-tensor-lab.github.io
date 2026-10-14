@@ -171,8 +171,7 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="max-w-4xl"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-secondary">Consulting capabilities</span>
-            <h2 className="mt-5 text-4xl font-bold leading-tight text-white md:text-5xl">
+            <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl">
               The expertise to take AI from{" "}
               <span className="gradient-text">concept to deployment.</span>
             </h2>

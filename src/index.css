@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-family-display: "Hepta Slab", Georgia, serif;
-  --font-family-body: "Inter", system-ui, sans-serif;
+  --font-display: "Hepta Slab", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
 
   --color-brand-bg: #060816;
   --color-brand-surface: #0F172A;
@@ -30,14 +30,21 @@ html {
 body {
   background-color: var(--color-brand-bg);
   color: var(--color-brand-text);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Hepta Slab", Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: 0.01em;
 }
@@ -82,9 +89,11 @@ h1, h2, h3, h4, h5, h6 {
 .lifecycle-stage[data-selected="true"] {
   border: 1px solid transparent;
   background:
-    linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.045)) padding-box,
-    linear-gradient(135deg, rgba(167, 139, 250, 0.82), rgba(103, 232, 249, 0.78)) border-box;
-  box-shadow: 0 0 18px rgba(139, 92, 246, 0.13);
+    linear-gradient(135deg, #17142d 0%, #0b1d29 100%) padding-box,
+    linear-gradient(135deg, rgba(167, 139, 250, 0.95), rgba(103, 232, 249, 0.9)) border-box;
+  box-shadow:
+    0 0 0 1px rgba(103, 232, 249, 0.04),
+    0 0 20px rgba(34, 211, 238, 0.12);
 }
 
 /* Topology flow animation */

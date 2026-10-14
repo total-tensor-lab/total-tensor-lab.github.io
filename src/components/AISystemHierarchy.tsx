@@ -57,86 +57,44 @@ const LIFECYCLE_STAGES: {
     number: "06",
     label: "Operate & Optimize",
     icon: Activity,
-    description: "Monitor, tune, and continuously evaluate AI systems to keep them reliable in production.",
-    capabilities: ["Observability & monitoring", "Drift detection & model updates", "Reliability & incident response"],
+    description: "Monitor, tune, and continuously improve reliability in production.",
+    capabilities: ["Observability", "Drift & updates", "Incident response"],
   },
 ];
 
-const STAGE_GRID_PLACEMENT = [
-  { column: 1, row: 1 },
-  { column: 3, row: 1 },
-  { column: 3, row: 3 },
-  { column: 1, row: 3 },
-  { column: 1, row: 5 },
-  { column: 3, row: 5 },
-];
+const RING_POSITIONS = [
+  { left: "50%", top: "9.5%", angle: -90 },
+  { left: "85%", top: "29.75%", angle: -30 },
+  { left: "85%", top: "70.25%", angle: 30 },
+  { left: "50%", top: "90.5%", angle: 90 },
+  { left: "15%", top: "70.25%", angle: 150 },
+  { left: "15%", top: "29.75%", angle: 210 },
+] as const;
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+const RING_CENTER = 250;
+const RING_RADIUS = 202.5;
+const ARC_GAP_DEGREES = 11;
 
-function StageConnector({
-  direction,
-  active,
-  order,
-}: {
-  direction: "left" | "right" | "down";
-  active: boolean;
-  order: number;
-}) {
-  const horizontal = direction !== "down";
-  const isLeft = direction === "left";
-  const lineStyle = active
-    ? {
-        animation: "dash-flow 2.6s linear infinite",
-        animationDelay: `${order * 0.24}s`,
-        animationDirection: isLeft ? "reverse" as const : "normal" as const,
-      }
-    : undefined;
+function pointOnRing(angle: number) {
+  const radians = (angle * Math.PI) / 180;
 
-  return (
-    <span className="flex items-center justify-center text-cyan-100/80" aria-hidden="true">
-      {horizontal ? (
-        <svg className="h-5 w-6 shrink-0 overflow-visible" viewBox="0 0 24 20" fill="none">
-          <path
-            d="M1 10h22"
-            stroke="currentColor"
-            strokeOpacity="0.8"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeDasharray="8 5"
-            style={lineStyle}
-          />
-          <path
-            d={isLeft ? "M6 6 1 10l5 4" : "M18 6l5 4-5 4"}
-            stroke="currentColor"
-            strokeOpacity="0.8"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      ) : (
-        <svg className="h-5 w-6 shrink-0 overflow-visible" viewBox="0 0 24 20" fill="none">
-          <path
-            d="M12 1v18"
-            stroke="currentColor"
-            strokeOpacity="0.8"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeDasharray="8 5"
-            style={lineStyle}
-          />
-          <path
-            d="m7 14 5 5 5-5"
-            stroke="currentColor"
-            strokeOpacity="0.8"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      )}
-    </span>
-  );
+  return {
+    x: RING_CENTER + RING_RADIUS * Math.cos(radians),
+    y: RING_CENTER + RING_RADIUS * Math.sin(radians),
+  };
+}
+
+function stageArc(index: number) {
+  const startAngle = RING_POSITIONS[index].angle + ARC_GAP_DEGREES;
+  const nextAngle = index === RING_POSITIONS.length - 1
+    ? RING_POSITIONS[0].angle + 360
+    : RING_POSITIONS[index + 1].angle;
+  const endAngle = nextAngle - ARC_GAP_DEGREES;
+  const start = pointOnRing(startAngle);
+  const end = pointOnRing(endAngle);
+
+  return `M ${start.x} ${start.y} A ${RING_RADIUS} ${RING_RADIUS} 0 0 1 ${end.x} ${end.y}`;
 }
 
 export default function AISystemHierarchy() {
@@ -152,172 +110,186 @@ export default function AISystemHierarchy() {
     <motion.aside
       ref={diagramRef}
       aria-labelledby="ai-lifecycle-title"
-      className="relative mx-auto w-full max-w-[620px] py-2 lg:-mt-4"
+      className="relative mx-auto w-full max-w-[620px] py-2"
       initial={reduceMotion ? false : { opacity: 0, y: 18 }}
       animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 18 }}
       transition={{ duration: reduceMotion ? 0 : 0.65, delay: reduceMotion ? 0 : 0.12, ease: EASE_OUT }}
     >
       <h2 id="ai-lifecycle-title" className="sr-only">Interactive AI engineering lifecycle</h2>
 
-      <svg
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-30"
-        viewBox="0 0 1000 600"
-        preserveAspectRatio="none"
-        fill="none"
-        aria-hidden="true"
-      >
-        <g stroke="#8b9bc5" strokeOpacity="0.22" strokeWidth="1">
-          <path d="m22 70 94 47 102-38M795 63l108 65-51 101M18 504l112-77 97 51m556 33 91-87 107 67" />
-        </g>
-        {[
-          { start: [22, 70], middle: [116, 117], end: [218, 79] },
-          { start: [795, 63], middle: [903, 128], end: [852, 229] },
-          { start: [18, 504], middle: [130, 427], end: [227, 478] },
-          { start: [783, 511], middle: [874, 424], end: [981, 491] },
-        ].map((node, index) => (
-          <g key={index} fill="#a5b4fc">
-            <circle cx={node.start[0]} cy={node.start[1]} r="2" />
-            <motion.circle
-              r="2.5"
-              cx={node.middle[0]}
-              cy={node.middle[1]}
-              fill="#a5f3fc"
-              animate={
-                animateContinuously
-                  ? {
-                      cx: [node.middle[0] - 8, node.middle[0] + 8, node.middle[0] - 8],
-                      cy: [node.middle[1] + 7, node.middle[1] - 7, node.middle[1] + 7],
-                    }
-                  : { cx: node.middle[0], cy: node.middle[1] }
-              }
-              transition={animateContinuously ? { duration: 12 + index * 2, repeat: Infinity, ease: "easeInOut" } : { duration: 0 }}
-            />
-            <circle cx={node.end[0]} cy={node.end[1]} r="2" />
-          </g>
-        ))}
-      </svg>
-
-      <div className="relative rounded-2xl border border-white/10 bg-[#080d1c]/90 p-3 shadow-[0_18px_60px_rgba(3,7,18,0.36)] backdrop-blur-sm sm:p-4">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl" aria-hidden="true">
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#080d1c]/90 p-3 shadow-[0_18px_60px_rgba(3,7,18,0.36)] backdrop-blur-sm sm:p-4">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <div className="absolute -right-12 -top-16 h-40 w-40 rounded-full bg-cyan-400/[0.07] blur-3xl" />
           <div className="absolute -bottom-20 -left-12 h-40 w-40 rounded-full bg-violet-500/[0.07] blur-3xl" />
+          <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(148,163,184,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.035)_1px,transparent_1px)] [background-size:28px_28px]" />
         </div>
 
         <div className="relative">
-          <div className="mb-3 flex items-center justify-between gap-2 px-0.5">
+          <div className="mb-1.5 px-0.5 sm:mb-2">
             <h3 className="text-xs font-semibold text-white sm:text-sm">AI Engineering Lifecycle</h3>
           </div>
 
-          <div className="grid gap-3 rounded-xl border border-indigo-200/[0.08] bg-[#11182b]/80 p-2 sm:p-2.5 xl:grid-cols-[1.05fr_0.95fr] xl:items-stretch">
-            <div className="grid grid-cols-[minmax(0,1fr)_24px_minmax(0,1fr)] grid-rows-[auto_24px_auto_24px_auto] items-center gap-x-1.5 gap-y-1">
+          <div className="relative mx-auto aspect-square w-full max-w-[560px]" role="group" aria-label="AI lifecycle stages">
+            <svg
+              className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+              viewBox="0 0 500 500"
+              fill="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="lifecycle-ring" x1="70" y1="60" x2="430" y2="440" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#8B5CF6" />
+                  <stop offset="1" stopColor="#06B6D4" />
+                </linearGradient>
+                <filter id="lifecycle-ring-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <marker id="lifecycle-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+                  <path d="M0 0 8 4 0 8Z" fill="#67e8f9" />
+                </marker>
+              </defs>
+
+              <circle cx="250" cy="250" r={RING_RADIUS} stroke="rgba(148,163,184,0.12)" strokeWidth="22" />
+              <circle cx="250" cy="250" r={RING_RADIUS} stroke="rgba(148,163,184,0.18)" strokeWidth="1" strokeDasharray="2 8" />
+
+              {LIFECYCLE_STAGES.map((stage, index) => {
+                const isActive = activeStage === index;
+
+                return (
+                  <motion.path
+                    key={stage.number}
+                    d={stageArc(index)}
+                    pathLength="1"
+                    stroke={isActive ? "url(#lifecycle-ring)" : "rgba(103,232,249,0.34)"}
+                    strokeWidth={isActive ? 2.5 : 1.5}
+                    strokeLinecap="round"
+                    strokeDasharray={isActive ? "0.12 0.05" : "0.025 0.035"}
+                    markerEnd="url(#lifecycle-arrow)"
+                    filter={isActive ? "url(#lifecycle-ring-glow)" : undefined}
+                    initial={false}
+                    animate={{
+                      opacity: isActive ? 1 : 0.58,
+                      strokeDashoffset: animateContinuously ? [0, -0.17] : 0,
+                    }}
+                    transition={
+                      animateContinuously
+                        ? { strokeDashoffset: { duration: 1.8, repeat: Infinity, ease: "linear" }, opacity: { duration: 0.2 } }
+                        : { duration: 0.2 }
+                    }
+                  />
+                );
+              })}
+            </svg>
+
+            <ol className="absolute inset-0 m-0 list-none p-0">
               {LIFECYCLE_STAGES.map((stage, index) => {
                 const Icon = stage.icon;
                 const isActive = activeStage === index;
-                const { column, row } = STAGE_GRID_PLACEMENT[index];
+                const position = RING_POSITIONS[index];
 
                 return (
-                  <motion.button
+                  <li
                     key={stage.number}
-                    type="button"
-                    aria-label={`Stage ${stage.number}: ${stage.label}`}
-                    aria-pressed={isActive}
-                    aria-describedby="lifecycle-stage-details"
-                    onFocus={() => setActiveStage(index)}
-                    onClick={() => setActiveStage(index)}
-                    style={{ gridColumnStart: column, gridRowStart: row }}
-                    initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                    animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 8 }}
-                    transition={{
-                      duration: reduceMotion ? 0 : 0.4,
-                      delay: reduceMotion ? 0 : index * 0.12,
-                      ease: EASE_OUT,
-                    }}
-                    data-selected={isActive}
-                    className={`lifecycle-stage group relative flex min-h-[68px] flex-col items-center justify-center gap-1 rounded-lg border px-1 py-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/80 sm:min-h-[78px] ${
-                      isActive
-                        ? ""
-                        : "border-slate-500/30 bg-[#0b1121]/90"
-                    }`}
+                    className="absolute w-[30%] -translate-x-1/2 -translate-y-1/2 sm:w-[29%]"
+                    style={{ left: position.left, top: position.top }}
                   >
-                    <span className={`absolute left-1.5 top-1 text-[10px] font-semibold tracking-wide sm:left-2 sm:top-1.5 sm:text-[11px] ${
-                      isActive ? "text-cyan-100/90" : "text-slate-400"
-                    }`}>
-                      {stage.number}
-                    </span>
-                    <Icon
-                      className={`h-6 w-6 transition-[color,filter] duration-200 sm:h-7 sm:w-7 ${
-                        isActive ? "text-cyan-100 drop-shadow-[0_0_7px_rgba(103,232,249,0.35)]" : "text-slate-400 group-hover:text-cyan-100 group-hover:drop-shadow-[0_0_6px_rgba(103,232,249,0.3)]"
+                    <motion.button
+                      type="button"
+                      aria-label={`Stage ${stage.number}: ${stage.label}`}
+                      aria-pressed={isActive}
+                      aria-controls="lifecycle-stage-details"
+                      onFocus={() => setActiveStage(index)}
+                      onClick={() => setActiveStage(index)}
+                      initial={reduceMotion ? false : { opacity: 0, scale: 0.92 }}
+                      animate={{
+                        opacity: isInView ? 1 : 0,
+                        scale: 1,
+                      }}
+                      transition={{
+                        duration: reduceMotion ? 0 : 0.35,
+                        delay: reduceMotion ? 0 : index * 0.07,
+                        ease: EASE_OUT,
+                      }}
+                      data-selected={isActive}
+                      className={`lifecycle-stage group relative grid min-h-[56px] w-full grid-cols-[auto_minmax(0,1fr)] items-center gap-x-1.5 rounded-xl border px-2 py-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080d1c] sm:min-h-[66px] sm:gap-x-2 sm:px-2.5 ${
+                        isActive ? "" : "border-slate-500/30 bg-[#0b1121]/95"
                       }`}
-                      aria-hidden="true"
-                    />
-                    <span className={`text-xs font-medium leading-tight transition-colors duration-200 sm:text-sm ${
-                      isActive ? "text-cyan-50" : "text-slate-300 group-hover:text-white"
-                    }`}>
-                      {stage.label}
-                    </span>
-                  </motion.button>
+                    >
+                      <span className={`col-start-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border sm:h-8 sm:w-8 ${
+                        isActive
+                          ? "border-cyan-200/25 bg-cyan-200/[0.08]"
+                          : "border-white/[0.07] bg-white/[0.025]"
+                      }`}>
+                        <Icon
+                          className={`h-3.5 w-3.5 transition-[color,filter] duration-200 sm:h-4 sm:w-4 ${
+                            isActive
+                              ? "text-cyan-100 drop-shadow-[0_0_7px_rgba(103,232,249,0.4)]"
+                              : "text-slate-400 group-hover:text-cyan-100"
+                          }`}
+                          aria-hidden="true"
+                        />
+                      </span>
+                      <span className={`absolute right-2 top-1.5 block text-[10px] font-semibold leading-none tracking-[0.08em] sm:right-2.5 sm:top-2 sm:text-[11px] ${
+                        isActive ? "text-cyan-200" : "text-slate-400"
+                      }`}>
+                        {stage.number}
+                      </span>
+                      <span className={`col-start-2 block min-w-0 text-[11px] font-medium leading-[1.15] transition-colors sm:text-[13px] ${
+                        isActive ? "text-white" : "text-slate-300 group-hover:text-white"
+                      }`}>
+                        {stage.label}
+                      </span>
+                    </motion.button>
+                  </li>
                 );
               })}
-
-              <span style={{ gridColumnStart: 2, gridRowStart: 1 }}>
-                <StageConnector direction="right" active={animateContinuously} order={0} />
-              </span>
-              <span className="flex items-center justify-center" style={{ gridColumnStart: 3, gridRowStart: 2 }}>
-                <StageConnector direction="down" active={animateContinuously} order={1} />
-              </span>
-              <span style={{ gridColumnStart: 2, gridRowStart: 3 }}>
-                <StageConnector direction="left" active={animateContinuously} order={2} />
-              </span>
-              <span className="flex items-center justify-center" style={{ gridColumnStart: 1, gridRowStart: 4 }}>
-                <StageConnector direction="down" active={animateContinuously} order={3} />
-              </span>
-              <span style={{ gridColumnStart: 2, gridRowStart: 5 }}>
-                <StageConnector direction="right" active={animateContinuously} order={4} />
-              </span>
-            </div>
+            </ol>
 
             <div
               id="lifecycle-stage-details"
-              className="flex min-h-[236px] flex-col justify-center rounded-lg border border-cyan-200/15 bg-[#090f1d]/90 p-3.5 shadow-inner shadow-cyan-300/[0.03] sm:p-4"
+              className="absolute left-1/2 top-1/2 flex aspect-square w-[45%] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full border border-cyan-200/15 bg-[#090f1d]/95 p-3 text-center shadow-[inset_0_0_32px_rgba(34,211,238,0.025),0_0_40px_rgba(2,6,23,0.5)] sm:w-[46%] sm:p-6"
               aria-live="polite"
               aria-atomic="true"
             >
+              <div className="pointer-events-none absolute inset-3 rounded-full border border-white/[0.04]" aria-hidden="true" />
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={selectedStage.number}
-                  initial={reduceMotion ? false : { opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={reduceMotion ? undefined : { opacity: 0, y: -4 }}
-                  transition={{ duration: reduceMotion ? 0 : 0.18, ease: EASE_OUT }}
+                  className="relative w-full"
+                  initial={reduceMotion ? false : { opacity: 0, scale: 0.96, y: 4 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={reduceMotion ? undefined : { opacity: 0, scale: 0.98, y: -4 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.2, ease: EASE_OUT }}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-200/15 bg-cyan-200/[0.06]">
-                      <SelectedStageIcon className="h-5 w-5 text-cyan-100" aria-hidden="true" />
-                    </span>
-                    <h4 className="text-base font-semibold text-white sm:text-lg">{selectedStage.label}</h4>
+                  <div className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg border border-cyan-200/15 bg-cyan-200/[0.06] sm:h-9 sm:w-9 sm:rounded-xl">
+                    <SelectedStageIcon className="h-3.5 w-3.5 text-cyan-100 sm:h-5 sm:w-5" aria-hidden="true" />
                   </div>
-                  <p className="mt-3 text-xs leading-relaxed text-slate-200/80 sm:text-sm">
+                  <p className="mt-1.5 text-[7px] font-semibold uppercase tracking-[0.14em] text-cyan-200/70 sm:text-[9px]">
+                    Stage {selectedStage.number}
+                  </p>
+                  <h4 className="mt-0.5 text-[11px] font-semibold leading-tight text-white sm:text-base">
+                    {selectedStage.label}
+                  </h4>
+                  <p className="mx-auto mt-1.5 max-w-[190px] text-[8px] leading-[1.35] text-slate-300/80 sm:mt-2 sm:text-[11px] sm:leading-relaxed">
                     {selectedStage.description}
                   </p>
-                  <div className="mt-3 border-t border-white/[0.08] pt-2.5">
-                    <h5 className="text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-300/70 sm:text-[10px]">
-                      Focus areas
-                    </h5>
-                    <ul className="mt-1.5 grid gap-1.5" aria-label={`${selectedStage.label} focus areas`}>
-                      {selectedStage.capabilities.map((capability) => (
-                        <li key={capability} className="flex items-center gap-2 text-[11px] text-cyan-50/90 sm:text-xs">
-                          <span className="h-1 w-1 shrink-0 rounded-full bg-cyan-200" aria-hidden="true" />
-                          {capability}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="mx-auto mt-2 flex max-w-[200px] flex-wrap justify-center gap-1 sm:mt-3" aria-label={`${selectedStage.label} focus areas`}>
+                    {selectedStage.capabilities.map((capability) => (
+                      <li key={capability} className="rounded-full border border-cyan-200/10 bg-cyan-200/[0.045] px-1.5 py-0.5 text-[6.5px] leading-tight text-cyan-50/85 sm:px-2 sm:text-[8px]">
+                        {capability}
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               </AnimatePresence>
             </div>
           </div>
 
-          <div className="relative mt-2.5 overflow-hidden rounded-xl border border-cyan-200/30 bg-[#0b1c2a]/90 px-3 py-2.5 text-center shadow-[0_0_18px_rgba(34,211,238,0.05)]">
+          <div className="relative mt-1 overflow-hidden rounded-xl border border-cyan-200/25 bg-[#0b1c2a]/90 px-3 py-2 text-center shadow-[0_0_18px_rgba(34,211,238,0.05)] sm:mt-2 sm:py-2.5">
             <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-teal-200/60 to-transparent" aria-hidden="true" />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-400/[0.04] via-teal-300/[0.08] to-cyan-400/[0.04]" aria-hidden="true" />
             <div className="relative flex items-center justify-center gap-1.5">
