@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, ShieldCheck, Zap, CalendarCheck, Cpu, Server, WifiOff, Building2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ROTATING_WORDS = ["Read", "Listen", "See"];
 
@@ -622,7 +623,7 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-2.5 mb-10"
             >
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/25 text-brand-primary text-xs font-semibold tracking-widest uppercase">
-                AI Privacy Infrastructure
+                Project Lolo · AI Privacy Infrastructure
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-success/10 border border-brand-success/25 text-brand-success text-xs font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-success inline-block animate-pulse" />
@@ -639,7 +640,7 @@ export default function Hero() {
             >
               Control What
               <br />
-              <span className="whitespace-nowrap inline-flex items-baseline gap-[0.22em]">
+              <span className="inline-flex flex-wrap items-baseline gap-x-[0.22em] sm:flex-nowrap sm:whitespace-nowrap">
                 <span className="gradient-text">Your AI</span>
                 <RotatingWord />
               </span>
@@ -673,8 +674,8 @@ export default function Hero() {
               className="flex flex-col sm:flex-row items-stretch gap-3"
             >
               {/* Primary — gradient fill */}
-              <a
-                href="#contact"
+              <Link
+                to="/products/project-lolo?section=contact"
                 className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl font-semibold text-sm text-white overflow-hidden shadow-[0_0_40px_rgba(139,92,246,0.35)] hover:shadow-[0_0_55px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-200"
               >
                 {/* Gradient background */}
@@ -683,16 +684,16 @@ export default function Hero() {
                 <CalendarCheck className="relative z-10 w-4 h-4" />
                 <span className="relative z-10">Book a Demo</span>
                 <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
-              </a>
+              </Link>
 
               {/* Secondary — ghost */}
-              <a
-                href="#about"
+              <Link
+                to="/products/project-lolo?section=about"
                 className="group inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-white/[0.04] border border-white/12 text-white font-semibold text-sm hover:bg-white/[0.08] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 backdrop-blur-sm"
               >
                 <Zap className="w-4 h-4 text-brand-secondary" />
                 <span>View Architecture</span>
-              </a>
+              </Link>
             </motion.div>
 
           </div>
