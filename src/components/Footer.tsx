@@ -9,10 +9,9 @@ import {
   Mail,
   ShieldCheck,
   RadioTower,
-  Linkedin,
-  Twitter,
 } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const TRUST_CARDS = [
   {
@@ -70,36 +69,58 @@ const BADGES = [
   "Compliance Ready",
 ];
 
-const LINKS = {
+type FooterLink =
+  | { label: string; to: string; href?: never }
+  | { label: string; href: string; to?: never };
+
+const LINKS: Record<string, FooterLink[]> = {
   Platform: [
-    { label: "Runtime Protection", href: "#process" },
-    { label: "Architecture", href: "#about" },
-    { label: "Deployment Models", href: "#why-us" },
-    { label: "Integrations", href: "#integrations" },
+    { label: "Project Lolo", to: "/products/project-lolo" },
+    { label: "Runtime Protection", to: "/products/project-lolo?section=process" },
+    { label: "Architecture", to: "/products/project-lolo?section=about" },
+    { label: "Deployment Models", to: "/products/project-lolo?section=why-us" },
+    { label: "Integrations", to: "/products/project-lolo?section=integrations" },
   ],
   Resources: [
-    { label: "Documentation", href: "#" },
-    { label: "API Reference", href: "#" },
     { label: "GitHub", href: "https://github.com/totaltensorlabs" },
-    { label: "Status", href: "#" },
+    { label: "Blogs", to: "/blogs" },
   ],
   Company: [
-    { label: "About", href: "#about" },
+    { label: "Home", to: "/" },
+    { label: "Products", to: "/products" },
     { label: "Contact", href: "mailto:hello@totaltensorlabs.ai" },
-    { label: "Privacy", href: "#" },
-    { label: "Security", href: "#" },
+    { label: "Security", to: "/security" },
+  ],
+};
+
+const HOME_LINKS: Record<string, FooterLink[]> = {
+  Services: [
+    { label: "AI & ML Consulting", to: "/?section=services" },
+    { label: "Machine Learning", to: "/?section=services" },
+    { label: "Computer Vision", to: "/?section=services" },
+    { label: "Edge AI & LLMs", to: "/?section=services" },
+  ],
+  Resources: [
+    { label: "GitHub", href: "https://github.com/totaltensorlabs" },
+    { label: "Blogs", to: "/blogs" },
+  ],
+  Company: [
+    { label: "Home", to: "/" },
+    { label: "Contact", to: "/?section=contact" },
+    { label: "Security", to: "/security" },
   ],
 };
 
 const SOCIALS = [
   { icon: Github, href: "https://github.com/totaltensorlabs", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter / X" },
 ];
 
 export default function Footer() {
+  const { pathname } = useLocation();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const footerLinks = pathname === "/" ? HOME_LINKS : LINKS;
+  const showProjectLoloTrust = pathname === "/products/project-lolo";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -115,79 +136,83 @@ export default function Footer() {
       <div className="absolute right-0 top-24 w-[420px] h-[420px] rounded-full bg-brand-secondary/[0.03] blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-14 max-w-4xl"
-        >
-          <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
-            Trust & Compliance
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
-            Built for <span className="gradient-text">Regulated Industries</span>
-          </h2>
-          <p className="text-brand-muted text-base text-white md:text-lg max-w-3xl leading-relaxed mb-8">
-            Designed for environments where privacy, governance, and auditability
-            are non-negotiable.
-          </p>
-
-          <div className="flex flex-wrap gap-3">
-            {BADGES.map((badge) => (
-              <span
-                key={badge}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-brand-muted text-xs font-medium backdrop-blur-sm"
-              >
-                <span className="inline-block h-2 w-2 rounded-full bg-brand-success" />
-                {badge}
+        {showProjectLoloTrust ? (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-14 max-w-4xl"
+            >
+              <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
+                Trust & Compliance
               </span>
-            ))}
-          </div>
-        </motion.div>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+                Built for <span className="gradient-text">Regulated Industries</span>
+              </h2>
+              <p className="text-brand-muted text-base text-white md:text-lg max-w-3xl leading-relaxed mb-8">
+                Designed for environments where privacy, governance, and auditability
+                are non-negotiable.
+              </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-6 shadow-[0_20px_70px_rgba(2,6,23,0.32)] backdrop-blur-sm"
-        >
-          <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
-            “Enterprise AI adoption requires governance at runtime — not after deployment.”
-          </p>
-        </motion.div>
+              <div className="flex flex-wrap gap-3">
+                {BADGES.map((badge) => (
+                  <span
+                    key={badge}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-brand-muted text-xs font-medium backdrop-blur-sm"
+                  >
+                    <span className="inline-block h-2 w-2 rounded-full bg-brand-success" />
+                    {badge}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
-          {TRUST_CARDS.map((card, i) => {
-            const Icon = card.icon;
-            return (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                className={`group relative overflow-hidden rounded-[22px] border bg-white/[0.03] p-6 backdrop-blur-sm shadow-[0_18px_60px_rgba(2,6,23,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] ${card.accent}`}
-              >
-                <div
-                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
-                  style={{ background: card.glow }}
-                />
-                <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-end">
-                    <div className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/8 ${card.iconBg}`}>
-                      <Icon className={`h-4.5 w-4.5 ${card.iconColor}`} />
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+              className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-6 shadow-[0_20px_70px_rgba(2,6,23,0.32)] backdrop-blur-sm"
+            >
+              <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
+                “Enterprise AI adoption requires governance at runtime — not after deployment.”
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
+              {TRUST_CARDS.map((card, i) => {
+                const Icon = card.icon;
+                return (
+                  <motion.div
+                    key={card.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: i * 0.08 }}
+                    className={`group relative overflow-hidden rounded-[22px] border bg-white/[0.03] p-6 backdrop-blur-sm shadow-[0_18px_60px_rgba(2,6,23,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] ${card.accent}`}
+                  >
+                    <div
+                      className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                      style={{ background: card.glow }}
+                    />
+                    <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
+                    <div className="relative z-10">
+                      <div className="mb-6 flex justify-end">
+                        <div className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/8 ${card.iconBg}`}>
+                          <Icon className={`h-4.5 w-4.5 ${card.iconColor}`} />
+                        </div>
+                      </div>
+                      <h3 className="text-white font-semibold text-lg mb-3">{card.title}</h3>
+                      <p className="text-brand-muted text-sm leading-relaxed">{card.detail}</p>
                     </div>
-                  </div>
-                  <h3 className="text-white font-semibold text-lg mb-3">{card.title}</h3>
-                  <p className="text-brand-muted text-sm leading-relaxed">{card.detail}</p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </>
+        ) : null}
 
         <motion.div
           id="contact"
@@ -222,6 +247,7 @@ export default function Footer() {
                   <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                   <input
                     type="email"
+                    aria-label="Work email"
                     placeholder="your@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -256,13 +282,13 @@ export default function Footer() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 mb-12">
           <div>
-            <a href="#" className="flex items-center gap-3 mb-5">
+            <Link to="/" className="flex items-center gap-3 mb-5" aria-label="Total Tensor Labs home">
               <Logo size={60} />
               <span className="font-semibold text-white text-base">Total Tensor Labs</span>
-            </a>
+            </Link>
             <p className="text-slate-500 text-base text-white leading-relaxed max-w-md mb-6">
-              Privacy infrastructure for enterprise AI systems operating in highly
-              regulated environments.
+              Professional AI and machine learning consultancy for scalable,
+              production-ready systems.
             </p>
             <div className="flex items-center gap-2.5">
               {SOCIALS.map(({ icon: Icon, href, label }) => (
@@ -281,7 +307,7 @@ export default function Footer() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
-            {Object.entries(LINKS).map(([section, links]) => (
+            {Object.entries(footerLinks).map(([section, links]) => (
               <div key={section}>
                 <h4 className="text-white font-semibold text-xs tracking-widest uppercase mb-4 opacity-50">
                   {section}
@@ -289,14 +315,23 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        target={link.href.startsWith("http") ? "_blank" : undefined}
-                        rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="text-slate-600 hover:text-slate-300 text-sm transition-colors"
-                      >
-                        {link.label}
-                      </a>
+                      {link.to ? (
+                        <Link
+                          to={link.to}
+                          className="text-slate-600 hover:text-slate-300 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          target={link.href.startsWith("http") ? "_blank" : undefined}
+                          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="text-slate-600 hover:text-slate-300 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+                        >
+                          {link.label}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -311,7 +346,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-success inline-block opacity-80" />
-            <span className="text-slate-700 text-xs">Governance runtime online</span>
+            <span className="text-slate-700 text-xs">Available for new projects</span>
           </div>
         </div>
       </div>

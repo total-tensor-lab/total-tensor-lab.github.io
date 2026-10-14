@@ -1,5 +1,11 @@
-import { ArrowRight, Zap, Lock, BarChart3 } from "lucide-react";
+import { ArrowRight, BarChart3, Lock, ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
+
+const UPCOMING_PRODUCTS = [
+  { icon: Lock, title: "Governance Console", desc: "Monitor, audit, and control data flows across your infrastructure." },
+  { icon: BarChart3, title: "Compliance Suite", desc: "Compliance reporting and audit-trail management tools." },
+];
 
 export default function ProductsPage() {
   return (
@@ -12,18 +18,18 @@ export default function ProductsPage() {
       <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-[1560px] mx-auto px-6 lg:px-8 w-full">
-        {/* WIP Banner */}
+        {/* Availability banner */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="mb-8 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-amber-950/40 border border-amber-800/60 backdrop-blur-sm"
+          className="mb-8 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-brand-success/10 border border-brand-success/25 backdrop-blur-sm"
         >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-success opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-success"></span>
           </span>
-          <span className="text-xs font-semibold text-amber-200 tracking-wide">Work in Progress</span>
+          <span className="text-xs font-semibold text-brand-success tracking-wide">Project Lolo available</span>
         </motion.div>
 
         {/* Eyebrow badge */}
@@ -45,9 +51,9 @@ export default function ProductsPage() {
           transition={{ delay: 0.2 }}
           className="text-5xl md:text-6xl lg:text-[3.6rem] xl:text-[4.1rem] leading-[1.04] tracking-[-0.04em] mb-10 font-bold max-w-2xl"
         >
-          Comprehensive
+          Products for
           <br />
-          <span className="gradient-text">Product Offerings</span>
+          <span className="gradient-text">Governed Enterprise AI</span>
         </motion.h1>
 
         {/* Divider accent */}
@@ -65,41 +71,64 @@ export default function ProductsPage() {
           transition={{ delay: 0.3 }}
           className="text-brand-muted text-lg leading-relaxed max-w-xl mb-12"
         >
-          Detailed product information and feature comparisons coming soon. We're curating in-depth documentation for each component of the TTL platform.
+          Explore privacy and governance infrastructure from Total Tensor Labs, with additional products in development.
         </motion.p>
 
-        {/* Placeholder cards */}
+        {/* Product cards */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 w-full"
+          className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-4 w-full"
         >
-          {[
-            { icon: Lock, title: "TTL-Shield Runtime", desc: "Real-time data protection and privacy governance layer." },
-            { icon: BarChart3, title: "Governance Console", desc: "Monitor, audit, and control data flows across your infrastructure." },
-            { icon: Zap, title: "Compliance Suite", desc: "Automated compliance reporting and audit trail management." },
-          ].map(({ icon: Icon, title, desc }, i) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.75 + i * 0.07 }}
-              className="group relative overflow-hidden flex items-start gap-4 px-6 py-6 rounded-2xl border border-white/12 bg-white/[0.025] backdrop-blur-sm hover:bg-white/[0.04] transition-all duration-200 opacity-60"
-            >
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-2xl"
-                style={{ background: `radial-gradient(circle at 20% 50%, rgba(139,92,246,0.12), transparent 70%)` }}
-              />
-              <span className="relative z-10 inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-brand-primary/10">
-                <Icon className="h-5 w-5 text-brand-primary" />
-              </span>
-              <div className="relative z-10 min-w-0">
-                <p className="text-sm font-semibold text-slate-200 leading-snug">{title}</p>
-                <p className="text-xs text-brand-muted mt-1 leading-snug">{desc}</p>
+          <motion.article
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75 }}
+            className="group relative overflow-hidden rounded-2xl border border-brand-primary/35 bg-white/[0.045] p-7 backdrop-blur-sm lg:col-span-2"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(139,92,246,0.15),transparent_48%),radial-gradient(circle_at_90%_90%,rgba(6,182,212,0.08),transparent_45%)] pointer-events-none" />
+            <div className="relative z-10">
+              <div className="flex items-center justify-between gap-4">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-brand-primary/20 bg-brand-primary/10">
+                  <ShieldCheck className="h-5 w-5 text-brand-primary" />
+                </span>
+                <span className="rounded-full border border-brand-success/20 bg-brand-success/10 px-3 py-1 text-xs font-semibold text-brand-success">Available</span>
               </div>
-            </motion.div>
-          ))}
+              <h2 className="mt-8 text-3xl font-semibold text-white">Project Lolo</h2>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-muted md:text-base">
+                Runtime privacy and governance infrastructure for protecting sensitive data across prompts, retrieval pipelines, agents, and AI workflows.
+              </p>
+              <Link
+                to="/products/project-lolo"
+                className="group/link mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
+              >
+                View Project Lolo
+                <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />
+              </Link>
+            </div>
+          </motion.article>
+
+          <div className="grid gap-4">
+            {UPCOMING_PRODUCTS.map(({ icon: Icon, title, desc }, i) => (
+              <motion.article
+                key={title}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.82 + i * 0.07 }}
+                className="relative overflow-hidden flex items-start gap-4 px-6 py-6 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm opacity-65"
+              >
+                <span className="relative z-10 inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-brand-primary/10">
+                  <Icon className="h-5 w-5 text-brand-primary" />
+                </span>
+                <div className="relative z-10 min-w-0">
+                  <h2 className="text-sm font-semibold text-slate-200 leading-snug">{title}</h2>
+                  <p className="text-xs text-brand-muted mt-1 leading-snug">{desc}</p>
+                  <span className="mt-3 inline-block text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">Coming soon</span>
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </motion.div>
 
         {/* Coming soon notice */}
@@ -110,13 +139,13 @@ export default function ProductsPage() {
           className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-3 text-center"
         >
           <p className="text-slate-400 text-sm">
-            Detailed product pages launching soon.{" "}
-            <a
-              href="#contact"
+            Want to discuss Project Lolo?{" "}
+            <Link
+              to="/products/project-lolo?section=contact"
               className="text-brand-primary hover:text-brand-secondary transition-colors font-medium"
             >
-              Get notified
-            </a>
+              Request a demo
+            </Link>
           </p>
         </motion.div>
       </div>

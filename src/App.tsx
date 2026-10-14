@@ -1,59 +1,57 @@
+import { useEffect } from "react";
+import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import AnimatedBackground from "./components/AnimatedBackground";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import About from "@/components/About";
-import Process from "@/components/Process";
-import WhyUs from "@/components/WhyUs";
-import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import SecurityPage from "@/pages/Security";
 import ProductsPage from "@/pages/Products";
+import ProjectLoloPage from "@/pages/ProjectLolo";
 import BlogsPage from "@/pages/Blogs";
-import { useEffect, useState } from "react";
+import HomePage from "@/pages/Home";
 
-export default function App() {
-  const [view, setView] = useState(window.location.hash.replace("#", "") || "home");
+function RouteScrollManager() {
+  const { pathname, search } = useLocation();
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setView(window.location.hash.replace("#", "") || "home");
-    };
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+    const section = new URLSearchParams(search).get("section");
 
-  const renderContent = () => {
-    switch (view) {
-      case "products":
-        return <ProductsPage />;
-      case "blogs":
-        return <BlogsPage />;
-      case "security":
-        return <SecurityPage />;
-      case "home":
-      default:
-        return (
-          <>
-            <Hero />
-            <Services />
-            <About />
-            <Process />
-            <WhyUs />
-            <CTA />
-          </>
-        );
+    if (!section) {
+      window.scrollTo({ top: 0, left: 0 });
+      return;
     }
-  };
 
+    const frame = window.requestAnimationFrame(() => {
+      const target = document.getElementById(section);
+      if (!target) return;
+
+      target.setAttribute("tabindex", "-1");
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, search]);
+
+  return null;
+}
+
+export default function App() {
   return (
-    <>
+    <HashRouter>
+      <RouteScrollManager />
       <AnimatedBackground />
       <Navbar />
       <main className="relative z-10">
-        {renderContent()}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/project-lolo" element={<ProjectLoloPage />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/security" element={<SecurityPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
       <Footer />
-    </>
+    </HashRouter>
   );
 }

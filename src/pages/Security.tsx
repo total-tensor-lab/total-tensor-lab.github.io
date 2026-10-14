@@ -1,5 +1,6 @@
 import { CheckCircle2, Scale, Globe, Lock, FileText, ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 export default function SecurityPage() {
   return (
@@ -112,15 +113,15 @@ export default function SecurityPage() {
           transition={{ delay: 1.0 }}
           className="mt-16 flex flex-col sm:flex-row items-stretch gap-3"
         >
-          <a
-            href="#contact"
+          <Link
+            to="/products/project-lolo?section=contact"
             className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl font-semibold text-sm text-white overflow-hidden shadow-[0_0_40px_rgba(139,92,246,0.35)] hover:shadow-[0_0_55px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-200"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary" />
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary opacity-0 group-hover:opacity-80 transition-opacity duration-200 blur-xl" />
             <span className="relative z-10">Explore Compliance Solutions</span>
             <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
