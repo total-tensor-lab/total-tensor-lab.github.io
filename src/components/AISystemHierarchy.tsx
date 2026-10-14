@@ -6,11 +6,10 @@ import {
   CloudUpload,
   Database,
   Lightbulb,
-  RefreshCw,
   ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
 
 const LIFECYCLE_STAGES: {
   number: string;
@@ -56,10 +55,10 @@ const LIFECYCLE_STAGES: {
   },
   {
     number: "06",
-    label: "Operate",
+    label: "Operate & Optimize",
     icon: Activity,
-    description: "Monitor the system and improve it as data and needs evolve.",
-    capabilities: ["Observability", "Drift monitoring", "Incident response"],
+    description: "Maintain reliable AI systems through monitoring, performance tuning, continuous evaluation, and operational support.",
+    capabilities: ["Observability & monitoring", "Drift detection & model updates", "Reliability & incident response"],
   },
 ];
 
@@ -77,9 +76,11 @@ const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 function StageConnector({
   direction,
   active,
+  order,
 }: {
   direction: "left" | "right" | "down";
   active: boolean;
+  order: number;
 }) {
   const horizontal = direction !== "down";
   const isLeft = direction === "left";
@@ -104,7 +105,13 @@ function StageConnector({
             fill="#a5f3fc"
             style={{ filter: "drop-shadow(0 0 3px rgba(103,232,249,0.9))" }}
             animate={active ? { cx: flow } : { cx: 16 }}
-            transition={active ? { duration: 1.9, repeat: Infinity, ease: "easeInOut" } : { duration: 0 }}
+            transition={active ? {
+              duration: 0.85,
+              delay: order * 1.1,
+              repeat: Infinity,
+              repeatDelay: 6.15,
+              ease: "easeInOut",
+            } : { duration: 0 }}
           />
         </svg>
       ) : (
@@ -124,7 +131,13 @@ function StageConnector({
             fill="#a5f3fc"
             style={{ filter: "drop-shadow(0 0 3px rgba(103,232,249,0.9))" }}
             animate={active ? { cy: [2, 15, 2] } : { cy: 9 }}
-            transition={active ? { duration: 1.9, repeat: Infinity, ease: "easeInOut" } : { duration: 0 }}
+            transition={active ? {
+              duration: 0.85,
+              delay: order * 1.1,
+              repeat: Infinity,
+              repeatDelay: 6.15,
+              ease: "easeInOut",
+            } : { duration: 0 }}
           />
         </svg>
       )}
@@ -148,7 +161,7 @@ export default function AISystemHierarchy() {
       className="relative mx-auto w-full max-w-[580px] py-2 lg:-mt-4"
       initial={reduceMotion ? false : { opacity: 0, y: 18 }}
       animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 18 }}
-      transition={{ duration: 0.65, delay: 0.12, ease: EASE_OUT }}
+      transition={{ duration: reduceMotion ? 0 : 0.65, delay: reduceMotion ? 0 : 0.12, ease: EASE_OUT }}
     >
       <h2 id="ai-lifecycle-title" className="sr-only">Interactive AI engineering lifecycle</h2>
 
@@ -199,12 +212,9 @@ export default function AISystemHierarchy() {
         <div className="relative">
           <div className="mb-3 flex items-center justify-between gap-2 px-0.5">
             <h3 className="text-xs font-semibold text-white sm:text-sm">AI Engineering Lifecycle</h3>
-            <span className="text-[8px] font-semibold uppercase tracking-[0.16em] text-cyan-200/80 sm:text-[9px]">
-              End to end
-            </span>
           </div>
 
-          <div className="grid gap-3 rounded-xl border border-indigo-200/[0.08] bg-[#11182b]/80 p-2 sm:p-2.5 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+          <div className="grid gap-3 rounded-xl border border-indigo-200/[0.08] bg-[#11182b]/80 p-2 sm:p-2.5 xl:grid-cols-[1.05fr_0.95fr] xl:items-stretch">
             <div className="grid grid-cols-[minmax(0,1fr)_20px_minmax(0,1fr)] grid-rows-[auto_20px_auto_20px_auto] items-center gap-x-1.5 gap-y-1">
               {LIFECYCLE_STAGES.map((stage, index) => {
                 const Icon = stage.icon;
@@ -215,31 +225,40 @@ export default function AISystemHierarchy() {
                   <motion.button
                     key={stage.number}
                     type="button"
+                    aria-label={`Stage ${stage.number}: ${stage.label}`}
                     aria-pressed={isActive}
                     aria-describedby="lifecycle-stage-details"
-                    onPointerEnter={() => setActiveStage(index)}
                     onFocus={() => setActiveStage(index)}
                     onClick={() => setActiveStage(index)}
                     style={{ gridColumnStart: column, gridRowStart: row }}
                     initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                     animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 8 }}
-                    transition={{ duration: 0.4, delay: index * 0.12, ease: EASE_OUT }}
-                    className={`group relative flex min-h-[68px] flex-col items-center justify-center gap-1 rounded-lg border px-1 py-2 text-center transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/80 sm:min-h-[78px] ${
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.4,
+                      delay: reduceMotion ? 0 : index * 0.12,
+                      ease: EASE_OUT,
+                    }}
+                    data-selected={isActive}
+                    className={`lifecycle-stage group relative flex min-h-[68px] flex-col items-center justify-center gap-1 rounded-lg border px-1 py-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/80 sm:min-h-[78px] ${
                       isActive
-                        ? "border-violet-200/60 bg-gradient-to-br from-violet-400/[0.14] to-cyan-300/[0.08] shadow-[0_0_20px_rgba(139,92,246,0.15)]"
-                        : "border-slate-500/30 bg-[#0b1121]/90 hover:border-cyan-200/40 hover:bg-white/[0.04]"
+                        ? ""
+                        : "border-slate-500/30 bg-[#0b1121]/90"
                     }`}
                   >
-                    <span className="absolute left-1.5 top-1 text-[9px] font-medium tracking-wide text-cyan-100/60 sm:left-2 sm:top-1.5 sm:text-[10px]">
+                    <span className={`absolute left-1.5 top-1 text-[10px] font-semibold tracking-wide sm:left-2 sm:top-1.5 sm:text-[11px] ${
+                      isActive ? "text-cyan-100/90" : "text-slate-400"
+                    }`}>
                       {stage.number}
                     </span>
                     <Icon
-                      className={`h-6 w-6 transition-colors sm:h-7 sm:w-7 ${
-                        isActive ? "text-cyan-100" : "text-indigo-200/80 group-hover:text-cyan-100"
+                      className={`h-6 w-6 transition-[color,filter] duration-200 sm:h-7 sm:w-7 ${
+                        isActive ? "text-cyan-100 drop-shadow-[0_0_7px_rgba(103,232,249,0.35)]" : "text-slate-400 group-hover:text-cyan-100 group-hover:drop-shadow-[0_0_6px_rgba(103,232,249,0.3)]"
                       }`}
                       aria-hidden="true"
                     />
-                    <span className="text-xs font-medium leading-tight text-white/90 sm:text-sm">
+                    <span className={`text-xs font-medium leading-tight transition-colors duration-200 sm:text-sm ${
+                      isActive ? "text-cyan-50" : "text-slate-300 group-hover:text-white"
+                    }`}>
                       {stage.label}
                     </span>
                   </motion.button>
@@ -247,68 +266,65 @@ export default function AISystemHierarchy() {
               })}
 
               <span style={{ gridColumnStart: 2, gridRowStart: 1 }}>
-                <StageConnector direction="right" active={animateContinuously} />
+                <StageConnector direction="right" active={animateContinuously} order={0} />
               </span>
               <span className="flex items-center justify-center" style={{ gridColumnStart: 3, gridRowStart: 2 }}>
-                <StageConnector direction="down" active={animateContinuously} />
+                <StageConnector direction="down" active={animateContinuously} order={1} />
               </span>
               <span style={{ gridColumnStart: 2, gridRowStart: 3 }}>
-                <StageConnector direction="left" active={animateContinuously} />
+                <StageConnector direction="left" active={animateContinuously} order={2} />
               </span>
               <span className="flex items-center justify-center" style={{ gridColumnStart: 1, gridRowStart: 4 }}>
-                <StageConnector direction="down" active={animateContinuously} />
+                <StageConnector direction="down" active={animateContinuously} order={3} />
               </span>
               <span style={{ gridColumnStart: 2, gridRowStart: 5 }}>
-                <StageConnector direction="right" active={animateContinuously} />
+                <StageConnector direction="right" active={animateContinuously} order={4} />
               </span>
             </div>
 
             <div
               id="lifecycle-stage-details"
-              className="flex flex-col justify-center rounded-lg border border-cyan-200/15 bg-[#090f1d]/90 p-3.5 shadow-inner shadow-cyan-300/[0.03] sm:p-4"
+              className="flex min-h-[236px] flex-col justify-center rounded-lg border border-cyan-200/15 bg-[#090f1d]/90 p-3.5 shadow-inner shadow-cyan-300/[0.03] sm:p-4"
               aria-live="polite"
               aria-atomic="true"
             >
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-200/15 bg-cyan-200/[0.06]">
-                  <SelectedStageIcon className="h-5 w-5 text-cyan-100" aria-hidden="true" />
-                </span>
-                <h4 className="text-base font-semibold text-white sm:text-lg">{selectedStage.label}</h4>
-              </div>
-              <p className="mt-3 text-xs leading-relaxed text-slate-200/80 sm:text-sm">
-                {selectedStage.description}
-              </p>
-              <div className="mt-3 border-t border-white/[0.08] pt-2.5">
-                <h5 className="text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-300/70 sm:text-[10px]">
-                  Focus areas
-                </h5>
-                <ul className="mt-1.5 grid gap-1.5" aria-label={`${selectedStage.label} focus areas`}>
-                  {selectedStage.capabilities.map((capability) => (
-                    <li key={capability} className="flex items-center gap-2 text-[11px] text-cyan-50/90 sm:text-xs">
-                      <span className="h-1 w-1 shrink-0 rounded-full bg-cyan-200" aria-hidden="true" />
-                      {capability}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={selectedStage.number}
+                  initial={reduceMotion ? false : { opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduceMotion ? undefined : { opacity: 0, y: -4 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.18, ease: EASE_OUT }}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-200/15 bg-cyan-200/[0.06]">
+                      <SelectedStageIcon className="h-5 w-5 text-cyan-100" aria-hidden="true" />
+                    </span>
+                    <h4 className="text-base font-semibold text-white sm:text-lg">{selectedStage.label}</h4>
+                  </div>
+                  <p className="mt-3 text-xs leading-relaxed text-slate-200/80 sm:text-sm">
+                    {selectedStage.description}
+                  </p>
+                  <div className="mt-3 border-t border-white/[0.08] pt-2.5">
+                    <h5 className="text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-300/70 sm:text-[10px]">
+                      Focus areas
+                    </h5>
+                    <ul className="mt-1.5 grid gap-1.5" aria-label={`${selectedStage.label} focus areas`}>
+                      {selectedStage.capabilities.map((capability) => (
+                        <li key={capability} className="flex items-center gap-2 text-[11px] text-cyan-50/90 sm:text-xs">
+                          <span className="h-1 w-1 shrink-0 rounded-full bg-cyan-200" aria-hidden="true" />
+                          {capability}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
-          <div className="mt-2 flex items-center justify-center gap-2 px-1">
-            <RefreshCw className="h-3 w-3 shrink-0 text-violet-200/75" aria-hidden="true" />
-            <span className="text-[8px] text-slate-300/75 sm:text-[9px]">
-              Continuous improvement &amp; optimization
-            </span>
-            <span className="relative h-px w-8 overflow-hidden rounded-full bg-white/10 sm:w-12" aria-hidden="true">
-              <motion.span
-                className="absolute inset-y-0 left-0 w-1/3 rounded-full bg-gradient-to-r from-violet-300/80 to-cyan-200"
-                animate={animateContinuously ? { left: ["0%", "67%"] } : { left: "0%" }}
-                transition={animateContinuously ? { duration: 7, repeat: Infinity, ease: "linear" } : { duration: 0 }}
-              />
-            </span>
-          </div>
-
-          <div className="relative mt-2.5 overflow-hidden rounded-xl border border-cyan-200/30 bg-[#0b1c2a]/90 px-3 py-2.5 text-center">
+          <div className="relative mt-2.5 overflow-hidden rounded-xl border border-cyan-200/30 bg-[#0b1c2a]/90 px-3 py-2.5 text-center shadow-[0_0_18px_rgba(34,211,238,0.05)]">
+            <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-teal-200/60 to-transparent" aria-hidden="true" />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-400/[0.04] via-teal-300/[0.08] to-cyan-400/[0.04]" aria-hidden="true" />
             <div className="relative flex items-center justify-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5 text-teal-200" aria-hidden="true" />

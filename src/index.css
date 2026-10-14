@@ -69,6 +69,24 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
+.lifecycle-stage {
+  cursor: pointer;
+  transition: border-color 200ms ease, background-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.lifecycle-stage:not([data-selected="true"]):hover {
+  border-color: rgba(103, 232, 249, 0.46);
+  background-color: rgba(17, 26, 45, 0.96);
+}
+
+.lifecycle-stage[data-selected="true"] {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(135deg, rgba(139, 92, 246, 0.14), rgba(6, 182, 212, 0.09)) padding-box,
+    linear-gradient(135deg, rgba(167, 139, 250, 0.82), rgba(103, 232, 249, 0.78)) border-box;
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.13);
+}
+
 /* Topology flow animation */
 @keyframes dash-flow {
   from { stroke-dashoffset: 26; }
@@ -124,6 +142,11 @@ h1, h2, h3, h4, h5, h6 {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .lifecycle-stage,
+  .lifecycle-stage * {
+    transition-duration: 0.01ms !important;
   }
 }
 
