@@ -95,12 +95,16 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <h1 className="text-5xl font-bold leading-[1.04] tracking-[-0.04em] text-white sm:text-6xl lg:text-[3.5rem] xl:text-[3.75rem]">
-              From ambitious AI ideas to{" "}
-              <span className="gradient-text">scalable production systems.</span>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-violet-300">
+              End-to-end AI engineering
+            </p>
+            <h1 className="text-4xl font-bold leading-[1.16] tracking-[-0.025em] text-white sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]">
+              From AI ideas to{" "}
+              <span className="text-brand-primary">production-ready</span>{" "}
+              <span className="text-brand-secondary">intelligent systems.</span>
             </h1>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-brand-muted sm:text-lg">
-              Total Tensor Labs is a professional AI consultancy. We help teams design, build, and deploy dependable solutions across machine learning, computer vision, edge AI, LLMs, agents, and conversational AI.
+              We design, build, optimize, secure, and operate AI systems that deliver measurable business outcomes—from cloud to edge.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link
