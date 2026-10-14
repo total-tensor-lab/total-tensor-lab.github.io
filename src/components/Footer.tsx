@@ -88,7 +88,7 @@ const LINKS: Record<string, FooterLink[]> = {
   Company: [
     { label: "Home", to: "/" },
     { label: "Products", to: "/products" },
-    { label: "Contact", href: "mailto:hello@totaltensorlabs.ai" },
+    { label: "Contact", to: "/?section=contact" },
     { label: "Security", to: "/security" },
   ],
 };
@@ -268,15 +268,6 @@ export default function Footer() {
               </div>
             )}
 
-            <p className="text-slate-500 text-sm">
-              Prefer email?{" "}
-              <a
-                href="mailto:hello@totaltensorlabs.ai"
-                className="text-brand-primary hover:text-brand-primary/80 underline underline-offset-2 transition-colors"
-              >
-                hello@totaltensorlabs.ai
-              </a>
-            </p>
           </div>
         </motion.div>
 

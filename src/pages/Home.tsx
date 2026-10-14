@@ -16,7 +16,7 @@ const SERVICES = [
     icon: BrainCircuit,
     title: "Machine Learning Systems",
     description:
-      "Design and build production ML solutions—from data pipelines and model development to deployment, monitoring, and continuous improvement.",
+      "Design and build reliable ML solutions—from data pipelines and model development to deployment, monitoring, and continuous improvement.",
     accent: "border-brand-primary/20 hover:border-brand-primary/40",
     iconStyle: "bg-brand-primary/10 text-brand-primary",
   },
@@ -62,21 +62,56 @@ const SERVICES = [
   },
 ];
 
-const ENGAGEMENT_STEPS = [
+const DELIVERY_STAGES = [
   {
     number: "01",
-    title: "Discover",
-    description: "Clarify the problem, assess data and technical constraints, and define a practical delivery roadmap.",
+    title: "Discovery",
+    outputs: ["Problem statement", "Stakeholders", "Requirements", "Business KPIs"],
   },
   {
     number: "02",
-    title: "Build",
-    description: "Prototype quickly, validate with real users and data, then engineer the solution for scale and reliability.",
+    title: "Feasibility",
+    outputs: ["Data availability", "Success criteria", "Constraints", "Risk and ROI assumptions"],
   },
   {
     number: "03",
-    title: "Deploy & improve",
-    description: "Integrate, monitor, and evolve the system so it continues delivering value in production.",
+    title: "Solution Design",
+    outputs: ["Architecture", "Threat model", "Infrastructure", "Cost estimate"],
+  },
+  {
+    number: "04",
+    title: "Data Preparation",
+    outputs: ["Data quality report", "Dataset specifications", "Access controls"],
+  },
+  {
+    number: "05",
+    title: "Development",
+    outputs: ["Version-controlled code", "Model/prompt configs", "Automated tests"],
+  },
+  {
+    number: "06",
+    title: "Evaluation",
+    outputs: ["Baselines", "Acceptance metrics", "Test results", "Safety and failure tests"],
+  },
+  {
+    number: "07",
+    title: "Deployment",
+    outputs: ["CI/CD", "Infrastructure configs", "Authentication", "Rollout/rollback plan"],
+  },
+  {
+    number: "08",
+    title: "Production Validation",
+    outputs: ["Load tests", "Security review", "User acceptance", "Operational readiness"],
+  },
+  {
+    number: "09",
+    title: "Handover",
+    outputs: ["Documentation", "Runbooks", "Training", "Known limitations"],
+  },
+  {
+    number: "10",
+    title: "Managed Operations",
+    outputs: ["Monitoring", "Incidents", "Change management", "Scheduled reviews"],
   },
 ];
 
@@ -95,13 +130,12 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-violet-300">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-brand-secondary">
               End-to-end AI engineering
             </p>
-            <h1 className="text-4xl font-bold leading-[1.16] tracking-[-0.025em] text-white sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]">
+            <h1 className="text-[2.14rem] font-bold leading-[1.16] tracking-[-0.025em] text-white sm:text-[2.85rem] lg:text-[3.325rem] xl:text-[3.56rem]">
               From AI ideas to{" "}
-              <span className="text-brand-primary">production-ready</span>{" "}
-              <span className="text-brand-secondary">intelligent systems.</span>
+              <span className="gradient-text">production-ready intelligent systems.</span>
             </h1>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-brand-muted sm:text-lg">
               We design, build, optimize, secure, and operate AI systems that deliver measurable business outcomes—from cloud to edge.
@@ -140,7 +174,7 @@ export default function HomePage() {
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-secondary">Consulting capabilities</span>
             <h2 className="mt-5 text-4xl font-bold leading-tight text-white md:text-5xl">
               The expertise to take AI from{" "}
-              <span className="gradient-text">concept to production.</span>
+              <span className="gradient-text">concept to deployment.</span>
             </h2>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-muted md:text-lg">
               We combine applied research, software engineering, and deployment experience to build systems that perform reliably beyond the prototype.
@@ -172,37 +206,50 @@ export default function HomePage() {
       <section className="relative py-24 lg:py-32">
         <div className="absolute inset-x-0 top-0 section-divider" />
         <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-primary">How we work</span>
-              <h2 className="mt-5 text-4xl font-bold leading-tight text-white md:text-5xl">A practical path to production.</h2>
-              <p className="mt-6 text-base leading-relaxed text-brand-muted md:text-lg">
-                Engage us for focused technical guidance, a complete build, or support strengthening an existing AI initiative.
-              </p>
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-5xl"
+          >
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-secondary">How we work</span>
+            <h2 className="mt-5 text-4xl font-bold leading-tight text-white md:text-5xl">
+              A practical path
+              <br />
+              <span className="gradient-text">from idea to impact.</span>
+            </h2>
+            <p className="mt-6 max-w-none text-base leading-relaxed text-brand-muted md:text-lg lg:whitespace-nowrap">
+              A consistent delivery process for every engagement, from initial discovery through managed operations.
+            </p>
+          </motion.div>
 
-            <div className="grid gap-4">
-              {ENGAGEMENT_STEPS.map((step, index) => (
-                <motion.article
-                  key={step.number}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="grid gap-4 rounded-[22px] border border-white/[0.08] bg-white/[0.025] p-6 sm:grid-cols-[auto_1fr] sm:gap-6"
-                >
-                  <span className="text-sm font-semibold text-brand-secondary">{step.number}</span>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-brand-muted">{step.description}</p>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {DELIVERY_STAGES.map((stage, index) => (
+              <motion.article
+                key={stage.number}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index % 5 * 0.05 }}
+                className="relative rounded-[22px] border border-white/[0.08] bg-white/[0.03] p-5 backdrop-blur-sm transition-colors hover:border-brand-secondary/30 hover:bg-white/[0.045]"
+              >
+                <span className="text-xs font-semibold tracking-[0.12em] text-brand-secondary">
+                  STAGE {stage.number}
+                </span>
+                <h3 className="mt-3 min-h-12 text-lg font-semibold leading-snug text-white">{stage.title}</h3>
+                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-300">
+                  Mandatory outputs
+                </p>
+                <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-slate-100">
+                  {stage.outputs.map((output) => (
+                    <li key={output} className="flex gap-2">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-secondary" aria-hidden="true" />
+                      <span>{output}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>

@@ -57,7 +57,7 @@ const LIFECYCLE_STAGES: {
     number: "06",
     label: "Operate & Optimize",
     icon: Activity,
-    description: "Maintain reliable AI systems through monitoring, performance tuning, continuous evaluation, and operational support.",
+    description: "Monitor, tune, and continuously evaluate AI systems to keep them reliable in production.",
     capabilities: ["Observability & monitoring", "Drift detection & model updates", "Reliability & incident response"],
   },
 ];
@@ -84,60 +84,54 @@ function StageConnector({
 }) {
   const horizontal = direction !== "down";
   const isLeft = direction === "left";
-  const flow = isLeft ? [29, 3, 29] : [3, 29, 3];
+  const lineStyle = active
+    ? {
+        animation: "dash-flow 2.6s linear infinite",
+        animationDelay: `${order * 0.24}s`,
+        animationDirection: isLeft ? "reverse" as const : "normal" as const,
+      }
+    : undefined;
 
   return (
     <span className="flex items-center justify-center text-cyan-100/80" aria-hidden="true">
       {horizontal ? (
-        <svg className="h-4 w-full overflow-visible" viewBox="0 0 32 16" fill="none">
+        <svg className="h-5 w-6 shrink-0 overflow-visible" viewBox="0 0 24 20" fill="none">
           <path
-            d={isLeft ? "M1 8h30M7 3 1 8l6 5" : "M1 8h30M25 3l6 5-6 5"}
+            d="M1 10h22"
             stroke="currentColor"
             strokeOpacity="0.8"
-            strokeWidth="1.5"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeDasharray="8 5"
+            style={lineStyle}
+          />
+          <path
+            d={isLeft ? "M6 6 1 10l5 4" : "M18 6l5 4-5 4"}
+            stroke="currentColor"
+            strokeOpacity="0.8"
+            strokeWidth="1.8"
             strokeLinecap="round"
             strokeLinejoin="round"
-          />
-          <motion.circle
-            r="2"
-            cx="16"
-            cy="8"
-            fill="#a5f3fc"
-            style={{ filter: "drop-shadow(0 0 3px rgba(103,232,249,0.9))" }}
-            animate={active ? { cx: flow } : { cx: 16 }}
-            transition={active ? {
-              duration: 0.85,
-              delay: order * 1.1,
-              repeat: Infinity,
-              repeatDelay: 6.15,
-              ease: "easeInOut",
-            } : { duration: 0 }}
           />
         </svg>
       ) : (
-        <svg className="h-5 w-full overflow-visible" viewBox="0 0 32 20" fill="none">
+        <svg className="h-5 w-6 shrink-0 overflow-visible" viewBox="0 0 24 20" fill="none">
           <path
-            d="M16 1v17m-6-6 6 6 6-6"
+            d="M12 1v18"
             stroke="currentColor"
             strokeOpacity="0.8"
-            strokeWidth="1.5"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeDasharray="8 5"
+            style={lineStyle}
+          />
+          <path
+            d="m7 14 5 5 5-5"
+            stroke="currentColor"
+            strokeOpacity="0.8"
+            strokeWidth="1.8"
             strokeLinecap="round"
             strokeLinejoin="round"
-          />
-          <motion.circle
-            cx="16"
-            cy="9"
-            r="2"
-            fill="#a5f3fc"
-            style={{ filter: "drop-shadow(0 0 3px rgba(103,232,249,0.9))" }}
-            animate={active ? { cy: [2, 15, 2] } : { cy: 9 }}
-            transition={active ? {
-              duration: 0.85,
-              delay: order * 1.1,
-              repeat: Infinity,
-              repeatDelay: 6.15,
-              ease: "easeInOut",
-            } : { duration: 0 }}
           />
         </svg>
       )}
@@ -158,7 +152,7 @@ export default function AISystemHierarchy() {
     <motion.aside
       ref={diagramRef}
       aria-labelledby="ai-lifecycle-title"
-      className="relative mx-auto w-full max-w-[580px] py-2 lg:-mt-4"
+      className="relative mx-auto w-full max-w-[620px] py-2 lg:-mt-4"
       initial={reduceMotion ? false : { opacity: 0, y: 18 }}
       animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 18 }}
       transition={{ duration: reduceMotion ? 0 : 0.65, delay: reduceMotion ? 0 : 0.12, ease: EASE_OUT }}
@@ -215,7 +209,7 @@ export default function AISystemHierarchy() {
           </div>
 
           <div className="grid gap-3 rounded-xl border border-indigo-200/[0.08] bg-[#11182b]/80 p-2 sm:p-2.5 xl:grid-cols-[1.05fr_0.95fr] xl:items-stretch">
-            <div className="grid grid-cols-[minmax(0,1fr)_20px_minmax(0,1fr)] grid-rows-[auto_20px_auto_20px_auto] items-center gap-x-1.5 gap-y-1">
+            <div className="grid grid-cols-[minmax(0,1fr)_24px_minmax(0,1fr)] grid-rows-[auto_24px_auto_24px_auto] items-center gap-x-1.5 gap-y-1">
               {LIFECYCLE_STAGES.map((stage, index) => {
                 const Icon = stage.icon;
                 const isActive = activeStage === index;
@@ -328,11 +322,11 @@ export default function AISystemHierarchy() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-400/[0.04] via-teal-300/[0.08] to-cyan-400/[0.04]" aria-hidden="true" />
             <div className="relative flex items-center justify-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5 text-teal-200" aria-hidden="true" />
-              <span className="text-[9px] font-semibold tracking-wide text-cyan-50 sm:text-[10px]">
+              <span className="text-[10px] font-semibold tracking-wide text-cyan-50 sm:text-[11px]">
                 Security · Privacy · Governance
               </span>
             </div>
-            <p className="relative mt-1 text-[8px] text-slate-300/75 sm:text-[9px]">
+            <p className="relative mt-1 text-[9px] text-slate-300/75 sm:text-[10px]">
               Embedded throughout the AI lifecycle
             </p>
           </div>
