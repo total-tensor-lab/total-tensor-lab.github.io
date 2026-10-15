@@ -303,11 +303,11 @@ export default function AISystemHierarchy() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-400/[0.04] via-teal-300/[0.08] to-cyan-400/[0.04]" aria-hidden="true" />
             <div className="relative flex items-center justify-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5 text-teal-200" aria-hidden="true" />
-              <span className="text-[10px] font-semibold tracking-wide text-cyan-50 sm:text-[11px]">
+              <span className="text-sm font-semibold tracking-wide text-cyan-50 sm:text-base">
                 Security · Privacy · Governance
               </span>
             </div>
-            <p className="relative mt-1 text-[9px] text-slate-300/75 sm:text-[10px]">
+            <p className="relative mt-1 text-xs text-slate-300/75 sm:text-sm">
               Embedded throughout the AI lifecycle
             </p>
           </div>
