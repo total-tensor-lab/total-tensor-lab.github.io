@@ -1,9 +1,7 @@
 import { motion } from "motion/react";
-import Logo from "./Logo";
 import {
   ArrowRight,
   Building2,
-  Github,
   HeartPulse,
   Landmark,
   Mail,
@@ -11,7 +9,7 @@ import {
   RadioTower,
 } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const TRUST_CARDS = [
   {
@@ -69,57 +67,10 @@ const BADGES = [
   "Compliance Ready",
 ];
 
-type FooterLink =
-  | { label: string; to: string; href?: never }
-  | { label: string; href: string; to?: never };
-
-const LINKS: Record<string, FooterLink[]> = {
-  Platform: [
-    { label: "Project Lolo", to: "/products/project-lolo" },
-    { label: "Runtime Protection", to: "/products/project-lolo?section=process" },
-    { label: "Architecture", to: "/products/project-lolo?section=about" },
-    { label: "Deployment Models", to: "/products/project-lolo?section=why-us" },
-    { label: "Integrations", to: "/products/project-lolo?section=integrations" },
-  ],
-  Resources: [
-    { label: "GitHub", href: "https://github.com/totaltensorlabs" },
-    { label: "Blogs", to: "/blogs" },
-  ],
-  Company: [
-    { label: "Home", to: "/" },
-    { label: "Products", to: "/products" },
-    { label: "Contact", to: "/?section=contact" },
-    { label: "Security", to: "/security" },
-  ],
-};
-
-const HOME_LINKS: Record<string, FooterLink[]> = {
-  Services: [
-    { label: "AI & ML Consulting", to: "/?section=services" },
-    { label: "Machine Learning", to: "/?section=services" },
-    { label: "Computer Vision", to: "/?section=services" },
-    { label: "Edge AI & LLMs", to: "/?section=services" },
-  ],
-  Resources: [
-    { label: "GitHub", href: "https://github.com/totaltensorlabs" },
-    { label: "Blogs", to: "/blogs" },
-  ],
-  Company: [
-    { label: "Home", to: "/" },
-    { label: "Contact", to: "/?section=contact" },
-    { label: "Security", to: "/security" },
-  ],
-};
-
-const SOCIALS = [
-  { icon: Github, href: "https://github.com/totaltensorlabs", label: "GitHub" },
-];
-
 export default function Footer() {
   const { pathname } = useLocation();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const footerLinks = pathname === "/" ? HOME_LINKS : LINKS;
   const showProjectLoloTrust = pathname === "/products/project-lolo";
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -271,75 +222,6 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 mb-12">
-          <div>
-            <Link to="/" className="flex items-center gap-3 mb-5" aria-label="Total Tensor Labs home">
-              <Logo size={60} />
-              <span className="font-semibold text-white text-base">Total Tensor Labs</span>
-            </Link>
-            <p className="text-slate-500 text-base text-white leading-relaxed max-w-md mb-6">
-              Professional AI and machine learning consultancy for scalable,
-              production-ready systems.
-            </p>
-            <div className="flex items-center gap-2.5">
-              {SOCIALS.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  rel="noopener noreferrer"
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-slate-600 hover:text-brand-primary hover:border-brand-primary/20 transition-all"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
-            {Object.entries(footerLinks).map(([section, links]) => (
-              <div key={section}>
-                <h4 className="text-white font-semibold text-xs tracking-widest uppercase mb-4 opacity-50">
-                  {section}
-                </h4>
-                <ul className="space-y-3">
-                  {links.map((link) => (
-                    <li key={link.label}>
-                      {link.to ? (
-                        <Link
-                          to={link.to}
-                          className="text-slate-600 hover:text-slate-300 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
-                        >
-                          {link.label}
-                        </Link>
-                      ) : (
-                        <a
-                          href={link.href}
-                          target={link.href.startsWith("http") ? "_blank" : undefined}
-                          rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="text-slate-600 hover:text-slate-300 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
-                        >
-                          {link.label}
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-slate-700 text-xs">
-            © {new Date().getFullYear()} Total Tensor Labs, Inc. All rights reserved.
-          </p>
-          <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-success inline-block opacity-80" />
-            <span className="text-slate-700 text-xs">Available for new projects</span>
-          </div>
-        </div>
       </div>
     </footer>
   );

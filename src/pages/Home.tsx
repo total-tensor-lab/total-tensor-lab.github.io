@@ -14,104 +14,39 @@ import AISystemHierarchy from "../components/AISystemHierarchy";
 const SERVICES = [
   {
     icon: BrainCircuit,
-    title: "TTL AI Engineering",
-    description:
-      "Custom ML/DL models, computer vision, multimodal AI, LLM fine-tuning, advanced analytics, and production model development.",
-    outcome:
-      "Purpose-built intelligence that solves a specific business problem.",
+    title: "AI Engineering",
+    description: "Custom models and analytics built around your business needs.",
+    outcome: "AI that solves real problems.",
   },
   {
     icon: Network,
-    title: "TTL GenAI & Agentic Systems",
-    description:
-      "Enterprise RAG, document intelligence, intelligent automation, multi-agent systems, knowledge assistants, and enterprise integrations.",
-    outcome:
-      "Automate workflows and improve enterprise information access.",
+    title: "GenAI & Agentic Systems",
+    description: "RAG, assistants, and AI agents that put knowledge to work.",
+    outcome: "Faster workflows. Easier access to information.",
   },
   {
     icon: Cpu,
-    title: "TTL AI Infrastructure & Optimization",
-    description:
-      "GPU infrastructure, cloud/edge deployment, inference acceleration, model compression, private AI deployments, and platform engineering.",
-    outcome:
-      "Faster, more economical, scalable AI systems.",
+    title: "AI Infrastructure & Optimization",
+    description: "Deploy and optimize AI across cloud, edge, or private environments.",
+    outcome: "Better performance at lower cost.",
   },
   {
     icon: Shield,
-    title: "TTL Secure & Responsible AI",
-    description:
-      "AI privacy infrastructure, security assessments, AI guardrails, governance programs, risk management, and security testing.",
-    outcome:
-      "Greater control over AI-related security, privacy, and operational risks.",
+    title: "Secure & Responsible AI",
+    description: "Build privacy, security, and governance into your AI systems.",
+    outcome: "Stronger control. Lower risk.",
   },
   {
     icon: Boxes,
-    title: "TTL AI Product Development",
-    description:
-      "End-to-end AI product engineering, from discovery and architecture to API development, frontend UX, productization, and deployment.",
-    outcome:
-      "A working, maintainable, customer-ready AI product.",
+    title: "AI Product Development",
+    description: "Turn an AI concept into a polished, production-ready product.",
+    outcome: "Ready for customers and built to grow.",
   },
   {
     icon: ChartNoAxesCombined,
-    title: "TTL Managed AI Services",
-    description:
-      "AI observability, monitoring, troubleshooting, model maintenance, evaluation, system improvements, support, and operational management.",
-    outcome:
-      "AI systems that remain reliable and useful after deployment.",
-  },
-];
-
-const DELIVERY_STAGES = [
-  {
-    number: "01",
-    title: "Discovery",
-    outputs: ["Problem statement", "Stakeholders", "Requirements", "Business KPIs"],
-  },
-  {
-    number: "02",
-    title: "Feasibility",
-    outputs: ["Data availability", "Success criteria", "Constraints", "Risk and ROI assumptions"],
-  },
-  {
-    number: "03",
-    title: "Solution Design",
-    outputs: ["Architecture", "Threat model", "Infrastructure", "Cost estimate"],
-  },
-  {
-    number: "04",
-    title: "Data Preparation",
-    outputs: ["Data quality report", "Dataset specifications", "Access controls"],
-  },
-  {
-    number: "05",
-    title: "Development",
-    outputs: ["Version-controlled code", "Model/prompt configs", "Automated tests"],
-  },
-  {
-    number: "06",
-    title: "Evaluation",
-    outputs: ["Baselines", "Acceptance metrics", "Test results", "Safety and failure tests"],
-  },
-  {
-    number: "07",
-    title: "Deployment",
-    outputs: ["CI/CD", "Infrastructure configs", "Authentication", "Rollout/rollback plan"],
-  },
-  {
-    number: "08",
-    title: "Production Validation",
-    outputs: ["Load tests", "Security review", "User acceptance", "Operational readiness"],
-  },
-  {
-    number: "09",
-    title: "Handover",
-    outputs: ["Documentation", "Runbooks", "Training", "Known limitations"],
-  },
-  {
-    number: "10",
-    title: "Managed Operations",
-    outputs: ["Monitoring", "Incidents", "Change management", "Scheduled reviews"],
+    title: "Managed AI Services",
+    description: "Keep deployed AI monitored, maintained, and improving.",
+    outcome: "Reliable systems over time.",
   },
 ];
 
@@ -180,7 +115,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="mt-14 grid gap-px overflow-hidden border-y border-white/[0.08] bg-white/[0.08] md:grid-cols-2">
+          <div className="mt-10 grid gap-px overflow-hidden border-y border-white/[0.08] bg-white/[0.08] md:grid-cols-2">
             {SERVICES.map(({ icon: Icon, title, description, outcome }, index) => (
               <motion.article
                 key={title}
@@ -188,70 +123,19 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.06 }}
-                className="group grid h-full grid-cols-[1.75rem_minmax(0,1fr)] gap-4 bg-brand-bg/95 px-3 py-7 transition-colors duration-300 hover:bg-brand-surface/90 sm:grid-cols-[2rem_minmax(0,1fr)] sm:gap-6 sm:px-6 lg:min-h-[238px] lg:px-7 lg:py-8"
+                className="group grid h-full grid-cols-[1.75rem_minmax(0,1fr)] gap-4 bg-brand-bg/95 px-3 py-5 transition-colors duration-300 hover:bg-brand-surface/90 sm:grid-cols-[2rem_minmax(0,1fr)] sm:gap-5 sm:px-6 sm:py-6 lg:px-7"
               >
                 <div className="flex h-8 w-8 items-center justify-center text-slate-100 transition-colors group-hover:text-brand-secondary">
                   <Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
                   <h3 className="text-lg font-semibold leading-snug text-white md:text-xl">{title}</h3>
-                  <p className="mt-2 text-base leading-relaxed text-slate-100 md:text-lg">{description}</p>
-                  <p className="mt-1.5 text-sm leading-relaxed text-brand-muted md:text-base">
+                  <p className="mt-1.5 text-base leading-relaxed text-slate-100">{description}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-brand-muted">
                     <strong className="font-semibold text-slate-200">Outcome:</strong>{" "}
                     {outcome}
                   </p>
                 </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative py-24 lg:py-32">
-        <div className="absolute inset-x-0 top-0 section-divider" />
-        <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-5xl"
-          >
-            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-secondary">How we work</span>
-            <h2 className="mt-5 text-4xl font-bold leading-tight text-white md:text-5xl">
-              A practical path
-              <br />
-              <span className="gradient-text">from idea to impact.</span>
-            </h2>
-            <p className="mt-6 max-w-none text-base leading-relaxed text-brand-muted md:text-lg lg:whitespace-nowrap">
-              A consistent delivery process for every engagement, from initial discovery through managed operations.
-            </p>
-          </motion.div>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {DELIVERY_STAGES.map((stage, index) => (
-              <motion.article
-                key={stage.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index % 5 * 0.05 }}
-                className="relative rounded-[22px] border border-white/[0.08] bg-white/[0.03] p-5 backdrop-blur-sm transition-colors hover:border-brand-secondary/30 hover:bg-white/[0.045]"
-              >
-                <span className="text-xs font-semibold tracking-[0.12em] text-brand-secondary">
-                  STAGE {stage.number}
-                </span>
-                <h3 className="mt-3 min-h-12 text-lg font-semibold leading-snug text-white">{stage.title}</h3>
-                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-300">
-                  Mandatory outputs
-                </p>
-                <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-slate-100">
-                  {stage.outputs.map((output) => (
-                    <li key={output} className="flex gap-2">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-secondary" aria-hidden="true" />
-                      <span>{output}</span>
-                    </li>
-                  ))}
-                </ul>
               </motion.article>
             ))}
           </div>
