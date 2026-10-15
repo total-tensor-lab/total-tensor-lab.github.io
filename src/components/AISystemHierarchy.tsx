@@ -75,6 +75,7 @@ const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 const RING_CENTER = 250;
 const RING_RADIUS = 202.5;
 const ARC_GAP_DEGREES = 11;
+const HORIZONTAL_CARD_GAP_DEGREES = 25;
 
 function pointOnRing(angle: number) {
   const radians = (angle * Math.PI) / 180;
@@ -86,11 +87,18 @@ function pointOnRing(angle: number) {
 }
 
 function stageArc(index: number) {
-  const startAngle = RING_POSITIONS[index].angle + ARC_GAP_DEGREES;
-  const nextAngle = index === RING_POSITIONS.length - 1
+  const startGap = index === 0 || index === 3
+    ? HORIZONTAL_CARD_GAP_DEGREES
+    : ARC_GAP_DEGREES;
+  const startAngle = RING_POSITIONS[index].angle + startGap;
+  const nextIndex = (index + 1) % RING_POSITIONS.length;
+  const nextAngle = nextIndex === 0
     ? RING_POSITIONS[0].angle + 360
-    : RING_POSITIONS[index + 1].angle;
-  const endAngle = nextAngle - ARC_GAP_DEGREES;
+    : RING_POSITIONS[nextIndex].angle;
+  const endGap = nextIndex === 0 || nextIndex === 3
+    ? HORIZONTAL_CARD_GAP_DEGREES
+    : ARC_GAP_DEGREES;
+  const endAngle = nextAngle - endGap;
   const start = pointOnRing(startAngle);
   const end = pointOnRing(endAngle);
 
@@ -126,7 +134,7 @@ export default function AISystemHierarchy() {
 
         <div className="relative">
           <div className="mb-1.5 px-0.5 sm:mb-2">
-            <h3 className="text-xs font-semibold text-white sm:text-sm">AI Engineering Lifecycle</h3>
+            <h3 className="text-center text-xs font-semibold text-white sm:text-sm">AI Engineering Lifecycle</h3>
           </div>
 
           <div className="relative mx-auto aspect-square w-full max-w-[560px]" role="group" aria-label="AI lifecycle stages">
@@ -148,7 +156,7 @@ export default function AISystemHierarchy() {
                     <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
-                <marker id="lifecycle-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+                <marker id="lifecycle-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
                   <path d="M0 0 8 4 0 8Z" fill="#67e8f9" />
                 </marker>
               </defs>
@@ -163,21 +171,20 @@ export default function AISystemHierarchy() {
                   <motion.path
                     key={stage.number}
                     d={stageArc(index)}
-                    pathLength="1"
                     stroke={isActive ? "url(#lifecycle-ring)" : "rgba(103,232,249,0.34)"}
                     strokeWidth={isActive ? 2.5 : 1.5}
                     strokeLinecap="round"
-                    strokeDasharray={isActive ? "0.12 0.05" : "0.025 0.035"}
+                    strokeDasharray={isActive ? "12 8" : "2 8"}
                     markerEnd="url(#lifecycle-arrow)"
                     filter={isActive ? "url(#lifecycle-ring-glow)" : undefined}
                     initial={false}
                     animate={{
                       opacity: isActive ? 1 : 0.58,
-                      strokeDashoffset: animateContinuously ? [0, -0.17] : 0,
+                      strokeDashoffset: animateContinuously ? [0, -20] : 0,
                     }}
                     transition={
                       animateContinuously
-                        ? { strokeDashoffset: { duration: 1.8, repeat: Infinity, ease: "linear" }, opacity: { duration: 0.2 } }
+                        ? { strokeDashoffset: { duration: 1.2, repeat: Infinity, ease: "linear" }, opacity: { duration: 0.2 } }
                         : { duration: 0.2 }
                     }
                   />
@@ -219,26 +226,28 @@ export default function AISystemHierarchy() {
                         isActive ? "" : "border-slate-500/30 bg-[#0b1121]/95"
                       }`}
                     >
-                      <span className={`col-start-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border sm:h-8 sm:w-8 ${
-                        isActive
-                          ? "border-cyan-200/25 bg-cyan-200/[0.08]"
-                          : "border-white/[0.07] bg-white/[0.025]"
-                      }`}>
-                        <Icon
-                          className={`h-3.5 w-3.5 transition-[color,filter] duration-200 sm:h-4 sm:w-4 ${
-                            isActive
-                              ? "text-cyan-100 drop-shadow-[0_0_7px_rgba(103,232,249,0.4)]"
-                              : "text-slate-400 group-hover:text-cyan-100"
-                          }`}
-                          aria-hidden="true"
-                        />
+                      <span className="col-start-1 flex shrink-0 flex-col items-center gap-0.5">
+                        <span className={`inline-flex w-[2ch] justify-center text-center text-[10px] font-semibold leading-none tabular-nums sm:text-[11px] ${
+                          isActive ? "text-cyan-200" : "text-slate-400"
+                        }`}>
+                          {stage.number}
+                        </span>
+                        <span className={`flex h-6 w-6 items-center justify-center rounded-lg border sm:h-8 sm:w-8 ${
+                          isActive
+                            ? "border-cyan-200/25 bg-cyan-200/[0.08]"
+                            : "border-white/[0.07] bg-white/[0.025]"
+                        }`}>
+                          <Icon
+                            className={`h-3.5 w-3.5 transition-[color,filter] duration-200 sm:h-4 sm:w-4 ${
+                              isActive
+                                ? "text-cyan-100 drop-shadow-[0_0_7px_rgba(103,232,249,0.4)]"
+                                : "text-slate-400 group-hover:text-cyan-100"
+                            }`}
+                            aria-hidden="true"
+                          />
+                        </span>
                       </span>
-                      <span className={`absolute right-2 top-1.5 block text-[10px] font-semibold leading-none tracking-[0.08em] sm:right-2.5 sm:top-2 sm:text-[11px] ${
-                        isActive ? "text-cyan-200" : "text-slate-400"
-                      }`}>
-                        {stage.number}
-                      </span>
-                      <span className={`col-start-2 block min-w-0 text-[11px] font-medium leading-[1.15] transition-colors sm:text-[13px] ${
+                      <span className={`col-start-2 block min-w-0 text-xs font-medium leading-[1.15] transition-colors sm:text-sm ${
                         isActive ? "text-white" : "text-slate-300 group-hover:text-white"
                       }`}>
                         {stage.label}
