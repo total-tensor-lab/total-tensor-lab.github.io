@@ -1,11 +1,11 @@
 import {
   ArrowRight,
-  Bot,
+  Boxes,
   BrainCircuit,
+  ChartNoAxesCombined,
   Cpu,
-  Eye,
-  MessageSquareText,
   Network,
+  Shield,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
@@ -14,51 +14,51 @@ import AISystemHierarchy from "../components/AISystemHierarchy";
 const SERVICES = [
   {
     icon: BrainCircuit,
-    title: "Machine Learning Systems",
+    title: "TTL AI Engineering",
     description:
-      "Design and build reliable ML solutions—from data pipelines and model development to deployment, monitoring, and continuous improvement.",
-    accent: "border-brand-primary/20 hover:border-brand-primary/40",
-    iconStyle: "bg-brand-primary/10 text-brand-primary",
-  },
-  {
-    icon: Eye,
-    title: "Computer Vision",
-    description:
-      "Develop vision systems for detection, segmentation, tracking, OCR, quality inspection, and real-time video analytics.",
-    accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
-    iconStyle: "bg-brand-secondary/10 text-brand-secondary",
-  },
-  {
-    icon: Cpu,
-    title: "Edge AI",
-    description:
-      "Optimize and deploy intelligent models on edge devices for low-latency, private, and reliable on-device inference.",
-    accent: "border-brand-success/20 hover:border-brand-success/40",
-    iconStyle: "bg-brand-success/10 text-brand-success",
+      "Custom ML/DL models, computer vision, multimodal AI, LLM fine-tuning, advanced analytics, and production model development.",
+    outcome:
+      "Purpose-built intelligence that solves a specific business problem.",
   },
   {
     icon: Network,
-    title: "LLM Applications",
+    title: "TTL GenAI & Agentic Systems",
     description:
-      "Create dependable LLM solutions with retrieval, evaluation, fine-tuning, guardrails, and integration into existing business systems.",
-    accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
-    iconStyle: "bg-brand-secondary/10 text-brand-secondary",
+      "Enterprise RAG, document intelligence, intelligent automation, multi-agent systems, knowledge assistants, and enterprise integrations.",
+    outcome:
+      "Automate workflows and improve enterprise information access.",
   },
   {
-    icon: Bot,
-    title: "AI Agents",
+    icon: Cpu,
+    title: "TTL AI Infrastructure & Optimization",
     description:
-      "Build tool-using agents and automated workflows with clear controls, human oversight, observability, and measurable outcomes.",
-    accent: "border-brand-primary/20 hover:border-brand-primary/40",
-    iconStyle: "bg-brand-primary/10 text-brand-primary",
+      "GPU infrastructure, cloud/edge deployment, inference acceleration, model compression, private AI deployments, and platform engineering.",
+    outcome:
+      "Faster, more economical, scalable AI systems.",
   },
   {
-    icon: MessageSquareText,
-    title: "Chatbots & Assistants",
+    icon: Shield,
+    title: "TTL Secure & Responsible AI",
     description:
-      "Deliver domain-aware conversational experiences connected to your knowledge, applications, APIs, and support workflows.",
-    accent: "border-brand-success/20 hover:border-brand-success/40",
-    iconStyle: "bg-brand-success/10 text-brand-success",
+      "AI privacy infrastructure, security assessments, AI guardrails, governance programs, risk management, and security testing.",
+    outcome:
+      "Greater control over AI-related security, privacy, and operational risks.",
+  },
+  {
+    icon: Boxes,
+    title: "TTL AI Product Development",
+    description:
+      "End-to-end AI product engineering, from discovery and architecture to API development, frontend UX, productization, and deployment.",
+    outcome:
+      "A working, maintainable, customer-ready AI product.",
+  },
+  {
+    icon: ChartNoAxesCombined,
+    title: "TTL Managed AI Services",
+    description:
+      "AI observability, monitoring, troubleshooting, model maintenance, evaluation, system improvements, support, and operational management.",
+    outcome:
+      "AI systems that remain reliable and useful after deployment.",
   },
 ];
 
@@ -138,7 +138,7 @@ export default function HomePage() {
               <span className="gradient-text">production-ready intelligent systems.</span>
             </h1>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-brand-muted sm:text-lg">
-              We design, build, optimize, secure, and operate AI systems that deliver measurable business outcomes—from cloud to edge.
+              From AI strategy and model development to inference optimization, enterprise deployment, governance, and continuous operations.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -180,22 +180,27 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map(({ icon: Icon, title, description, accent, iconStyle }, index) => (
+          <div className="mt-14 grid gap-px overflow-hidden border-y border-white/[0.08] bg-white/[0.08] md:grid-cols-2">
+            {SERVICES.map(({ icon: Icon, title, description, outcome }, index) => (
               <motion.article
                 key={title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.06 }}
-                className={`group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] ${accent}`}
+                className="group grid h-full grid-cols-[1.75rem_minmax(0,1fr)] gap-4 bg-brand-bg/95 px-3 py-7 transition-colors duration-300 hover:bg-brand-surface/90 sm:grid-cols-[2rem_minmax(0,1fr)] sm:gap-6 sm:px-6 lg:min-h-[238px] lg:px-7 lg:py-8"
               >
-                <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
-                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.08] ${iconStyle}`}>
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+                <div className="flex h-8 w-8 items-center justify-center text-slate-100 transition-colors group-hover:text-brand-secondary">
+                  <Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
                 </div>
-                <h3 className="mt-8 text-xl font-semibold text-white">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-brand-muted">{description}</p>
+                <div className="min-w-0">
+                  <h3 className="text-lg font-semibold leading-snug text-white md:text-xl">{title}</h3>
+                  <p className="mt-2 text-base leading-relaxed text-slate-100 md:text-lg">{description}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-brand-muted md:text-base">
+                    <strong className="font-semibold text-slate-200">Outcome:</strong>{" "}
+                    {outcome}
+                  </p>
+                </div>
               </motion.article>
             ))}
           </div>
