@@ -102,7 +102,7 @@ export default function Footer() {
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
                 Built for <span className="gradient-text">Regulated Industries</span>
               </h2>
-              <p className="text-brand-muted text-base text-white md:text-lg max-w-3xl leading-relaxed mb-8">
+              <p className="text-brand-body text-base md:text-lg max-w-3xl leading-relaxed mb-8">
                 Designed for environments where privacy, governance, and auditability
                 are non-negotiable.
               </p>
@@ -111,7 +111,7 @@ export default function Footer() {
                 {BADGES.map((badge) => (
                   <span
                     key={badge}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-brand-muted text-xs font-medium backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-brand-label text-xs font-medium backdrop-blur-sm"
                   >
                     <span className="inline-block h-2 w-2 rounded-full bg-brand-success" />
                     {badge}
@@ -156,7 +156,7 @@ export default function Footer() {
                         </div>
                       </div>
                       <h3 className="text-white font-semibold text-lg mb-3">{card.title}</h3>
-                      <p className="text-brand-muted text-sm leading-relaxed">{card.detail}</p>
+                      <p className="text-brand-body text-sm leading-relaxed">{card.detail}</p>
                     </div>
                   </motion.div>
                 );
@@ -184,7 +184,7 @@ export default function Footer() {
               Ready to govern{" "}
               <span className="gradient-text">your enterprise AI?</span>
             </h2>
-            <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+            <p className="text-brand-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               Discover how Project Lolo protects sensitive data across your AI workflows.
               Get in touch to discuss a demo.
             </p>
@@ -195,7 +195,7 @@ export default function Footer() {
                 className="flex flex-col md:flex-row items-stretch justify-center gap-3 max-w-[680px] mx-auto mb-8"
               >
                 <div className="relative flex-1">
-                  <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                  <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-label" />
                   <input
                     type="email"
                     aria-label="Work email"
@@ -203,7 +203,7 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full h-full pl-12 pr-5 py-4 rounded-full bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-brand-primary/40 focus:ring-1 focus:ring-brand-primary/20 transition-all"
+                    className="w-full h-full pl-12 pr-5 py-4 rounded-full bg-white/[0.04] border border-brand-label text-white placeholder:text-brand-label placeholder:opacity-100 text-sm focus:outline-none focus:border-brand-primary/40 focus:ring-1 focus:ring-brand-primary/20 transition-all"
                   />
                 </div>
                 <button

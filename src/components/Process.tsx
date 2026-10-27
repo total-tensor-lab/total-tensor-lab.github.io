@@ -143,7 +143,7 @@ export default function Process() {
                     <h3 className="text-white font-semibold text-xl leading-snug mb-2.5 max-w-sm">
                       {capability.title}
                     </h3>
-                    <p className="text-brand-muted text-sm leading-relaxed max-w-md">
+                    <p className="text-brand-body text-sm leading-relaxed max-w-md">
                       {capability.description}
                     </p>
                   </div>

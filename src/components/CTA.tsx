@@ -64,7 +64,7 @@ export default function CTA() {
             Built for Modern{" "}
             <span className="gradient-text">AI Infrastructure</span>
           </h2>
-          <p className="text-brand-muted text-base text-white md:text-lg max-w-3xl leading-relaxed">
+          <p className="text-brand-body text-base md:text-lg max-w-3xl leading-relaxed">
             Integrate Project Lolo into existing AI pipelines without changing your architecture.
           </p>
         </motion.div>
@@ -100,7 +100,7 @@ export default function CTA() {
                       <h3 className="text-white font-semibold text-lg leading-snug">
                         {group.title}
                       </h3>
-                      <span className="text-[11px] uppercase tracking-[0.14em] text-slate-500">
+                      <span className="text-[11px] uppercase tracking-[0.14em] text-brand-label">
                         Compatible
                       </span>
                     </div>
@@ -110,7 +110,7 @@ export default function CTA() {
                     {group.items.map((item) => (
                       <li
                         key={item}
-                        className="inline-flex items-center rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-sm font-medium text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                        className="inline-flex items-center rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-sm font-medium text-brand-body shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
                       >
                         <span className="mr-2 inline-block h-2 w-2 shrink-0 rounded-full bg-slate-500/70" />
                         {item}

@@ -19,15 +19,15 @@ export default function Detection() {
               <span className="font-mono text-[11px] tracking-widest text-brand-secondary/70">01 / TEXT</span>
             </div>
             <h3 className="mt-7 text-2xl font-semibold text-white">Understand the text.</h3>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-400">
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-brand-body">
               Natural language processing identifies sensitive information in written content,
               from prompts and documents to the context you share with AI.
             </p>
             <div className="detection-example mt-8">
-              <div className="mb-5 flex justify-between font-mono text-[10px] uppercase tracking-wider text-slate-500">
+              <div className="mb-5 flex justify-between font-mono text-[10px] uppercase tracking-wider text-brand-label">
                 <span>Prompt inspection</span><span>Illustrative example</span>
               </div>
-              <p className="text-sm leading-[2.4] text-slate-300">
+              <p className="text-sm leading-[2.4] text-brand-body">
                 Summarize the account for <mark className="sensitive-text">Alex Morgan <span>PERSON</span></mark>.<br />
                 Send the report to <mark className="sensitive-text">alex@example.com <span>EMAIL</span></mark>.
               </p>
@@ -45,16 +45,16 @@ export default function Detection() {
               <span className="font-mono text-[11px] tracking-widest text-brand-secondary/70">02 / VISUAL</span>
             </div>
             <h3 className="mt-7 text-2xl font-semibold text-white">Inspect the image.</h3>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-400">
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-brand-body">
               Computer vision detects sensitive visual information in images,
               screenshots, and scanned documents, bringing privacy controls to what your AI sees.
             </p>
             <div className="detection-example mt-8">
-              <div className="mb-5 flex flex-wrap justify-between gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-wider text-slate-400">
+              <div className="mb-5 flex flex-wrap justify-between gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-wider text-brand-label">
                 <span>Visual inspection</span><span>Illustrative example</span>
               </div>
               <div className="visual-document" role="img" aria-label="Static illustrative document with entirely synthetic data. Outlined regions label a drawn face as Face, Alex Example as Name, and DEMO-0042 as Account number. This is an illustration, not a live scan.">
-                <p className="col-span-2 text-[10px] uppercase tracking-wider text-slate-400">Synthetic sample</p>
+                <p className="col-span-2 text-[10px] uppercase tracking-wider text-brand-label">Synthetic sample</p>
                 <div className="visual-region">
                   <span className="visual-region-label">Face</span>
                   <div className="document-avatar"><span /><div /></div>
@@ -80,8 +80,8 @@ export default function Detection() {
             </div>
           </article>
         </div>
-        <p className="mt-7 flex items-center justify-center gap-2 text-center text-xs leading-relaxed text-slate-500">
-          <ShieldCheck className="h-4 w-4 shrink-0 text-slate-400" />
+        <p className="mt-7 flex items-center justify-center gap-2 text-center text-xs leading-relaxed text-brand-label">
+          <ShieldCheck className="h-4 w-4 shrink-0 text-brand-label" />
           Purpose-built for text and visual privacy, with detection before AI processing.
         </p>
       </div>

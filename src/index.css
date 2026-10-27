@@ -15,6 +15,8 @@
   --color-brand-success: #10B981;
   --color-brand-text: #F8FAFC;
   --color-brand-muted: #94A3B8;
+  --color-brand-body: #d6d1c7;
+  --color-brand-label: #b4aa98;
 }
 
 * {
@@ -107,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .lolo-button-primary { background: var(--color-brand-primary); color: var(--color-brand-ink); border: 1px solid var(--color-brand-secondary); box-shadow: 0 0 35px -12px rgba(245,184,61,0.5); }
 .lolo-button-primary:hover { background: var(--color-brand-secondary); }
-.lolo-button-secondary { color: #e2e8f0; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.12); }
+.lolo-button-secondary { color: var(--color-brand-body); background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.12); }
 .lolo-button-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); }
 .lolo-button-primary:focus-visible, .lolo-button-secondary:focus-visible { outline: 2px solid #f8d58b; outline-offset: 5px; }
 .lolo-eyebrow { color: var(--color-brand-primary); font-size: 0.7rem; line-height: 1.6; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
@@ -119,14 +121,14 @@ h1, h2, h3, h4, h5, h6 {
 .detection-example { padding: 1.25rem; min-height: 215px; background: rgba(12,10,7,0.5); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.75rem; }
 .sensitive-text { display: inline; border: 1px solid rgba(245,184,61,0.25); border-radius: 4px; padding: 3px 5px; background: rgba(245,184,61,0.12); color: #fce9bf; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .sensitive-text span { font-family: monospace; color: #f8d58b; font-size: 8px; vertical-align: middle; letter-spacing: 0.03em; }
-.content-tag { padding: 0.35rem 0.65rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.35rem; color: #94a3b8; font-size: 11px; }
+.content-tag { padding: 0.35rem 0.65rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.35rem; color: var(--color-brand-label); font-size: 11px; }
 .visual-document { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0.75rem; align-items: start; position: relative; max-width: 360px; margin: 0 auto; padding: 0.75rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.35rem; background: #292116; }
 .document-avatar { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 64px; gap: 5px; }
 .document-avatar > span { display: block; height: 18px; width: 18px; border-radius: 50%; background: #8d7447; }
 .document-avatar > div { height: 20px; width: 30px; border-radius: 50% 50% 0 0; background: #8d7447; }
 .visual-region { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; padding: 0.5rem; border: 1px solid rgba(248,213,139,0.5); background: rgba(248,213,139,0.08); }
 .visual-region-label { font-size: 11px; font-weight: 600; line-height: 1.5; color: #fce9bf; }
-.visual-region-value { font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; color: #e2e8f0; }
+.visual-region-value { font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; color: var(--color-brand-body); }
 .scan-corner { position: absolute; height: 14px; width: 14px; border-color: #f8d58b; border-style: solid; }
 .scan-corner-tl { top: -4px; left: -4px; border-width: 2px 0 0 2px; }
 .scan-corner-br { bottom: -4px; right: -4px; border-width: 0 2px 2px 0; }
@@ -263,6 +265,16 @@ h1, h2, h3, h4, h5, h6 {
   .lifecycle-stage * {
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Offset gold outlines remain distinct from both dark surfaces and gold buttons. */
+:is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-brand-secondary);
+  outline-offset: 4px;
+}
+
+[tabindex="-1"]:focus-visible {
+  outline-offset: -4px;
 }
 
 /* Scrollbar */

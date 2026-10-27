@@ -66,7 +66,7 @@ export default function WhyUs() {
             Deploy Anywhere. Keep Data{" "}
             <span className="gradient-text">Sovereign.</span>
           </h2>
-          <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-3xl">
+          <p className="text-brand-body text-base md:text-lg leading-relaxed max-w-3xl">
             Project Lolo is designed for enterprise environments where data privacy,
             locality, and governance are mandatory.
           </p>
@@ -80,7 +80,7 @@ export default function WhyUs() {
           className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-5 shadow-[0_20px_70px_rgba(10,8,5,0.32)] backdrop-blur-sm"
         >
           <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
-            Bring compute to data <span className="text-brand-muted">— not data to compute.</span>
+            Bring compute to data <span className="text-brand-label">— not data to compute.</span>
           </p>
         </motion.div>
 
@@ -107,7 +107,7 @@ export default function WhyUs() {
                     <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${deployment.iconBg}`}>
                       <Icon className={`h-5 w-5 ${deployment.iconColor}`} />
                     </div>
-                    <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-slate-500">
+                    <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-brand-label">
                       Customer Infra
                     </span>
                   </div>
@@ -115,7 +115,7 @@ export default function WhyUs() {
                   <h3 className="text-white font-semibold text-xl mb-3 leading-snug">
                     {deployment.title}
                   </h3>
-                  <p className="text-brand-muted text-sm leading-relaxed max-w-md">
+                  <p className="text-brand-body text-sm leading-relaxed max-w-md">
                     {deployment.description}
                   </p>
                 </div>

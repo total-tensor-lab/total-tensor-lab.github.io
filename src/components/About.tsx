@@ -12,8 +12,8 @@ const DATA_SOURCES = [
 const RUNTIME_CAPABILITIES = [
   { label: "NLP Detection", x: 390, y: 257, color: "#f5b83d" },
   { label: "Computer Vision", x: 552, y: 257, color: "#f8d58b" },
-  { label: "Policy Engine", x: 390, y: 309, color: "#21e316" },
-  { label: "Sanitization", x: 552, y: 309, color: "#ceed21" },
+  { label: "Policy Engine", x: 390, y: 309, color: "#f5b83d" },
+  { label: "Sanitization", x: 552, y: 309, color: "#10B981" },
   { label: "Audit Logging", x: 471, y: 361, color: "#e9c16a" },
 ];
 
@@ -63,12 +63,12 @@ function ArchitectureDiagram() {
             <feGaussianBlur stdDeviation="6" result="blur" />
             <feColorMatrix
               type="matrix"
-              values="0 0 0 0 0.545  0 0 0 0 0.361  0 0 0 0 0.965  0 0 0 0.55 0"
+              values="0 0 0 0 0.961  0 0 0 0 0.722  0 0 0 0 0.239  0 0 0 0.55 0"
               in="blur"
-              result="purpleBlur"
+              result="goldBlur"
             />
             <feMerge>
-              <feMergeNode in="purpleBlur" />
+              <feMergeNode in="goldBlur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
@@ -92,7 +92,7 @@ function ArchitectureDiagram() {
         <text x="138" y="81" textAnchor="middle" fill="#f8d58b" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
           DATA SOURCES
         </text>
-        <text x="550" y="81" textAnchor="middle" fill="#94A3B8" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.7">
+        <text x="550" y="81" textAnchor="middle" fill="var(--color-brand-label)" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="1">
           RUNTIME
         </text>
         <text x="962" y="81" textAnchor="middle" fill="#f5b83d" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
@@ -103,7 +103,7 @@ function ArchitectureDiagram() {
           <g key={source.label}>
             <rect x="38" y={source.y} width="200" height="42" rx="10" fill="#1c1812" stroke="#f8d58b" strokeWidth="1" opacity="0.92" />
             <rect x="38" y={source.y} width="4" height="42" rx="2" fill="#f8d58b" />
-            <text x="58" y={source.y + 25} fill="#CBD5E1" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
+            <text x="58" y={source.y + 25} fill="var(--color-brand-body)" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
               {source.label}
             </text>
             <path
@@ -118,7 +118,7 @@ function ArchitectureDiagram() {
         ))}
 
         <rect x="372" y="121" width="356" height="318" rx="20" fill="#1c1812" stroke="#f5b83d" strokeWidth="1.5" filter="url(#about-glow)" />
-        <rect x="390" y="139" width="320" height="282" rx="16" fill="rgba(15,23,42,0.72)" stroke="rgba(255,255,255,0.05)" />
+        <rect x="390" y="139" width="320" height="282" rx="16" fill="var(--color-brand-surface)" stroke="rgba(255,255,255,0.05)" />
 
         <text x="550" y="197" textAnchor="middle" fill="#f5b83d" fontSize="13" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.16em">
           TEXT + VISUAL PRIVACY
@@ -126,7 +126,7 @@ function ArchitectureDiagram() {
         <text x="550" y="225" textAnchor="middle" fill="#F8FAFC" fontSize="20" fontFamily="Inter,system-ui,sans-serif" fontWeight="700">
           Project Lolo
         </text>
-        <text x="550" y="247" textAnchor="middle" fill="#64748B" fontSize="13" fontFamily="Inter,system-ui,sans-serif">
+        <text x="550" y="247" textAnchor="middle" fill="var(--color-brand-label)" fontSize="13" fontFamily="Inter,system-ui,sans-serif">
           Detect sensitive data before it reaches AI.
         </text>
 
@@ -134,7 +134,7 @@ function ArchitectureDiagram() {
           <g key={capability.label}>
             <rect x={capability.x} y={capability.y} width="154" height="38" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
             <circle cx={capability.x + 16} cy={capability.y + 19} r="4" fill={capability.color} />
-            <text x={capability.x + 30} y={capability.y + 24} fill="#E2E8F0" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
+            <text x={capability.x + 30} y={capability.y + 24} fill="var(--color-brand-body)" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
               {capability.label}
             </text>
           </g>
@@ -145,7 +145,7 @@ function ArchitectureDiagram() {
           <g key={system.label}>
             <rect x="862" y={system.y} width="200" height="42" rx="10" fill="#1c1812" stroke="#f5b83d" strokeWidth="1" opacity="0.92" />
             <rect x="1058" y={system.y} width="4" height="42" rx="2" fill="#f5b83d" />
-            <text x="880" y={system.y + 25} fill="#CBD5E1" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
+            <text x="880" y={system.y + 25} fill="var(--color-brand-body)" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
               {system.label}
             </text>
             <path
@@ -185,7 +185,7 @@ export default function About() {
             Between Your Data{" "}
             <span className="gradient-text">and Your AI.</span>
           </h2>
-          <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-3xl mb-8">
+          <p className="text-brand-body text-base md:text-lg leading-relaxed max-w-3xl mb-8">
             Project Lolo brings NLP and computer vision into one privacy layer.
             Inspect text and visual inputs, identify sensitive information, and
             apply your policies before content enters your AI workflow.
@@ -199,7 +199,7 @@ export default function About() {
             {DEPLOYMENT_BADGES.map((badge) => (
               <span
                 key={badge}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-brand-muted text-xs font-medium backdrop-blur-sm"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-brand-label text-xs font-medium backdrop-blur-sm"
               >
                 <Check className="w-3.5 h-3.5 text-brand-success flex-shrink-0" />
                 {badge}
