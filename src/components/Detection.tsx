@@ -11,10 +11,6 @@ export default function Detection() {
               Sensitive data hides<br />in plain sight.
             </h2>
           </div>
-          <p className="max-w-sm text-base leading-relaxed text-slate-400">
-            A name in a prompt. An identity in an image. Lolo focuses on
-            textual and visual content, detecting sensitive information with NLP and computer vision.
-          </p>
         </div>
         <div className="grid gap-5 md:grid-cols-2">
           <article className="detection-card detection-card-text">

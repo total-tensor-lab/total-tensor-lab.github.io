@@ -52,6 +52,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lolo-hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
   padding: clamp(9rem, 16vh, 12rem) 0 3rem;
   background: radial-gradient(ellipse at 50% 22%, rgba(245,184,61, 0.14), transparent 60%), #100e0a;
 }
@@ -83,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-rolling-track {
   position: absolute;
   inset: 0;
-  animation: hero-word-roll 5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation: hero-word-roll 7.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 .hero-rolling-track > span {
@@ -92,9 +97,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes hero-word-roll {
-  0%, 40% { transform: translateY(0); }
-  50%, 90% { transform: translateY(-1.15em); }
-  100% { transform: translateY(-2.3em); }
+  0%, 26.6667% { transform: translateY(0); }
+  33.3333%, 60% { transform: translateY(-1.15em); }
+  66.6667%, 93.3333% { transform: translateY(-2.3em); }
+  100% { transform: translateY(-3.45em); }
 }
 
 .hero-grid {
