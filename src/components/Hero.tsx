@@ -9,20 +9,11 @@ export default function Hero() {
       <div className="hero-orbit hero-orbit-inner" aria-hidden="true" />
       <div className="relative mx-auto max-w-6xl px-6 text-center">
         <h1 id="hero-heading" className="hero-title mx-auto max-w-5xl font-semibold text-white">
-          <span className="block">Control What Your AI</span>
-          <span className="sr-only">Reads, Sees, and Listens.</span>
-          <span className="hero-rolling-word" aria-hidden="true">
-            <span className="invisible">Listens.</span>
-            <span className="hero-rolling-track">
-              <span className="hero-gradient">Reads.</span>
-              <span className="hero-gradient">Sees.</span>
-              <span className="hero-gradient">Listens.</span>
-              <span className="hero-gradient">Reads.</span>
-            </span>
-          </span>
+          Control What Your AI{" "}
+          <span className="hero-gradient">Reads and Sees.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
-          Sensitive data belongs under your control.
+          Detect and redact sensitive information in text and images before it reaches your AI workflows.
         </p>
         <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
           <Link to="/?section=contact" className="lolo-button-primary group">Book a Demo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
