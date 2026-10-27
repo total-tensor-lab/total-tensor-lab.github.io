@@ -11,8 +11,8 @@ export default function ProjectLoloPage() {
     <>
       <Hero />
       <Detection />
-      <About />
       <RedactionDemo />
+      <About />
       <Process />
       <WhyUs />
       <CTA />
