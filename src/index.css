@@ -52,12 +52,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lolo-hero {
-  min-height: 100vh;
-  min-height: 100dvh;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  align-items: center;
-  padding: clamp(9rem, 16vh, 12rem) 0 3rem;
+  padding: clamp(6rem, 7vw, 7rem) 0 clamp(1.5rem, 3vw, 2rem);
   background: radial-gradient(ellipse at 50% 22%, rgba(245,184,61, 0.14), transparent 60%), #100e0a;
 }
 
@@ -162,7 +159,6 @@ h1, h2, h3, h4, h5, h6 {
 .scan-corner-br { bottom: -4px; right: -4px; border-width: 0 2px 2px 0; }
 
 @media (max-width: 640px) {
-  .lolo-hero { padding-top: 8rem; }
   .detection-card { padding: 1.25rem; }
   .detection-example { padding: 1rem; }
   .visual-document { gap: 1rem; padding-inline: 0.75rem; }
