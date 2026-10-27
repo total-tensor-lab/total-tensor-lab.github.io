@@ -101,7 +101,7 @@ export default function ProductsPage() {
               </p>
               <Link
                 to="/"
-                className="group/link mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-brand-ink transition-all hover:bg-brand-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
+                className="button-lift group/link mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-brand-ink transition-all hover:bg-brand-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
               >
                 View Project Lolo
                 <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />

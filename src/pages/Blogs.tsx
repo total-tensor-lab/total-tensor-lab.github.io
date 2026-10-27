@@ -121,7 +121,7 @@ export default function BlogsPage() {
             </p>
             <Link
               to="/?section=contact"
-              className="group relative inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-white/[0.08] border border-white/12 hover:bg-white/[0.12] hover:border-brand-primary/40 transition-all duration-200"
+              className="button-lift group relative inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-white/[0.08] border border-white/12 hover:bg-white/[0.12] hover:border-brand-primary/40 transition-all duration-200"
             >
               <span>Join Our Newsletter</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />

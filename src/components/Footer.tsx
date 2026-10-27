@@ -208,7 +208,7 @@ export default function Footer() {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-brand-primary text-brand-ink hover:bg-brand-secondary font-semibold text-sm shadow-[0_18px_60px_rgba(255,255,255,0.08)] hover:-translate-y-0.5 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-brand-primary text-brand-ink hover:bg-brand-secondary font-semibold text-sm shadow-[0_18px_60px_rgba(255,255,255,0.08)] transition-all duration-200"
                 >
                   Request a Demo <ArrowRight className="w-4 h-4" />
                 </button>

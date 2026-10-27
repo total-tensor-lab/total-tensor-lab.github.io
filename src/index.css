@@ -131,7 +131,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: background-color 180ms, transform 180ms, border-color 180ms;
 }
 .lolo-button-primary { background: var(--color-brand-primary); color: var(--color-brand-ink); border: 1px solid var(--color-brand-secondary); box-shadow: 0 0 35px -12px rgba(245,184,61,0.5); }
-.lolo-button-primary:hover { background: var(--color-brand-secondary); transform: translateY(-2px); }
+.lolo-button-primary:hover { background: var(--color-brand-secondary); }
 .lolo-button-secondary { color: #e2e8f0; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.12); }
 .lolo-button-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); }
 .lolo-button-primary:focus-visible, .lolo-button-secondary:focus-visible { outline: 2px solid #f8d58b; outline-offset: 5px; }
@@ -255,6 +255,25 @@ h1, h2, h3, h4, h5, h6 {
     linear-gradient(rgba(245,184,61, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(245,184,61, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+/* Shared raised hover for native buttons and links styled as buttons.
+   Individual translate preserves transforms used by Motion and layout utilities. */
+:is(button, [role="button"], .button-lift, .lolo-button-primary, .lolo-button-secondary) {
+  transition: translate 180ms ease, filter 180ms ease, background-color 180ms ease,
+    border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :is(button, [role="button"], .button-lift, .lolo-button-primary, .lolo-button-secondary):not(:disabled):not([aria-disabled="true"]):hover {
+    translate: 0 -3px;
+    filter: drop-shadow(0 8px 10px rgb(0 0 0 / 0.25));
+  }
+
+  :is(button, [role="button"], .button-lift, .lolo-button-primary, .lolo-button-secondary):not(:disabled):not([aria-disabled="true"]):active {
+    translate: 0 0;
+    filter: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
