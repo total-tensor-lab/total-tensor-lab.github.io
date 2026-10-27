@@ -7,7 +7,7 @@ export default function SecurityPage() {
     <section className="relative overflow-hidden pt-28 pb-28 lg:pt-36 lg:pb-44">
       {/* Ambient lighting layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-bg via-brand-bg to-brand-surface/20 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.18),transparent),radial-gradient(circle_at_80%_28%,rgba(6,182,212,0.12),transparent_26%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(245,184,61,0.18),transparent),radial-gradient(circle_at_80%_28%,rgba(248,213,139,0.12),transparent_26%)] pointer-events-none" />
       <div className="absolute top-1/4 -left-40 w-[640px] h-[640px] bg-brand-secondary/[0.04] rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-40 w-[560px] h-[560px] bg-brand-primary/[0.06] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent pointer-events-none" />
@@ -93,7 +93,7 @@ export default function SecurityPage() {
             >
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-2xl"
-                style={{ background: `radial-gradient(circle at 20% 50%, rgba(139,92,246,0.12), transparent 70%)` }}
+                style={{ background: `radial-gradient(circle at 20% 50%, rgba(245,184,61,0.12), transparent 70%)` }}
               />
               <span className="relative z-10 inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-brand-primary/10">
                 <Icon className="h-5 w-5 text-brand-primary" />
@@ -115,7 +115,7 @@ export default function SecurityPage() {
         >
           <Link
             to="/?section=contact"
-            className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl font-semibold text-sm text-white overflow-hidden shadow-[0_0_40px_rgba(139,92,246,0.35)] hover:shadow-[0_0_55px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-200"
+            className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl font-semibold text-sm text-white overflow-hidden shadow-[0_0_40px_rgba(245,184,61,0.35)] hover:shadow-[0_0_55px_rgba(245,184,61,0.5)] hover:-translate-y-0.5 transition-all duration-200"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary" />
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary opacity-0 group-hover:opacity-80 transition-opacity duration-200 blur-xl" />

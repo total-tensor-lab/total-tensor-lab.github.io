@@ -8,7 +8,7 @@ const INTEGRATION_GROUPS = [
     accent: "border-brand-primary/20 hover:border-brand-primary/40",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
-    glow: "radial-gradient(circle at 18% 18%, rgba(139,92,246,0.14), transparent 52%)",
+    glow: "radial-gradient(circle at 18% 18%, rgba(245,184,61,0.14), transparent 52%)",
     items: ["LangChain", "LlamaIndex"],
     span: "md:col-span-2 lg:col-span-1",
   },
@@ -18,7 +18,7 @@ const INTEGRATION_GROUPS = [
     accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
-    glow: "radial-gradient(circle at 82% 18%, rgba(6,182,212,0.14), transparent 52%)",
+    glow: "radial-gradient(circle at 82% 18%, rgba(248,213,139,0.14), transparent 52%)",
     items: ["PostgreSQL", "MongoDB"],
     span: "",
   },
@@ -28,7 +28,7 @@ const INTEGRATION_GROUPS = [
     accent: "border-brand-primary/20 hover:border-brand-primary/40",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
-    glow: "radial-gradient(circle at 20% 82%, rgba(139,92,246,0.12), transparent 54%)",
+    glow: "radial-gradient(circle at 20% 82%, rgba(245,184,61,0.12), transparent 54%)",
     items: ["Pinecone", "Chroma", "Qdrant", "Weaviate"],
     span: "md:col-span-2",
   },
@@ -83,7 +83,7 @@ export default function CTA() {
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className={[
                   "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-6 backdrop-blur-sm",
-                  "shadow-[0_20px_70px_rgba(2,6,23,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045]",
+                  "shadow-[0_20px_70px_rgba(10,8,5,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045]",
                   group.accent,
                   group.span,
                 ].join(" ")}

@@ -10,11 +10,11 @@ const DATA_SOURCES = [
 ];
 
 const RUNTIME_CAPABILITIES = [
-  { label: "NLP Detection", x: 390, y: 257, color: "#a78bfa" },
-  { label: "Computer Vision", x: 552, y: 257, color: "#67e8f9" },
+  { label: "NLP Detection", x: 390, y: 257, color: "#f5b83d" },
+  { label: "Computer Vision", x: 552, y: 257, color: "#f8d58b" },
   { label: "Policy Engine", x: 390, y: 309, color: "#21e316" },
   { label: "Sanitization", x: 552, y: 309, color: "#ceed21" },
-  { label: "Audit Logging", x: 471, y: 361, color: "#12b6e9" },
+  { label: "Audit Logging", x: 471, y: 361, color: "#e9c16a" },
 ];
 
 const AI_SYSTEMS = [
@@ -44,9 +44,9 @@ function ArchitectureDiagram() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] p-4 shadow-[0_28px_100px_rgba(2,6,23,0.42)] backdrop-blur-sm"
+      className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] p-4 shadow-[0_28px_100px_rgba(10,8,5,0.42)] backdrop-blur-sm"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(6,182,212,0.08),transparent_26%),radial-gradient(circle_at_78%_34%,rgba(139,92,246,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.06),transparent_28%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(248,213,139,0.08),transparent_26%),radial-gradient(circle_at_78%_34%,rgba(245,184,61,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.06),transparent_28%)] pointer-events-none" />
       <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
       <div className="absolute inset-x-5 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-primary/15 to-transparent pointer-events-none" />
 
@@ -73,36 +73,36 @@ function ArchitectureDiagram() {
             </feMerge>
           </filter>
           <linearGradient id="about-flow-in" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.9" />
+            <stop offset="0%" stopColor="#f8d58b" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#f5b83d" stopOpacity="0.9" />
           </linearGradient>
           <linearGradient id="about-flow-out" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.9" />
+            <stop offset="0%" stopColor="#f5b83d" stopOpacity="0.9" />
             <stop offset="100%" stopColor="#10B981" stopOpacity="0.5" />
           </linearGradient>
           <radialGradient id="about-runtime-glow" cx="50%" cy="50%" r="55%">
-            <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.13" />
-            <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0" />
+            <stop offset="0%" stopColor="#f5b83d" stopOpacity="0.13" />
+            <stop offset="100%" stopColor="#f5b83d" stopOpacity="0" />
           </radialGradient>
         </defs>
 
         <rect x="0" y="0" width="1100" height="520" rx="22" fill="url(#about-topology-grid)" />
         <ellipse cx="550" cy="297" rx="190" ry="132" fill="url(#about-runtime-glow)" />
 
-        <text x="138" y="81" textAnchor="middle" fill="#06B6D4" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
+        <text x="138" y="81" textAnchor="middle" fill="#f8d58b" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
           DATA SOURCES
         </text>
         <text x="550" y="81" textAnchor="middle" fill="#94A3B8" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.7">
           RUNTIME
         </text>
-        <text x="962" y="81" textAnchor="middle" fill="#8B5CF6" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
+        <text x="962" y="81" textAnchor="middle" fill="#f5b83d" fontSize="16" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.14em" opacity="0.78">
           AI SYSTEMS
         </text>
 
         {DATA_SOURCES.map((source, index) => (
           <g key={source.label}>
-            <rect x="38" y={source.y} width="200" height="42" rx="10" fill="#0F172A" stroke="#06B6D4" strokeWidth="1" opacity="0.92" />
-            <rect x="38" y={source.y} width="4" height="42" rx="2" fill="#06B6D4" />
+            <rect x="38" y={source.y} width="200" height="42" rx="10" fill="#1c1812" stroke="#f8d58b" strokeWidth="1" opacity="0.92" />
+            <rect x="38" y={source.y} width="4" height="42" rx="2" fill="#f8d58b" />
             <text x="58" y={source.y + 25} fill="#CBD5E1" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
               {source.label}
             </text>
@@ -117,10 +117,10 @@ function ArchitectureDiagram() {
           </g>
         ))}
 
-        <rect x="372" y="121" width="356" height="318" rx="20" fill="#0F172A" stroke="#8B5CF6" strokeWidth="1.5" filter="url(#about-glow)" />
+        <rect x="372" y="121" width="356" height="318" rx="20" fill="#1c1812" stroke="#f5b83d" strokeWidth="1.5" filter="url(#about-glow)" />
         <rect x="390" y="139" width="320" height="282" rx="16" fill="rgba(15,23,42,0.72)" stroke="rgba(255,255,255,0.05)" />
 
-        <text x="550" y="197" textAnchor="middle" fill="#A78BFA" fontSize="13" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.16em">
+        <text x="550" y="197" textAnchor="middle" fill="#f5b83d" fontSize="13" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.16em">
           TEXT + VISUAL PRIVACY
         </text>
         <text x="550" y="225" textAnchor="middle" fill="#F8FAFC" fontSize="20" fontFamily="Inter,system-ui,sans-serif" fontWeight="700">
@@ -143,8 +143,8 @@ function ArchitectureDiagram() {
 
         {AI_SYSTEMS.map((system, index) => (
           <g key={system.label}>
-            <rect x="862" y={system.y} width="200" height="42" rx="10" fill="#0F172A" stroke="#8B5CF6" strokeWidth="1" opacity="0.92" />
-            <rect x="1058" y={system.y} width="4" height="42" rx="2" fill="#8B5CF6" />
+            <rect x="862" y={system.y} width="200" height="42" rx="10" fill="#1c1812" stroke="#f5b83d" strokeWidth="1" opacity="0.92" />
+            <rect x="1058" y={system.y} width="4" height="42" rx="2" fill="#f5b83d" />
             <text x="880" y={system.y + 25} fill="#CBD5E1" fontSize="14" fontFamily="Inter,system-ui,sans-serif" fontWeight="500">
               {system.label}
             </text>

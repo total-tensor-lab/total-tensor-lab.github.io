@@ -17,7 +17,7 @@ const TRUST_CARDS = [
     title: "Finance",
     detail: "Protect transaction intelligence, trading workflows, and customer financial data with runtime governance.",
     accent: "border-brand-primary/20 hover:border-brand-primary/40",
-    glow: "radial-gradient(circle at 18% 18%, rgba(139,92,246,0.12), transparent 52%)",
+    glow: "radial-gradient(circle at 18% 18%, rgba(245,184,61,0.12), transparent 52%)",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
   },
@@ -26,7 +26,7 @@ const TRUST_CARDS = [
     title: "Healthcare",
     detail: "Keep patient records, clinical knowledge, and care workflows inside governed healthcare infrastructure.",
     accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
-    glow: "radial-gradient(circle at 82% 18%, rgba(6,182,212,0.12), transparent 52%)",
+    glow: "radial-gradient(circle at 82% 18%, rgba(248,213,139,0.12), transparent 52%)",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
   },
@@ -44,7 +44,7 @@ const TRUST_CARDS = [
     title: "Telecom",
     detail: "Govern subscriber data, network operations context, and AI-powered service workflows at runtime.",
     accent: "border-brand-primary/20 hover:border-brand-primary/40",
-    glow: "radial-gradient(circle at 78% 78%, rgba(139,92,246,0.1), transparent 55%)",
+    glow: "radial-gradient(circle at 78% 78%, rgba(245,184,61,0.1), transparent 55%)",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
   },
@@ -53,7 +53,7 @@ const TRUST_CARDS = [
     title: "Insurance",
     detail: "Control access to claims, underwriting models, and internal data flows with full traceability.",
     accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
-    glow: "radial-gradient(circle at 78% 20%, rgba(6,182,212,0.12), transparent 52%)",
+    glow: "radial-gradient(circle at 78% 20%, rgba(248,213,139,0.12), transparent 52%)",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
   },
@@ -125,7 +125,7 @@ export default function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45 }}
-              className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-6 shadow-[0_20px_70px_rgba(2,6,23,0.32)] backdrop-blur-sm"
+              className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-6 shadow-[0_20px_70px_rgba(10,8,5,0.32)] backdrop-blur-sm"
             >
               <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
                 “Enterprise AI adoption requires governance at runtime — not after deployment.”
@@ -142,7 +142,7 @@ export default function Footer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: i * 0.08 }}
-                    className={`group relative overflow-hidden rounded-[22px] border bg-white/[0.03] p-6 backdrop-blur-sm shadow-[0_18px_60px_rgba(2,6,23,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] ${card.accent}`}
+                    className={`group relative overflow-hidden rounded-[22px] border bg-white/[0.03] p-6 backdrop-blur-sm shadow-[0_18px_60px_rgba(10,8,5,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] ${card.accent}`}
                   >
                     <div
                       className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
@@ -173,7 +173,7 @@ export default function Footer() {
           transition={{ duration: 0.5 }}
           className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] px-6 py-14 md:px-10 md:py-16 mb-16 text-center backdrop-blur-sm"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(139,92,246,0.14),_transparent_32%),radial-gradient(circle_at_80%_30%,_rgba(6,182,212,0.08),_transparent_24%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(245,184,61,0.14),_transparent_32%),radial-gradient(circle_at_80%_30%,_rgba(248,213,139,0.08),_transparent_24%)] pointer-events-none" />
           <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
 
           <div className="relative z-10 max-w-4xl mx-auto">
@@ -208,7 +208,7 @@ export default function Footer() {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white text-slate-950 font-semibold text-sm shadow-[0_18px_60px_rgba(255,255,255,0.08)] hover:-translate-y-0.5 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-brand-primary text-brand-ink hover:bg-brand-secondary font-semibold text-sm shadow-[0_18px_60px_rgba(255,255,255,0.08)] hover:-translate-y-0.5 transition-all duration-200"
                 >
                   Request a Demo <ArrowRight className="w-4 h-4" />
                 </button>

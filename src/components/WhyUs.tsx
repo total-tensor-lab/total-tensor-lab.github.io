@@ -10,7 +10,7 @@ const DEPLOYMENTS = [
     border: "border-brand-primary/20 hover:border-brand-primary/40",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
-    glow: "radial-gradient(circle at 20% 18%, rgba(139,92,246,0.14), transparent 52%)",
+    glow: "radial-gradient(circle at 20% 18%, rgba(245,184,61,0.14), transparent 52%)",
   },
   {
     icon: Workflow,
@@ -20,7 +20,7 @@ const DEPLOYMENTS = [
     border: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
-    glow: "radial-gradient(circle at 82% 20%, rgba(6,182,212,0.14), transparent 52%)",
+    glow: "radial-gradient(circle at 82% 20%, rgba(248,213,139,0.14), transparent 52%)",
   },
   {
     icon: Cloud,
@@ -30,7 +30,7 @@ const DEPLOYMENTS = [
     border: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
-    glow: "radial-gradient(circle at 18% 78%, rgba(6,182,212,0.12), transparent 55%)",
+    glow: "radial-gradient(circle at 18% 78%, rgba(248,213,139,0.12), transparent 55%)",
   },
   {
     icon: ShieldCheck,
@@ -77,7 +77,7 @@ export default function WhyUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-5 shadow-[0_20px_70px_rgba(2,6,23,0.32)] backdrop-blur-sm"
+          className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-5 shadow-[0_20px_70px_rgba(10,8,5,0.32)] backdrop-blur-sm"
         >
           <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
             Bring compute to data <span className="text-brand-muted">— not data to compute.</span>
@@ -94,7 +94,7 @@ export default function WhyUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.1 }}
-                className={`group relative overflow-hidden rounded-[24px] border bg-brand-surface/80 p-8 shadow-[0_20px_70px_rgba(2,6,23,0.34)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${deployment.border}`}
+                className={`group relative overflow-hidden rounded-[24px] border bg-brand-surface/80 p-8 shadow-[0_20px_70px_rgba(10,8,5,0.34)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${deployment.border}`}
               >
                 <div
                   className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"

@@ -52,7 +52,7 @@ export default function FAQ() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-cyan-400 text-sm font-semibold tracking-widest uppercase mb-4">
+          <span className="inline-block text-brand-primary text-sm font-semibold tracking-widest uppercase mb-4">
             FAQ
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-5">
@@ -75,12 +75,12 @@ export default function FAQ() {
               <Accordion.Item
                 key={i}
                 value={`item-${i}`}
-                className="bg-[#0c0c1a] border border-white/[0.06] rounded-2xl overflow-hidden"
+                className="bg-[#19140f] border border-white/[0.06] rounded-2xl overflow-hidden"
               >
                 <Accordion.Header>
-                  <Accordion.Trigger className="w-full flex items-center justify-between px-6 py-5 text-left text-white font-semibold text-sm md:text-base group hover:text-cyan-400 transition-colors data-[state=open]:text-cyan-400">
+                  <Accordion.Trigger className="w-full flex items-center justify-between px-6 py-5 text-left text-white font-semibold text-sm md:text-base group hover:text-brand-primary transition-colors data-[state=open]:text-brand-primary">
                     {faq.q}
-                    <ChevronDown className="w-5 h-5 text-slate-500 group-data-[state=open]:text-cyan-400 transition-all duration-300 group-data-[state=open]:rotate-180 flex-shrink-0 ml-4" />
+                    <ChevronDown className="w-5 h-5 text-slate-500 group-data-[state=open]:text-brand-primary transition-all duration-300 group-data-[state=open]:rotate-180 flex-shrink-0 ml-4" />
                   </Accordion.Trigger>
                 </Accordion.Header>
                 <Accordion.Content className="accordion-content overflow-hidden">

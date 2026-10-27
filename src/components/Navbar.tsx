@@ -13,7 +13,7 @@ const NAV_LINKS = [
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
-    isActive ? "bg-white/[0.08] text-white" : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+    isActive ? "bg-brand-primary/10 text-brand-primary" : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
   }`;
 
 export default function Navbar() {
@@ -75,7 +75,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               to="/?section=contact"
-              className="whitespace-nowrap px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold bg-brand-primary text-white shadow-lg shadow-brand-primary/20 hover:bg-brand-primary/90 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
+              className="whitespace-nowrap px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold bg-brand-primary text-brand-ink shadow-lg shadow-brand-primary/20 hover:bg-brand-primary/90 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
             >
               Book a Demo
             </Link>
@@ -108,7 +108,7 @@ export default function Navbar() {
                 key={link.label}
                 to={link.to}
                 end
-                className={({ isActive }) => `flex items-center gap-2 rounded-lg px-2 py-2.5 text-base font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${isActive ? "bg-white/[0.08] text-white" : "text-slate-300 hover:bg-white/[0.06] hover:text-white"}`}
+                className={({ isActive }) => `flex items-center gap-2 rounded-lg px-2 py-2.5 text-base font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${isActive ? "bg-brand-primary/10 text-brand-primary" : "text-slate-300 hover:bg-white/[0.06] hover:text-white"}`}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -125,7 +125,7 @@ export default function Navbar() {
             </a>
             <Link
               to="/?section=contact"
-              className="mt-3 inline-flex w-full items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold bg-brand-primary text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
+              className="mt-3 inline-flex w-full items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold bg-brand-primary text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
               onClick={() => setMobileOpen(false)}
             >
               Book a Demo

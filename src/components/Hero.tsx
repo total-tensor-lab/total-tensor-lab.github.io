@@ -8,8 +8,8 @@ export default function Hero() {
       <div className="hero-orbit hero-orbit-outer" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-inner" aria-hidden="true" />
       <div className="relative mx-auto max-w-6xl px-6 text-center">
-        <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-violet-400/20 bg-violet-400/[0.07] px-4 py-2 text-xs font-medium text-violet-200">
-          <span className="h-1.5 w-1.5 rounded-full bg-violet-300 shadow-[0_0_12px_#a78bfa]" />
+        <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-brand-primary/20 bg-brand-primary/[0.07] px-4 py-2 text-xs font-medium text-brand-secondary">
+          <span className="h-1.5 w-1.5 rounded-full bg-brand-secondary shadow-[0_0_12px_#f5b83d]" />
           PROJECT LOLO <span className="mx-1 h-3 w-px bg-white/15" /> Privacy before the prompt
         </div>
         <h1 id="hero-heading" className="hero-title mx-auto max-w-5xl font-semibold text-white">
@@ -38,15 +38,15 @@ export default function Hero() {
           <ShieldCheck className="h-3.5 w-3.5 text-emerald-400/80" /> Process locally. Keep your data in your environment.
         </div>
         <div className="hero-focus-strip mx-auto mt-16 grid max-w-3xl grid-cols-1 text-left sm:mt-20 sm:grid-cols-2">
-          <Link to="/?section=detection" className="group flex items-center gap-4 px-6 py-5 focus-visible:outline-2 focus-visible:outline-violet-400 sm:border-r sm:border-white/10">
-            <ScanText className="h-6 w-6 shrink-0 text-violet-300" />
+          <Link to="/?section=detection" className="group flex items-center gap-4 px-6 py-5 focus-visible:outline-2 focus-visible:outline-brand-primary sm:border-r sm:border-white/10">
+            <ScanText className="h-6 w-6 shrink-0 text-brand-secondary" />
             <div className="flex-1"><p className="text-sm font-medium text-slate-200">Textual intelligence</p><p className="mt-1 text-xs text-slate-500">Sensitive data detection with NLP</p></div>
-            <ArrowRight className="h-4 w-4 text-slate-600 transition-colors group-hover:text-violet-300" />
+            <ArrowRight className="h-4 w-4 text-slate-600 transition-colors group-hover:text-brand-secondary" />
           </Link>
-          <Link to="/?section=detection" className="group flex items-center gap-4 border-t border-white/10 px-6 py-5 focus-visible:outline-2 focus-visible:outline-cyan-400 sm:border-t-0">
-            <Eye className="h-6 w-6 shrink-0 text-cyan-300" />
+          <Link to="/?section=detection" className="group flex items-center gap-4 border-t border-white/10 px-6 py-5 focus-visible:outline-2 focus-visible:outline-brand-primary sm:border-t-0">
+            <Eye className="h-6 w-6 shrink-0 text-brand-secondary" />
             <div className="flex-1"><p className="text-sm font-medium text-slate-200">Visual intelligence</p><p className="mt-1 text-xs text-slate-500">Sensitive data detection with computer vision</p></div>
-            <ArrowRight className="h-4 w-4 text-slate-600 transition-colors group-hover:text-cyan-300" />
+            <ArrowRight className="h-4 w-4 text-slate-600 transition-colors group-hover:text-brand-secondary" />
           </Link>
         </div>
       </div>

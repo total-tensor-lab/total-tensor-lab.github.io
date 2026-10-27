@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
   <defs>
     <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#06B6D4"/>
+      <stop offset="0%" stop-color="#f5b83d"/>
+      <stop offset="100%" stop-color="#f8d58b"/>
     </linearGradient>
   </defs>
   <!-- Rounded diamond background -->
   <path d="M 100,14 Q 136,62 186,100 Q 136,138 100,186 Q 64,138 14,100 Q 64,62 100,14 Z" fill="url(#g)"/>
   <!-- Crosshair spokes -->
-  <line x1="36" y1="100" x2="164" y2="100" stroke="white" stroke-width="1.5" opacity="0.5"/>
-  <line x1="100" y1="36" x2="100" y2="164" stroke="white" stroke-width="1.5" opacity="0.5"/>
+  <line x1="36" y1="100" x2="164" y2="100" stroke="#211708" stroke-width="1.5" opacity="0.5"/>
+  <line x1="100" y1="36" x2="100" y2="164" stroke="#211708" stroke-width="1.5" opacity="0.5"/>
   <!-- 4-pointed concave star -->
-  <path d="M 100,48 C 100,92 122,100 152,100 C 122,100 100,108 100,152 C 100,108 78,100 48,100 C 78,100 100,92 100,48 Z" fill="white"/>
+  <path d="M 100,48 C 100,92 122,100 152,100 C 122,100 100,108 100,152 C 100,108 78,100 48,100 C 78,100 100,92 100,48 Z" fill="#211708"/>
   <!-- Cardinal point circles -->
-  <circle cx="100" cy="36" r="7" fill="white"/>
-  <circle cx="164" cy="100" r="7" fill="white"/>
-  <circle cx="100" cy="164" r="7" fill="white"/>
-  <circle cx="36" cy="100" r="7" fill="white"/>
+  <circle cx="100" cy="36" r="7" fill="#211708"/>
+  <circle cx="164" cy="100" r="7" fill="#211708"/>
+  <circle cx="100" cy="164" r="7" fill="#211708"/>
+  <circle cx="36" cy="100" r="7" fill="#211708"/>
 </svg>

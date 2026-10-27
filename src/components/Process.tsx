@@ -19,7 +19,7 @@ const CAPABILITIES = [
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
     gradient:
-      "radial-gradient(circle at 18% 22%, rgba(139,92,246,0.14), transparent 52%)",
+      "radial-gradient(circle at 18% 22%, rgba(245,184,61,0.14), transparent 52%)",
     span: "md:col-span-2 lg:col-span-2",
   },
   {
@@ -32,7 +32,7 @@ const CAPABILITIES = [
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
     gradient:
-      "radial-gradient(circle at 82% 22%, rgba(6,182,212,0.14), transparent 52%)",
+      "radial-gradient(circle at 82% 22%, rgba(248,213,139,0.14), transparent 52%)",
     span: "",
   },
   {
@@ -45,7 +45,7 @@ const CAPABILITIES = [
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
     gradient:
-      "radial-gradient(circle at 20% 80%, rgba(6,182,212,0.12), transparent 55%)",
+      "radial-gradient(circle at 20% 80%, rgba(248,213,139,0.12), transparent 55%)",
     span: "md:col-span-2",
   },
   {
@@ -71,7 +71,7 @@ const CAPABILITIES = [
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
     gradient:
-      "radial-gradient(circle at 78% 18%, rgba(139,92,246,0.14), transparent 52%)",
+      "radial-gradient(circle at 78% 18%, rgba(245,184,61,0.14), transparent 52%)",
     span: "",
   },
   {
@@ -84,7 +84,7 @@ const CAPABILITIES = [
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
     gradient:
-      "radial-gradient(circle at 22% 20%, rgba(6,182,212,0.14), transparent 52%)",
+      "radial-gradient(circle at 22% 20%, rgba(248,213,139,0.14), transparent 52%)",
     span: "lg:col-span-2",
   },
 ];
@@ -125,7 +125,7 @@ export default function Process() {
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className={[
                   "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-6 backdrop-blur-sm",
-                  "shadow-[0_20px_70px_rgba(2,6,23,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045]",
+                  "shadow-[0_20px_70px_rgba(10,8,5,0.34)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045]",
                   capability.border,
                   capability.span,
                 ].join(" ")}
