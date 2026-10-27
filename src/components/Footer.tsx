@@ -1,57 +1,37 @@
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   ArrowRight,
-  Building2,
   HeartPulse,
   Landmark,
   Mail,
   ShieldCheck,
-  RadioTower,
 } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const TRUST_CARDS = [
-  {
-    icon: Landmark,
-    title: "Finance",
-    detail: "Protect transaction intelligence, trading workflows, and customer financial data with runtime governance.",
-    accent: "border-brand-primary/20 hover:border-brand-primary/40",
-    glow: "radial-gradient(circle at 18% 18%, rgba(245,184,61,0.12), transparent 52%)",
-    iconBg: "bg-brand-primary/10",
-    iconColor: "text-brand-primary",
-  },
+const USE_CASES = [
   {
     icon: HeartPulse,
     title: "Healthcare",
-    detail: "Keep patient records, clinical knowledge, and care workflows inside governed healthcare infrastructure.",
+    detail: "Identifying patient details in scanned documents.",
     accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
     glow: "radial-gradient(circle at 82% 18%, rgba(248,213,139,0.12), transparent 52%)",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
   },
   {
-    icon: Building2,
-    title: "Government",
-    detail: "Support sovereign deployments for public sector environments with strict locality and audit requirements.",
-    accent: "border-brand-success/20 hover:border-brand-success/40",
-    glow: "radial-gradient(circle at 20% 80%, rgba(16,185,129,0.1), transparent 55%)",
-    iconBg: "bg-brand-success/10",
-    iconColor: "text-brand-success",
-  },
-  {
-    icon: RadioTower,
-    title: "Telecom",
-    detail: "Govern subscriber data, network operations context, and AI-powered service workflows at runtime.",
+    icon: Landmark,
+    title: "Finance",
+    detail: "Identifying account details in documents or prompts.",
     accent: "border-brand-primary/20 hover:border-brand-primary/40",
-    glow: "radial-gradient(circle at 78% 78%, rgba(245,184,61,0.1), transparent 55%)",
+    glow: "radial-gradient(circle at 18% 18%, rgba(245,184,61,0.12), transparent 52%)",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
   },
   {
     icon: ShieldCheck,
     title: "Insurance",
-    detail: "Control access to claims, underwriting models, and internal data flows with full traceability.",
+    detail: "Identifying personal details in claim documents and images.",
     accent: "border-brand-secondary/20 hover:border-brand-secondary/40",
     glow: "radial-gradient(circle at 78% 20%, rgba(248,213,139,0.12), transparent 52%)",
     iconBg: "bg-brand-secondary/10",
@@ -59,19 +39,12 @@ const TRUST_CARDS = [
   },
 ];
 
-const BADGES = [
-  "Self-Hosted",
-  "Data Sovereignty",
-  "Runtime Governance",
-  "Audit Logging",
-  "Compliance Ready",
-];
-
 export default function Footer() {
+  const reduceMotion = useReducedMotion();
   const { pathname } = useLocation();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const showProjectLoloTrust = pathname === "/" || pathname === "/products/project-lolo";
+  const showProjectLoloUseCases = pathname === "/" || pathname === "/products/project-lolo";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,75 +60,47 @@ export default function Footer() {
       <div className="absolute right-0 top-24 w-[420px] h-[420px] rounded-full bg-brand-secondary/[0.03] blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
-        {showProjectLoloTrust ? (
+        {showProjectLoloUseCases ? (
           <>
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mb-14 max-w-4xl"
+              className="mb-8 max-w-4xl"
             >
               <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
-                Trust & Compliance
+                Industries
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
-                Built for <span className="gradient-text">Regulated Industries</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                Illustrative <span className="gradient-text">Use Cases.</span>
               </h2>
-              <p className="text-brand-body text-base md:text-lg max-w-3xl leading-relaxed mb-8">
-                Designed for environments where privacy, governance, and auditability
-                are non-negotiable.
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                {BADGES.map((badge) => (
-                  <span
-                    key={badge}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-brand-label text-xs font-medium backdrop-blur-sm"
-                  >
-                    <span className="inline-block h-2 w-2 rounded-full bg-brand-success" />
-                    {badge}
-                  </span>
-                ))}
-              </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45 }}
-              className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-6 shadow-[0_20px_70px_rgba(10,8,5,0.32)] backdrop-blur-sm"
-            >
-              <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
-                “Enterprise AI adoption requires governance at runtime — not after deployment.”
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
-              {TRUST_CARDS.map((card, i) => {
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
+              {USE_CASES.map((card, i) => {
                 const Icon = card.icon;
                 return (
                   <motion.div
                     key={card.title}
-                    initial={{ opacity: 0, y: 24 }}
+                    initial={reduceMotion ? false : { opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: i * 0.08 }}
-                    className={`group relative overflow-hidden rounded-[22px] border bg-white/[0.03] p-6 backdrop-blur-sm shadow-[0_18px_60px_rgba(10,8,5,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.045] ${card.accent}`}
+                    className={`group relative overflow-hidden rounded-[22px] border bg-white/[0.03] p-6 backdrop-blur-sm shadow-[0_18px_60px_rgba(10,8,5,0.3)] transition-all duration-300 motion-safe:hover:-translate-y-1 motion-reduce:transition-none hover:bg-white/[0.045] ${card.accent}`}
                   >
                     <div
-                      className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                      className="absolute inset-0 opacity-0 transition-opacity duration-500 motion-reduce:transition-none group-hover:opacity-100 pointer-events-none"
                       style={{ background: card.glow }}
                     />
                     <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
                     <div className="relative z-10">
-                      <div className="mb-6 flex justify-end">
-                        <div className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/8 ${card.iconBg}`}>
-                          <Icon className={`h-4.5 w-4.5 ${card.iconColor}`} />
+                      <div className="mb-4 flex items-center gap-3">
+                        <div className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/8 ${card.iconBg}`}>
+                          <Icon className={`h-4.5 w-4.5 ${card.iconColor}`} aria-hidden="true" />
                         </div>
+                        <h3 className="text-white font-semibold text-lg">{card.title}</h3>
                       </div>
-                      <h3 className="text-white font-semibold text-lg mb-3">{card.title}</h3>
                       <p className="text-brand-body text-sm leading-relaxed">{card.detail}</p>
                     </div>
                   </motion.div>

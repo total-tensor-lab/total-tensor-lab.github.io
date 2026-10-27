@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Cloud, Server, ShieldCheck, Workflow } from "lucide-react";
 
 const DEPLOYMENTS = [
@@ -6,7 +6,7 @@ const DEPLOYMENTS = [
     icon: Server,
     title: "Self-Hosted Runtime",
     description:
-      "Deploy Project Lolo directly inside your own infrastructure so prompts, context, and governance telemetry remain entirely under customer control.",
+      "Run Project Lolo on infrastructure you manage.",
     border: "border-brand-primary/20 hover:border-brand-primary/40",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
@@ -16,7 +16,7 @@ const DEPLOYMENTS = [
     icon: Workflow,
     title: "Kubernetes Deployment",
     description:
-      "Run Project Lolo on Kubernetes for standardized enterprise orchestration while data stays within your cluster boundaries and operational guardrails.",
+      "Run Project Lolo in your Kubernetes cluster.",
     border: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
@@ -26,7 +26,7 @@ const DEPLOYMENTS = [
     icon: Cloud,
     title: "Private Cloud",
     description:
-      "Operate in your private cloud environment with full locality, governance enforcement, and isolation so enterprise data never leaves approved infrastructure.",
+      "Deploy within your private cloud environment.",
     border: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
@@ -36,7 +36,7 @@ const DEPLOYMENTS = [
     icon: ShieldCheck,
     title: "Air-Gapped Infrastructure",
     description:
-      "Support high-security environments with fully disconnected deployments where sensitive enterprise data remains sealed inside customer-controlled networks.",
+      "Deploy in an environment disconnected from external networks.",
     border: "border-brand-success/20 hover:border-brand-success/40",
     iconBg: "bg-brand-success/10",
     iconColor: "text-brand-success",
@@ -45,6 +45,8 @@ const DEPLOYMENTS = [
 ];
 
 export default function WhyUs() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="why-us" className="py-32 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 section-divider" />
@@ -53,7 +55,7 @@ export default function WhyUs() {
 
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -63,25 +65,8 @@ export default function WhyUs() {
             Deployment Options
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
-            Deploy Anywhere. Keep Data{" "}
-            <span className="gradient-text">Sovereign.</span>
+            Choose Your <span className="gradient-text">Deployment.</span>
           </h2>
-          <p className="text-brand-body text-base md:text-lg leading-relaxed max-w-3xl">
-            Project Lolo is designed for enterprise environments where data privacy,
-            locality, and governance are mandatory.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          className="mb-8 rounded-[24px] border border-brand-primary/20 bg-white/[0.04] px-6 py-5 shadow-[0_20px_70px_rgba(10,8,5,0.32)] backdrop-blur-sm"
-        >
-          <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
-            Bring compute to data <span className="text-brand-label">— not data to compute.</span>
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-5">
@@ -90,14 +75,14 @@ export default function WhyUs() {
             return (
               <motion.div
                 key={deployment.title}
-                initial={{ opacity: 0, y: 28 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.1 }}
-                className={`group relative overflow-hidden rounded-[24px] border bg-brand-surface/80 p-8 shadow-[0_20px_70px_rgba(10,8,5,0.34)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${deployment.border}`}
+                className={`group relative overflow-hidden rounded-[24px] border bg-brand-surface/80 p-8 shadow-[0_20px_70px_rgba(10,8,5,0.34)] backdrop-blur-sm transition-all duration-300 motion-safe:hover:-translate-y-1 motion-reduce:transition-none ${deployment.border}`}
               >
                 <div
-                  className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                  className="absolute inset-0 opacity-0 transition-opacity duration-500 motion-reduce:transition-none group-hover:opacity-100 pointer-events-none"
                   style={{ background: deployment.glow }}
                 />
                 <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
@@ -107,9 +92,6 @@ export default function WhyUs() {
                     <div className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${deployment.iconBg}`}>
                       <Icon className={`h-5 w-5 ${deployment.iconColor}`} />
                     </div>
-                    <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-brand-label">
-                      Customer Infra
-                    </span>
                   </div>
 
                   <h3 className="text-white font-semibold text-xl mb-3 leading-snug">
