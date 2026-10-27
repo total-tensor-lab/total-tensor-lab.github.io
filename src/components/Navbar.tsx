@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 
 const NAV_LINKS = [
-  { label: "Services", to: "/?section=services" },
+  { label: "Project Lolo", to: "/" },
   { label: "Products", to: "/products" },
   { label: "Blogs", to: "/blogs" },
   { label: "Security", to: "/security" },
@@ -54,7 +54,7 @@ export default function Navbar() {
                 <NavLink
                   key={link.label}
                   to={link.to}
-                  end={link.to === "/products"}
+                  end
                   className={navLinkClass}
                 >
                   {link.label}
@@ -77,7 +77,7 @@ export default function Navbar() {
               to="/?section=contact"
               className="whitespace-nowrap px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold bg-brand-primary text-white shadow-lg shadow-brand-primary/20 hover:bg-brand-primary/90 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
             >
-              Talk to Us
+              Book a Demo
             </Link>
             <button
               className="md:hidden text-slate-400 hover:text-white transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg"
@@ -107,7 +107,7 @@ export default function Navbar() {
               <NavLink
                 key={link.label}
                 to={link.to}
-                end={link.to === "/products"}
+                end
                 className={({ isActive }) => `flex items-center gap-2 rounded-lg px-2 py-2.5 text-base font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${isActive ? "bg-white/[0.08] text-white" : "text-slate-300 hover:bg-white/[0.06] hover:text-white"}`}
                 onClick={() => setMobileOpen(false)}
               >
@@ -128,7 +128,7 @@ export default function Navbar() {
               className="mt-3 inline-flex w-full items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold bg-brand-primary text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
               onClick={() => setMobileOpen(false)}
             >
-              Talk to Us
+              Book a Demo
             </Link>
           </motion.div>
         )}

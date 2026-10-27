@@ -120,7 +120,7 @@ export default function BlogsPage() {
               Want to be notified when we publish?
             </p>
             <Link
-              to="/products/project-lolo?section=contact"
+              to="/?section=contact"
               className="group relative inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-white/[0.08] border border-white/12 hover:bg-white/[0.12] hover:border-brand-primary/40 transition-all duration-200"
             >
               <span>Join Our Newsletter</span>

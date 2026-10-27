@@ -71,7 +71,7 @@ export default function Footer() {
   const { pathname } = useLocation();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const showProjectLoloTrust = pathname === "/products/project-lolo";
+  const showProjectLoloTrust = pathname === "/" || pathname === "/products/project-lolo";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -178,15 +178,15 @@ export default function Footer() {
 
           <div className="relative z-10 max-w-4xl mx-auto">
             <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-5">
-              Let&apos;s Build Together
+              Explore Project Lolo
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-[3.75rem] font-bold text-white leading-[1.02] tracking-tight mb-5">
-              Ready to unlock the{" "}
-              <span className="gradient-text">power of AI?</span>
+              Ready to govern{" "}
+              <span className="gradient-text">your enterprise AI?</span>
             </h2>
             <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-              Tell us about your project and we&apos;ll be in touch within 24 hours.
-              No commitment, just a conversation about what&apos;s possible.
+              Discover how Project Lolo protects sensitive data across your AI workflows.
+              Get in touch to discuss a demo.
             </p>
 
             {!sent ? (
@@ -210,7 +210,7 @@ export default function Footer() {
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white text-slate-950 font-semibold text-sm shadow-[0_18px_60px_rgba(255,255,255,0.08)] hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  Get Started <ArrowRight className="w-4 h-4" />
+                  Request a Demo <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             ) : (

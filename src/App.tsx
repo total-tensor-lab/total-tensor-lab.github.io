@@ -7,7 +7,6 @@ import SecurityPage from "@/pages/Security";
 import ProductsPage from "@/pages/Products";
 import ProjectLoloPage from "@/pages/ProjectLolo";
 import BlogsPage from "@/pages/Blogs";
-import HomePage from "@/pages/Home";
 
 function RouteScrollManager() {
   const { pathname, search } = useLocation();
@@ -43,7 +42,7 @@ export default function App() {
       <Navbar />
       <main className="relative z-10">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<ProjectLoloPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/project-lolo" element={<ProjectLoloPage />} />
           <Route path="/blogs" element={<BlogsPage />} />

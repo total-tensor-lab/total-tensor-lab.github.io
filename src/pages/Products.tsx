@@ -100,7 +100,7 @@ export default function ProductsPage() {
                 Runtime privacy and governance infrastructure for protecting sensitive data across prompts, retrieval pipelines, agents, and AI workflows.
               </p>
               <Link
-                to="/products/project-lolo"
+                to="/"
                 className="group/link mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
               >
                 View Project Lolo
@@ -141,7 +141,7 @@ export default function ProductsPage() {
           <p className="text-slate-400 text-sm">
             Want to discuss Project Lolo?{" "}
             <Link
-              to="/products/project-lolo?section=contact"
+              to="/?section=contact"
               className="text-brand-primary hover:text-brand-secondary transition-colors font-medium"
             >
               Request a demo

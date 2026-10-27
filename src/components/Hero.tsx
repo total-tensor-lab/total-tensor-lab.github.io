@@ -675,7 +675,7 @@ export default function Hero() {
             >
               {/* Primary — gradient fill */}
               <Link
-                to="/products/project-lolo?section=contact"
+                to="/?section=contact"
                 className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl font-semibold text-sm text-white overflow-hidden shadow-[0_0_40px_rgba(139,92,246,0.35)] hover:shadow-[0_0_55px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-200"
               >
                 {/* Gradient background */}
@@ -688,7 +688,7 @@ export default function Hero() {
 
               {/* Secondary — ghost */}
               <Link
-                to="/products/project-lolo?section=about"
+                to="/?section=about"
                 className="group inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-white/[0.04] border border-white/12 text-white font-semibold text-sm hover:bg-white/[0.08] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 backdrop-blur-sm"
               >
                 <Zap className="w-4 h-4 text-brand-secondary" />

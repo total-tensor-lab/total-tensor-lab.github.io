@@ -52,10 +52,10 @@ const PROBLEMS = [
   },
 ];
 
-export default function Services() {
+export default function AIRisks() {
   return (
     <section
-      id="services"
+      id="risks"
       className="py-32 relative overflow-hidden"
     >
       <div className="absolute top-0 left-0 right-0 section-divider" />

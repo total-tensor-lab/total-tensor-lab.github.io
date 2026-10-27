@@ -114,7 +114,7 @@ export default function SecurityPage() {
           className="mt-16 flex flex-col sm:flex-row items-stretch gap-3"
         >
           <Link
-            to="/products/project-lolo?section=contact"
+            to="/?section=contact"
             className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl font-semibold text-sm text-white overflow-hidden shadow-[0_0_40px_rgba(139,92,246,0.35)] hover:shadow-[0_0_55px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-200"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary" />

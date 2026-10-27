@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
+import AIRisks from "@/components/AIRisks";
 import About from "@/components/About";
 import Process from "@/components/Process";
 import WhyUs from "@/components/WhyUs";
@@ -9,7 +9,7 @@ export default function ProjectLoloPage() {
   return (
     <>
       <Hero />
-      <Services />
+      <AIRisks />
       <About />
       <Process />
       <WhyUs />
