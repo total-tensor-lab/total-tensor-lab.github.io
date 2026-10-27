@@ -50,21 +50,29 @@ export default function Detection() {
               screenshots, and scanned documents, bringing privacy controls to what your AI sees.
             </p>
             <div className="detection-example mt-8">
-              <div className="mb-5 flex justify-between font-mono text-[10px] uppercase tracking-wider text-slate-500">
+              <div className="mb-5 flex flex-wrap justify-between gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-wider text-slate-400">
                 <span>Visual inspection</span><span>Illustrative example</span>
               </div>
-              <div className="visual-document" role="img" aria-label="Illustrative document scan with sensitive identity and contact regions marked for detection">
-                <div className="document-avatar"><span /><div /></div>
-                <div className="min-w-0 flex-1 space-y-3">
-                  <div className="h-1.5 w-16 rounded bg-slate-500/30" />
-                  <div className="visual-region"><span className="h-2 w-3/4 rounded bg-brand-secondary/40" /><span className="visual-region-label">SENSITIVE REGION</span></div>
-                  <div className="h-1.5 w-full rounded bg-slate-500/20" />
-                  <div className="h-1.5 w-4/5 rounded bg-slate-500/20" />
+              <div className="visual-document" role="img" aria-label="Static illustrative document with entirely synthetic data. Outlined regions label a drawn face as Face, Alex Example as Name, and DEMO-0042 as Account number. This is an illustration, not a live scan.">
+                <p className="col-span-2 text-[10px] uppercase tracking-wider text-slate-400">Synthetic sample</p>
+                <div className="visual-region">
+                  <span className="visual-region-label">Face</span>
+                  <div className="document-avatar"><span /><div /></div>
+                </div>
+                <div className="min-w-0 space-y-2">
+                  <div className="visual-region">
+                    <span className="visual-region-label">Name</span>
+                    <span className="visual-region-value">Alex Example</span>
+                  </div>
+                  <div className="visual-region">
+                    <span className="visual-region-label">Account number</span>
+                    <span className="visual-region-value font-mono">DEMO-0042</span>
+                  </div>
                 </div>
                 <div className="scan-corner scan-corner-tl" /><div className="scan-corner scan-corner-br" />
               </div>
               <div className="mt-6 flex items-center gap-2 border-t border-white/[0.06] pt-4 text-xs text-brand-secondary">
-                <Eye className="h-3.5 w-3.5" /> Sensitive regions detected visually
+                <Eye className="h-3.5 w-3.5 shrink-0" /> Sample regions highlighted
               </div>
             </div>
             <div className="mt-6 flex flex-wrap gap-2" aria-label="Visual content types">

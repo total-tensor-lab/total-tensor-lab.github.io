@@ -120,12 +120,13 @@ h1, h2, h3, h4, h5, h6 {
 .sensitive-text { display: inline; border: 1px solid rgba(245,184,61,0.25); border-radius: 4px; padding: 3px 5px; background: rgba(245,184,61,0.12); color: #fce9bf; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .sensitive-text span { font-family: monospace; color: #f8d58b; font-size: 8px; vertical-align: middle; letter-spacing: 0.03em; }
 .content-tag { padding: 0.35rem 0.65rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.35rem; color: #94a3b8; font-size: 11px; }
-.visual-document { display: flex; gap: 1.5rem; align-items: center; position: relative; max-width: 330px; margin: 0 auto; padding: 1rem 1.25rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.35rem; background: #292116; }
-.document-avatar { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 58px; height: 72px; flex-shrink: 0; gap: 5px; border: 1px solid rgba(248,213,139,0.5); background: rgba(248,213,139,0.06); }
-.document-avatar > span { display: block; height: 20px; width: 20px; border-radius: 50%; background: #8d7447; }
-.document-avatar > div { height: 20px; width: 34px; border-radius: 50% 50% 0 0; background: #8d7447; }
-.visual-region { position: relative; display: flex; align-items: center; height: 23px; padding: 5px; border: 1px solid rgba(248,213,139,0.5); background: rgba(248,213,139,0.08); }
-.visual-region-label { position: absolute; right: -1px; top: -11px; white-space: nowrap; font-size: 7px; font-family: monospace; padding: 0 3px; background: #3a2a12; color: #fce9bf; }
+.visual-document { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 0.75rem; align-items: start; position: relative; max-width: 360px; margin: 0 auto; padding: 0.75rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.35rem; background: #292116; }
+.document-avatar { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 64px; gap: 5px; }
+.document-avatar > span { display: block; height: 18px; width: 18px; border-radius: 50%; background: #8d7447; }
+.document-avatar > div { height: 20px; width: 30px; border-radius: 50% 50% 0 0; background: #8d7447; }
+.visual-region { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; padding: 0.5rem; border: 1px solid rgba(248,213,139,0.5); background: rgba(248,213,139,0.08); }
+.visual-region-label { font-size: 11px; font-weight: 600; line-height: 1.5; color: #fce9bf; }
+.visual-region-value { font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; color: #e2e8f0; }
 .scan-corner { position: absolute; height: 14px; width: 14px; border-color: #f8d58b; border-style: solid; }
 .scan-corner-tl { top: -4px; left: -4px; border-width: 2px 0 0 2px; }
 .scan-corner-br { bottom: -4px; right: -4px; border-width: 0 2px 2px 0; }
@@ -133,7 +134,6 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 640px) {
   .detection-card { padding: 1.25rem; }
   .detection-example { padding: 1rem; }
-  .visual-document { gap: 1rem; padding-inline: 0.75rem; }
 }
 
 /* Gradient text utility */
