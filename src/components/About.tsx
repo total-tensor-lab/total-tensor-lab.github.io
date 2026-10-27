@@ -2,16 +2,16 @@ import { motion } from "motion/react";
 import { Check } from "lucide-react";
 
 const DATA_SOURCES = [
-  { label: "Databases", y: 121 },
+  { label: "Text & Prompts", y: 121 },
   { label: "PDFs & Documents", y: 187 },
-  { label: "APIs", y: 253 },
-  { label: "Vector Databases", y: 319 },
-  { label: "Logs & Streams", y: 385 },
+  { label: "Images", y: 253 },
+  { label: "Screenshots", y: 319 },
+  { label: "Scanned Documents", y: 385 },
 ];
 
 const RUNTIME_CAPABILITIES = [
-  { label: "Detection", x: 390, y: 257, color: "#e73714" },
-  { label: "Classification", x: 552, y: 257, color: "#8B5CF6" },
+  { label: "NLP Detection", x: 390, y: 257, color: "#a78bfa" },
+  { label: "Computer Vision", x: 552, y: 257, color: "#67e8f9" },
   { label: "Policy Engine", x: 390, y: 309, color: "#21e316" },
   { label: "Sanitization", x: 552, y: 309, color: "#ceed21" },
   { label: "Audit Logging", x: 471, y: 361, color: "#12b6e9" },
@@ -53,7 +53,7 @@ function ArchitectureDiagram() {
       <svg
         viewBox="0 0 1100 520"
         className="relative z-10 w-full h-auto"
-        aria-label="PromptShield enterprise AI runtime governance architecture"
+        aria-label="Project Lolo architecture: text and visual inputs pass through NLP and computer vision detection, policy controls, and sanitization before reaching AI systems"
       >
         <defs>
           <pattern id="about-topology-grid" width="32" height="32" patternUnits="userSpaceOnUse">
@@ -121,13 +121,13 @@ function ArchitectureDiagram() {
         <rect x="390" y="139" width="320" height="282" rx="16" fill="rgba(15,23,42,0.72)" stroke="rgba(255,255,255,0.05)" />
 
         <text x="550" y="197" textAnchor="middle" fill="#A78BFA" fontSize="13" fontFamily="Inter,system-ui,sans-serif" fontWeight="700" letterSpacing="0.16em">
-          GOVERNANCE LAYER
+          TEXT + VISUAL PRIVACY
         </text>
         <text x="550" y="225" textAnchor="middle" fill="#F8FAFC" fontSize="20" fontFamily="Inter,system-ui,sans-serif" fontWeight="700">
-          TTL-Shield
+          Project Lolo
         </text>
         <text x="550" y="247" textAnchor="middle" fill="#64748B" fontSize="13" fontFamily="Inter,system-ui,sans-serif">
-          Detect, govern, and protect sensitive data in motion.
+          Detect sensitive data before it reaches AI.
         </text>
 
         {RUNTIME_CAPABILITIES.map((capability) => (
@@ -182,12 +182,13 @@ export default function About() {
             The Architecture
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            The Governance Layer for{" "}
-            <span className="gradient-text">Enterprise AI</span>
+            Between Your Data{" "}
+            <span className="gradient-text">and Your AI.</span>
           </h2>
           <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-3xl mb-8">
-            PromptShield connects to your AI stack to detect, govern, and protect
-            sensitive data at runtime.
+            Project Lolo brings NLP and computer vision into one privacy layer.
+            Inspect text and visual inputs, identify sensitive information, and
+            apply your policies before content enters your AI workflow.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">

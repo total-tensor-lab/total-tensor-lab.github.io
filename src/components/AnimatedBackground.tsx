@@ -6,6 +6,7 @@ const AnimatedBackground: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -95,18 +96,20 @@ const AnimatedBackground: React.FC = () => {
       }
     };
 
+    let animationFrame: number;
     const animate = () => {
       ctx!.clearRect(0, 0, width, height);
       nodes.forEach(node => node.update());
       connect();
       nodes.forEach(node => node.draw());
-      requestAnimationFrame(animate);
+      animationFrame = requestAnimationFrame(animate);
     };
 
     init();
     animate();
 
     return () => {
+      window.cancelAnimationFrame(animationFrame);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
@@ -114,7 +117,8 @@ const AnimatedBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full z-0"
+      aria-hidden="true"
+      className="pointer-events-none fixed top-0 left-0 w-full h-full z-0 opacity-30"
       style={{ backgroundColor: "var(--color-brand-bg)" }}
     />
   );

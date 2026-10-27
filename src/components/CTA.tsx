@@ -67,7 +67,7 @@ export default function CTA() {
             <span className="gradient-text">AI Infrastructure</span>
           </h2>
           <p className="text-brand-muted text-base text-white md:text-lg max-w-3xl leading-relaxed">
-            Integrate PromptShield into existing AI pipelines without changing your architecture.
+            Integrate Project Lolo into existing AI pipelines without changing your architecture.
           </p>
         </motion.div>
 

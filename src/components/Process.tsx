@@ -1,20 +1,20 @@
 import { motion } from "motion/react";
 import {
   ClipboardList,
-  Database,
   Search,
+  Eye,
+  ScanText,
   Server,
-  Shield,
   SlidersHorizontal,
 } from "lucide-react";
 
 const CAPABILITIES = [
   {
     id: "runtime",
-    icon: Shield,
-    title: "Runtime AI Protection",
+    icon: ScanText,
+    title: "Text Detection with NLP",
     description:
-      "Monitor and govern prompts, responses, agents, and AI workflows in real time.",
+      "Identify sensitive entities in prompts, documents, and written context using natural language processing.",
     border: "border-brand-primary/20 hover:border-brand-primary/40",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
@@ -24,10 +24,10 @@ const CAPABILITIES = [
   },
   {
     id: "vector",
-    icon: Database,
-    title: "Vector Database Governance",
+    icon: Eye,
+    title: "Visual Detection with Computer Vision",
     description:
-      "Detect sensitive embeddings, unsafe retrieval patterns, and data leakage risks.",
+      "Locate sensitive information in images, screenshots, and scanned documents before they reach AI.",
     border: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
@@ -38,9 +38,9 @@ const CAPABILITIES = [
   {
     id: "scanning",
     icon: Search,
-    title: "Structured & Unstructured Data Scanning",
+    title: "Sensitive Content Inspection",
     description:
-      "Scan databases, documents, logs, APIs, and object storage for sensitive AI data.",
+      "Bring textual and visual content through a shared detection layer in your AI pipeline.",
     border: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
@@ -108,8 +108,8 @@ export default function Process() {
             Capabilities
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-            Built for Enterprise{" "}
-            <span className="gradient-text">AI Governance</span>
+            Detection First.{" "}
+            <span className="gradient-text">Control Throughout.</span>
           </h2>
         </motion.div>
 

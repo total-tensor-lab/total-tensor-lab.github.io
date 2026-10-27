@@ -6,7 +6,7 @@ const DEPLOYMENTS = [
     icon: Server,
     title: "Self-Hosted Runtime",
     description:
-      "Deploy PromptShield directly inside your own infrastructure so prompts, context, and governance telemetry remain entirely under customer control.",
+      "Deploy Project Lolo directly inside your own infrastructure so prompts, context, and governance telemetry remain entirely under customer control.",
     border: "border-brand-primary/20 hover:border-brand-primary/40",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
@@ -16,7 +16,7 @@ const DEPLOYMENTS = [
     icon: Workflow,
     title: "Kubernetes Deployment",
     description:
-      "Run PromptShield on Kubernetes for standardized enterprise orchestration while data stays within your cluster boundaries and operational guardrails.",
+      "Run Project Lolo on Kubernetes for standardized enterprise orchestration while data stays within your cluster boundaries and operational guardrails.",
     border: "border-brand-secondary/20 hover:border-brand-secondary/40",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
@@ -67,7 +67,7 @@ export default function WhyUs() {
             <span className="gradient-text">Sovereign.</span>
           </h2>
           <p className="text-brand-muted text-base text-white md:text-lg leading-relaxed max-w-3xl">
-            PromptShield is designed for enterprise environments where data privacy,
+            Project Lolo is designed for enterprise environments where data privacy,
             locality, and governance are mandatory.
           </p>
         </motion.div>
