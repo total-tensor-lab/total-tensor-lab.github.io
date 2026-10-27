@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="lolo-hero relative isolate overflow-hidden">
-      <div className="hero-grid absolute inset-0 -z-10" aria-hidden="true" />
+      <div className="hero-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-outer" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-inner" aria-hidden="true" />
       <div className="relative mx-auto max-w-6xl px-6 text-center">
