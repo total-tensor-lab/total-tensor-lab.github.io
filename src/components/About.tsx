@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { Check } from "lucide-react";
 
 const DATA_SOURCES = [
   { label: "Text & Prompts", y: 121 },
@@ -23,13 +22,6 @@ const AI_SYSTEMS = [
   { label: "AI Agents", y: 253 },
   { label: "Analytics", y: 319 },
   { label: "Fine-Tuning", y: 385 },
-];
-
-const DEPLOYMENT_BADGES = [
-  "On-Prem",
-  "Private Cloud",
-  "Kubernetes",
-  "Air-Gapped",
 ];
 
 function ArchitectureDiagram() {
@@ -178,12 +170,12 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mb-14 max-w-4xl"
         >
-          <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
+          <span className="lolo-section-label mb-4">
             The Architecture
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Between Your Data{" "}
-            <span className="gradient-text">and Your AI.</span>
+            <span className="architecture-highlight">and Your AI.</span>
           </h2>
           <p className="text-brand-body text-base md:text-lg leading-relaxed max-w-3xl mb-8">
             Project Lolo brings NLP and computer vision into one privacy layer.
@@ -191,21 +183,6 @@ export default function About() {
             apply your policies before content enters your AI workflow.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-success/20 bg-brand-success/10 px-3.5 py-2 text-brand-success text-xs font-semibold tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-brand-success inline-block" />
-              Data never leaves your environment.
-            </span>
-            {DEPLOYMENT_BADGES.map((badge) => (
-              <span
-                key={badge}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2 text-brand-label text-xs font-medium backdrop-blur-sm"
-              >
-                <Check className="w-3.5 h-3.5 text-brand-success flex-shrink-0" />
-                {badge}
-              </span>
-            ))}
-          </div>
         </motion.div>
 
         <ArchitectureDiagram />

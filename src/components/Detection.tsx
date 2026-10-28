@@ -1,89 +1,46 @@
-import { Eye, ScanText, ShieldCheck } from "lucide-react";
+import { AudioLines, Database, Eye, FileText, ScanText, Video } from "lucide-react";
+
+const plannedCapabilities = [
+  { title: "Documents", description: "PDFs, OCR, scanned records", Icon: FileText },
+  { title: "Video", description: "Frames, tracking, redaction", Icon: Video },
+  { title: "Audio", description: "Speech, recordings, transcripts", Icon: AudioLines },
+  { title: "Databases", description: "Structured enterprise data", Icon: Database },
+];
 
 export default function Detection() {
   return (
-    <section id="detection" aria-labelledby="detection-heading" className="relative py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-          <div className="max-w-2xl">
-            <p className="lolo-eyebrow">Two modalities. One privacy layer.</p>
-            <h2 id="detection-heading" className="mt-4 text-4xl font-semibold leading-[1.12] text-white sm:text-5xl">
-              Sensitive data hides<br />in plain sight.
-            </h2>
-          </div>
+    <section id="detection" aria-labelledby="detection-heading" className="relative py-8 sm:py-10">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6">
+        <div className="mb-3">
+          <p className="lolo-section-label">
+            Multiple modalities. One privacy layer.
+          </p>
+          <h2 id="detection-heading" className="mt-2 text-[32px] font-semibold leading-tight text-white">
+            Sensitive data hides in plain sight.
+          </h2>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
-          <article className="detection-card detection-card-text">
-            <div className="flex items-center justify-between">
-              <span className="detection-icon text-brand-secondary"><ScanText className="h-5 w-5" /></span>
-              <span className="font-mono text-[11px] tracking-widest text-brand-secondary/70">01 / TEXT</span>
-            </div>
-            <h3 className="mt-7 text-2xl font-semibold text-white">Understand the text.</h3>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-brand-body">
-              Natural language processing identifies sensitive information in written content,
-              from prompts and documents to the context you share with AI.
-            </p>
-            <div className="detection-example mt-8">
-              <div className="mb-5 flex justify-between font-mono text-[10px] uppercase tracking-wider text-brand-label">
-                <span>Prompt inspection</span><span>Illustrative example</span>
-              </div>
-              <p className="text-sm leading-[2.4] text-brand-body">
-                Summarize the account for <mark className="sensitive-text">Alex Morgan <span>PERSON</span></mark>.<br />
-                Send the report to <mark className="sensitive-text">alex@example.com <span>EMAIL</span></mark>.
-              </p>
-              <div className="mt-6 flex items-center gap-2 border-t border-white/[0.06] pt-4 text-xs text-brand-secondary">
-                <ScanText className="h-3.5 w-3.5" /> Sensitive entities identified in context
-              </div>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-2" aria-label="Text content types">
-              {["Prompts", "Documents", "Written context"].map(label => <span key={label} className="content-tag">{label}</span>)}
-            </div>
+
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3" aria-label="Privacy modalities">
+          <article className="min-h-[103px] rounded-[13px] border border-[#55401d] bg-[#211b13] p-3">
+            <ScanText aria-hidden="true" className="h-4 w-4 text-brand-primary" />
+            <h3 className="mt-2 text-base font-semibold leading-5 text-white">Text</h3>
+            <p className="mt-2 text-sm leading-5 text-brand-body">Prompts, conversations, written content</p>
           </article>
-          <article className="detection-card detection-card-visual">
-            <div className="flex items-center justify-between">
-              <span className="detection-icon text-brand-secondary"><Eye className="h-5 w-5" /></span>
-              <span className="font-mono text-[11px] tracking-widest text-brand-secondary/70">02 / VISUAL</span>
-            </div>
-            <h3 className="mt-7 text-2xl font-semibold text-white">Inspect the image.</h3>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-brand-body">
-              Computer vision detects sensitive visual information in images,
-              screenshots, and scanned documents, bringing privacy controls to what your AI sees.
-            </p>
-            <div className="detection-example mt-8">
-              <div className="mb-5 flex flex-wrap justify-between gap-x-4 gap-y-1 font-mono text-[10px] uppercase tracking-wider text-brand-label">
-                <span>Visual inspection</span><span>Illustrative example</span>
-              </div>
-              <div className="visual-document" role="img" aria-label="Static illustrative document with entirely synthetic data. Outlined regions label a drawn face as Face, Alex Example as Name, and DEMO-0042 as Account number. This is an illustration, not a live scan.">
-                <p className="col-span-2 text-[10px] uppercase tracking-wider text-brand-label">Synthetic sample</p>
-                <div className="visual-region">
-                  <span className="visual-region-label">Face</span>
-                  <div className="document-avatar"><span /><div /></div>
-                </div>
-                <div className="min-w-0 space-y-2">
-                  <div className="visual-region">
-                    <span className="visual-region-label">Name</span>
-                    <span className="visual-region-value">Alex Example</span>
-                  </div>
-                  <div className="visual-region">
-                    <span className="visual-region-label">Account number</span>
-                    <span className="visual-region-value font-mono">DEMO-0042</span>
-                  </div>
-                </div>
-                <div className="scan-corner scan-corner-tl" /><div className="scan-corner scan-corner-br" />
-              </div>
-              <div className="mt-6 flex items-center gap-2 border-t border-white/[0.06] pt-4 text-xs text-brand-secondary">
-                <Eye className="h-3.5 w-3.5 shrink-0" /> Sample regions highlighted
-              </div>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-2" aria-label="Visual content types">
-              {["Images", "Screenshots", "Scanned documents"].map(label => <span key={label} className="content-tag">{label}</span>)}
-            </div>
+          <article className="min-h-[103px] rounded-[13px] border border-[#55401d] bg-[#211b13] p-3">
+            <Eye aria-hidden="true" className="h-4 w-4 text-brand-primary" />
+            <h3 className="mt-2 text-base font-semibold leading-5 text-white">Vision</h3>
+            <p className="mt-2 text-sm leading-5 text-brand-body">Images, screenshots, visual identifiers</p>
           </article>
+          {plannedCapabilities.map(({ title, description, Icon }) => (
+            <article key={title} className="min-h-[101px] rounded-[13px] border border-[#55401d] bg-[#211b13] p-3">
+              <div className="flex items-center gap-2">
+                <Icon aria-hidden="true" className="h-4 w-4 text-brand-primary" />
+                <h4 className="text-sm font-medium leading-5 text-white">{title}</h4>
+              </div>
+              <p className="mt-2 text-sm leading-5 text-brand-label">{description}</p>
+            </article>
+          ))}
         </div>
-        <p className="mt-7 flex items-center justify-center gap-2 text-center text-xs leading-relaxed text-brand-label">
-          <ShieldCheck className="h-4 w-4 shrink-0 text-brand-label" />
-          Purpose-built for text and visual privacy, with detection before AI processing.
-        </p>
       </div>
     </section>
   );

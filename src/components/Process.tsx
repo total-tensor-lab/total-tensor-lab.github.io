@@ -100,7 +100,7 @@ export default function Process() {
           transition={{ duration: 0.5 }}
           className="mb-16 max-w-4xl"
         >
-          <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
+          <span className="lolo-section-label mb-4">
             Capabilities
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">

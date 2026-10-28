@@ -61,7 +61,7 @@ export default function WhyUs() {
           transition={{ duration: 0.5 }}
           className="mb-12 max-w-4xl"
         >
-          <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-4">
+          <span className="lolo-section-label mb-4">
             Deployment Options
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
