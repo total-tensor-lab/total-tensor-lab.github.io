@@ -119,7 +119,7 @@ export default function SecurityPage() {
           >
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary" />
             <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary opacity-0 group-hover:opacity-80 transition-opacity duration-200 blur-xl" />
-            <span className="relative z-10">Explore Compliance Solutions</span>
+            <span className="relative z-10">Request a demo</span>
             <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
         </motion.div>

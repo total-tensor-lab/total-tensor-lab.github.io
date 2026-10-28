@@ -48,7 +48,7 @@ export default function RedactionDemo() {
               </li>
             ))}
           </ol>
-          <Link to="/?section=contact" className="button-lift inline-flex items-center gap-2 text-sm font-medium text-brand-secondary hover:text-brand-secondary focus-visible:outline-2 focus-visible:outline-brand-primary">Explore Project Lolo <ArrowRight className="h-4 w-4" /></Link>
+          <Link to="/?section=contact" className="button-lift inline-flex items-center gap-2 text-sm font-medium text-brand-secondary hover:text-brand-secondary focus-visible:outline-2 focus-visible:outline-brand-primary">Request a demo <ArrowRight className="h-4 w-4" /></Link>
         </div>
         <figure className="min-w-0">
           <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#1c1710] shadow-[0_30px_100px_-35px_rgba(245,184,61,0.25)]">

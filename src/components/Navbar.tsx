@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Github } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
@@ -19,12 +19,27 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        menuToggleRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
 
   return (
     <>
@@ -49,7 +64,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop links */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1">
               {NAV_LINKS.map((link) => (
                 <NavLink
                   key={link.label}
@@ -77,10 +92,11 @@ export default function Navbar() {
               to="/?section=contact"
               className="button-lift whitespace-nowrap px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold bg-brand-primary text-brand-ink shadow-lg shadow-brand-primary/20 hover:bg-brand-secondary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
             >
-              Talk to Us
+              Request a demo
             </Link>
             <button
-              className="md:hidden text-slate-400 hover:text-white transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg"
+              ref={menuToggleRef}
+              className="lg:hidden text-slate-400 hover:text-white transition-colors p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-lg"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
@@ -101,7 +117,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.12 }}
-            className="fixed inset-x-0 top-16 z-40 bg-brand-surface/98 backdrop-blur-xl border-b border-white/[0.05] px-6 py-5 flex flex-col gap-1 md:hidden"
+            className="fixed inset-x-0 top-16 z-40 bg-brand-surface/98 backdrop-blur-xl border-b border-white/[0.05] px-6 py-5 flex flex-col gap-1 lg:hidden"
           >
             {NAV_LINKS.map((link) => (
               <NavLink
@@ -128,7 +144,7 @@ export default function Navbar() {
               className="button-lift mt-3 inline-flex w-full items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold bg-brand-primary text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
               onClick={() => setMobileOpen(false)}
             >
-              Talk to Us
+              Request a demo
             </Link>
           </motion.div>
         )}

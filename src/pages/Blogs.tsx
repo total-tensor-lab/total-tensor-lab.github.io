@@ -117,13 +117,13 @@ export default function BlogsPage() {
             className="mt-12"
           >
             <p className="text-slate-400 text-sm mb-4">
-              Want to be notified when we publish?
+              Interested in seeing Project Lolo?
             </p>
             <Link
               to="/?section=contact"
               className="button-lift group relative inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-white/[0.08] border border-white/12 hover:bg-white/[0.12] hover:border-brand-primary/40 transition-all duration-200"
             >
-              <span>Join Our Newsletter</span>
+              <span>Request a demo</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
             </Link>
           </motion.div>
