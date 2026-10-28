@@ -1,85 +1,42 @@
 import { motion, useReducedMotion } from "motion/react";
 import {
   ClipboardList,
-  Search,
-  Eye,
   ScanText,
   Server,
+  ShieldOff,
   SlidersHorizontal,
 } from "lucide-react";
 
 const CAPABILITIES = [
   {
-    id: "runtime",
+    id: "detection",
     icon: ScanText,
-    title: "Text Detection with NLP",
-    description:
-      "Identify sensitive entities in prompts, documents, and written context using natural language processing.",
-    border: "border-brand-primary/20 hover:border-brand-primary/40",
-    iconBg: "bg-brand-primary/10",
-    iconColor: "text-brand-primary",
-    gradient:
-      "radial-gradient(circle at 18% 22%, rgba(245,184,61,0.14), transparent 52%)",
-  },
-  {
-    id: "vector",
-    icon: Eye,
-    title: "Visual Detection with Computer Vision",
-    description:
-      "Locate sensitive information in images, screenshots, and scanned documents before they reach AI.",
-    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
-    iconBg: "bg-brand-secondary/10",
-    iconColor: "text-brand-secondary",
-    gradient:
-      "radial-gradient(circle at 82% 22%, rgba(248,213,139,0.14), transparent 52%)",
-  },
-  {
-    id: "scanning",
-    icon: Search,
-    title: "Sensitive Content Inspection",
-    description:
-      "Bring textual and visual content through a shared detection layer in your AI pipeline.",
-    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
-    iconBg: "bg-brand-secondary/10",
-    iconColor: "text-brand-secondary",
-    gradient:
-      "radial-gradient(circle at 20% 80%, rgba(248,213,139,0.12), transparent 55%)",
-  },
-  {
-    id: "local",
-    icon: Server,
-    title: "Local Processing Engine",
-    description:
-      "All scanning and governance can run fully inside your infrastructure.",
-    border: "border-brand-success/20 hover:border-brand-success/40",
-    iconBg: "bg-brand-success/10",
-    iconColor: "text-brand-success",
-    gradient:
-      "radial-gradient(circle at 80% 78%, rgba(16,185,129,0.12), transparent 55%)",
+    title: "Detect sensitive information",
+    description: "Identify relevant entities in text and visual inputs.",
   },
   {
     id: "policy",
     icon: SlidersHorizontal,
-    title: "Policy Enforcement Engine",
-    description:
-      "Create granular governance policies for AI systems and data flows.",
-    border: "border-brand-primary/20 hover:border-brand-primary/40",
-    iconBg: "bg-brand-primary/10",
-    iconColor: "text-brand-primary",
-    gradient:
-      "radial-gradient(circle at 78% 18%, rgba(245,184,61,0.14), transparent 52%)",
+    title: "Apply privacy policies",
+    description: "Control what happens when sensitive information is found.",
+  },
+  {
+    id: "redaction",
+    icon: ShieldOff,
+    title: "Redact before AI processing",
+    description: "Remove or mask sensitive content before it reaches a model.",
+  },
+  {
+    id: "local",
+    icon: Server,
+    title: "Run in your environment",
+    description: "Process data within infrastructure you control.",
   },
   {
     id: "audit",
     icon: ClipboardList,
-    title: "Audit & Traceability",
-    description:
-      "Track how AI systems access, retrieve, and process enterprise data.",
-    border: "border-brand-secondary/20 hover:border-brand-secondary/40",
-    iconBg: "bg-brand-secondary/10",
-    iconColor: "text-brand-secondary",
-    gradient:
-      "radial-gradient(circle at 22% 20%, rgba(248,213,139,0.14), transparent 52%)",
+    title: "Review activity",
+    description: "Provide visibility into detection and policy decisions.",
   },
 ];
 
@@ -98,18 +55,17 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16 max-w-4xl"
+          className="mb-12 max-w-4xl"
         >
           <span className="lolo-section-label mb-4">
             Capabilities
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-            Detection First.{" "}
-            <span className="gradient-text">Control Throughout.</span>
+          <h2 className="lolo-section-heading text-white">
+            Detection first. Control throughout.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           {CAPABILITIES.map((capability, i) => {
             const Icon = capability.icon;
             return (
@@ -122,28 +78,28 @@ export default function Process() {
                 className={[
                   "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-6 backdrop-blur-sm",
                   "shadow-[0_20px_70px_rgba(10,8,5,0.34)] transition-all duration-300 motion-safe:hover:-translate-y-1 motion-reduce:transition-none hover:bg-white/[0.045]",
-                  capability.border,
+                  "border-brand-primary/20 hover:border-brand-primary/40",
                 ].join(" ")}
               >
                 <div
                   className="absolute inset-0 opacity-0 transition-opacity duration-500 motion-reduce:transition-none group-hover:opacity-100 pointer-events-none"
-                  style={{ background: capability.gradient }}
+                  style={{ background: "radial-gradient(circle at 18% 22%, rgba(245,184,61,0.14), transparent 52%)" }}
                 />
                 <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
                 <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-brand-primary/12 to-transparent opacity-0 transition-opacity duration-500 motion-reduce:transition-none group-hover:opacity-100 pointer-events-none" />
 
                 <div className="relative z-10 flex flex-col gap-6">
                   <div
-                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 ${capability.iconBg}`}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 bg-brand-primary/10"
                   >
-                    <Icon className={`h-4.5 w-4.5 ${capability.iconColor}`} />
+                    <Icon className="h-4.5 w-4.5 text-brand-primary" />
                   </div>
 
                   <div>
-                    <h3 className="text-white font-semibold text-xl leading-snug mb-2.5 max-w-sm">
+                    <h3 className="lolo-card-heading mb-2.5 max-w-sm text-white">
                       {capability.title}
                     </h3>
-                    <p className="text-brand-body text-sm leading-relaxed max-w-md">
+                    <p className="lolo-description max-w-md text-brand-body">
                       {capability.description}
                     </p>
                   </div>

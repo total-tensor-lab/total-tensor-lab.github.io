@@ -145,7 +145,11 @@ h1, h2, h3, h4, h5, h6 {
 .lolo-button-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.25); }
 .lolo-button-primary:focus-visible, .lolo-button-secondary:focus-visible { outline: 2px solid #f8d58b; outline-offset: 5px; }
 .lolo-eyebrow { color: var(--color-brand-primary); font-size: 0.7rem; line-height: 1.6; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
-.lolo-section-label { display: inline-block; color: var(--color-brand-primary); font-size: 0.875rem; line-height: 1.5; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.lolo-section-label { display: block; margin-bottom: 0.75rem; color: var(--color-brand-primary); font-size: 0.875rem; line-height: 1.5; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.lolo-section-heading { margin-top: 0; font-size: clamp(2.25rem, 3.8vw, 3rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.035em; }
+.lolo-card-heading { font-size: 1.25rem; font-weight: 600; line-height: 1.35; letter-spacing: -0.025em; }
+.lolo-description { font-family: var(--font-body); font-size: 0.875rem; font-weight: 400; line-height: 1.5; }
+.lolo-section-description { font-size: clamp(1rem, 1.4vw, 1.125rem); line-height: 1.65; }
 
 .detection-card { position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.09); border-radius: 1.25rem; padding: 2rem; }
 .detection-card-text { background: radial-gradient(ellipse at 0 0, rgba(245,184,61,0.08), transparent 70%), #17130e; }
