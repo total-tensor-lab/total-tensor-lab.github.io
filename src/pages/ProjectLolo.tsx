@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import Detection from "@/components/Detection";
+import RedactionDemo from "@/components/RedactionDemo";
 import About from "@/components/About";
 import Process from "@/components/Process";
 
@@ -8,6 +9,7 @@ export default function ProjectLoloPage() {
     <>
       <Hero />
       <Detection />
+      <RedactionDemo />
       <About />
       <Process />
     </>
