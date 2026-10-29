@@ -4,11 +4,11 @@ import { useState } from "react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [submissionUnavailable, setSubmissionUnavailable] = useState(false);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmissionUnavailable(true);
+    const subject = encodeURIComponent("Request a demo of Project Lolo");
+    const body = encodeURIComponent(`Hello, I would like to request a product walkthrough.\n\nWork email: ${email}`);
+    window.location.href = `mailto:hello@totaltensorlab.com?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -29,10 +29,7 @@ export default function Footer() {
           <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent pointer-events-none" />
 
           <div className="relative z-10 max-w-4xl mx-auto">
-            <span className="inline-block text-brand-primary text-xs font-semibold tracking-widest uppercase mb-5">
-              Request a demo
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-[3.75rem] font-bold text-white leading-[1.02] tracking-tight mb-5">
+            <h2 className="text-4xl md:text-5xl lg:text-[3.75rem] font-bold text-white leading-[1.02] tracking-tight mb-5 text-balance">
               Ready to govern{" "}
               <span className="gradient-text">your enterprise AI?</span>
             </h2>
@@ -74,13 +71,8 @@ export default function Footer() {
               </button>
             </form>
             <p className="max-w-xl mx-auto mb-4 text-xs leading-relaxed text-brand-label">
-              Demo request delivery is not configured, so this form cannot send your request.
+              This opens an email draft to hello@totaltensorlab.com in your email app.
             </p>
-            {submissionUnavailable && (
-              <div role="alert" aria-live="assertive" className="max-w-xl mx-auto mb-8 text-sm text-red-300">
-                Your request was not sent because email delivery is not configured. Your email remains in the field.
-              </div>
-            )}
 
           </div>
         </motion.div>
