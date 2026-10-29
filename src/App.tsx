@@ -9,7 +9,7 @@ import ProjectLoloPage from "@/pages/ProjectLolo";
 import BlogsPage from "@/pages/Blogs";
 
 function RouteScrollManager() {
-  const { pathname, search } = useLocation();
+  const { pathname, search, key } = useLocation();
 
   useEffect(() => {
     const section = new URLSearchParams(search).get("section");
@@ -30,7 +30,7 @@ function RouteScrollManager() {
     });
 
     return () => window.cancelAnimationFrame(frame);
-  }, [pathname, search]);
+  }, [pathname, search, key]);
 
   return null;
 }
