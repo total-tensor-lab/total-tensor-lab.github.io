@@ -141,14 +141,14 @@ export default function RedactionDemo() {
   };
 
   return (
-    <section id="lolo-demo" aria-labelledby="demo-heading" className="relative overflow-hidden border-y border-white/[0.06] bg-[#15110c]/90 py-20 sm:py-28">
+    <section id="lolo-demo" aria-labelledby="demo-heading" className="relative overflow-hidden border-y border-white/[0.06] bg-[#15110c]/90 py-16 sm:py-24">
       <div className="relative mx-auto max-w-5xl px-6">
         <div className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="lolo-eyebrow">See Lolo in action</p>
-          <h2 id="demo-heading" className="mt-4 text-4xl font-semibold leading-[1.12] text-white sm:text-5xl">
+          <p className="lolo-section-label">See Lolo in action</p>
+          <h2 id="demo-heading" className="lolo-section-heading text-white">
             Keep the context.<br />Protect the details.
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-brand-body">
+          <p className="lolo-section-description mx-auto mt-6 max-w-xl text-brand-body">
             Pick a modality and compare what a user sends with what the model actually receives, plus the audit trail behind every change.
           </p>
         </div>

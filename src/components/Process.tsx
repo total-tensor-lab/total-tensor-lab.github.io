@@ -44,7 +44,7 @@ export default function Process() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="process" className="py-24 relative overflow-hidden">
+    <section id="process" className="py-16 sm:py-24 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div className="absolute left-1/4 top-20 w-[420px] h-[420px] bg-brand-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute right-0 bottom-10 w-[420px] h-[420px] bg-brand-secondary/[0.03] rounded-full blur-[150px] pointer-events-none" />
@@ -57,7 +57,7 @@ export default function Process() {
           transition={{ duration: 0.5 }}
           className="mx-auto mb-12 max-w-4xl text-center"
         >
-          <span className="lolo-section-label mb-4">
+          <span className="lolo-section-label">
             Capabilities
           </span>
           <h2 className="lolo-section-heading text-white">

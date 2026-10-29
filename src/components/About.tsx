@@ -157,7 +157,7 @@ function ArchitectureDiagram() {
 
 export default function About() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-24 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div className="absolute left-1/3 top-1/3 w-[420px] h-[420px] bg-brand-secondary/[0.03] rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute right-0 bottom-0 w-[520px] h-[520px] bg-brand-primary/[0.04] rounded-full blur-[180px] pointer-events-none" />

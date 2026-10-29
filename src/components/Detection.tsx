@@ -11,7 +11,7 @@ const privacyModalities = [
 
 export default function Detection() {
   return (
-    <section id="detection" aria-labelledby="detection-heading" className="relative py-12 sm:py-16">
+    <section id="detection" aria-labelledby="detection-heading" className="relative py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-2 sm:px-6">
         <div className="mx-auto mb-12 max-w-4xl text-center">
           <p className="lolo-section-label">
