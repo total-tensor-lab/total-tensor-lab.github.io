@@ -23,8 +23,8 @@ const CAPABILITIES = [
   {
     id: "redaction",
     icon: ShieldOff,
-    title: "Redact before AI processing",
-    description: "Remove or mask sensitive content before it reaches a model.",
+    title: "Enforce before AI processing",
+    description: "Redact, mask or block sensitive content before it reaches a model.",
   },
   {
     id: "local",
@@ -44,7 +44,7 @@ export default function Process() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="process" className="py-32 relative overflow-hidden">
+    <section id="process" className="py-24 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div className="absolute left-1/4 top-20 w-[420px] h-[420px] bg-brand-primary/[0.03] rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute right-0 bottom-10 w-[420px] h-[420px] bg-brand-secondary/[0.03] rounded-full blur-[150px] pointer-events-none" />
@@ -55,7 +55,7 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-12 max-w-4xl"
+          className="mx-auto mb-12 max-w-4xl text-center"
         >
           <span className="lolo-section-label mb-4">
             Capabilities

@@ -67,6 +67,16 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+.hero-title-line {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .hero-title-line {
+    white-space: normal;
+  }
+}
+
 .hero-gradient {
   background: linear-gradient(100deg, #f8d58b 10%, #f5b83d 40%, #f8d58b 95%);
   -webkit-background-clip: text;
