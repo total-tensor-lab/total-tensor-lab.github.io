@@ -1,15 +1,10 @@
 import { motion } from "motion/react";
-import { ArrowRight, Mail } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent("Request a demo of Project Lolo");
-    const body = encodeURIComponent(`Hello, I would like to request a product walkthrough.\n\nWork email: ${email}`);
-    window.location.href = `mailto:hello@totaltensorlab.com?subject=${subject}&body=${body}`;
-  };
+  const subject = encodeURIComponent("Request a demo of Project Lolo");
+  const body = encodeURIComponent("Hello, I would like to request a product walkthrough.");
+  const mailto = `mailto:hello@totaltensorlab.com?subject=${subject}&body=${body}`;
 
   return (
     <footer className="relative border-t border-white/[0.05] pt-20 pb-10 overflow-hidden">
@@ -37,41 +32,21 @@ export default function Footer() {
               Request a product walkthrough to see how Project Lolo protects sensitive data across your AI workflows.
             </p>
 
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col md:flex-row items-stretch justify-center gap-3 max-w-[680px] mx-auto mb-4"
+            <a
+              href={mailto}
+              className="lolo-button-primary group mb-4"
             >
-              <div className="relative flex flex-1 flex-col gap-2 text-left">
-                <label htmlFor="work-email" className="pl-4 text-sm font-medium text-brand-body">
-                  Work email
-                </label>
-                <div className="relative">
-                  <Mail aria-hidden="true" className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-label" />
-                  <input
-                    id="work-email"
-                    type="email"
-                    autoComplete="email"
-                    aria-describedby="email-help"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="w-full pl-12 pr-5 py-4 rounded-full bg-white/[0.04] border border-brand-label text-white placeholder:text-brand-label placeholder:opacity-100 text-sm focus:outline-none focus:border-brand-primary/40 focus:ring-1 focus:ring-brand-primary/20 transition-all"
-                  />
-                </div>
-                <span id="email-help" className="px-4 text-xs leading-relaxed text-brand-label">
-                  Use your work email to request a product walkthrough.
-                </span>
-              </div>
-              <button
-                type="submit"
-                className="inline-flex h-[54px] shrink-0 items-center justify-center gap-2 px-7 rounded-full bg-brand-primary text-brand-ink hover:bg-brand-secondary font-semibold text-sm shadow-[0_18px_60px_rgba(255,255,255,0.08)] transition-all duration-200 md:mt-7"
-              >
-                Request a demo <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
+              Request a demo <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
             <p className="max-w-xl mx-auto mb-4 text-xs leading-relaxed text-brand-label">
-              This opens an email draft to hello@totaltensorlab.com in your email app.
+              This opens an email draft in your email app. No email app? Write to{" "}
+              <a
+                href="mailto:hello@totaltensorlab.com"
+                className="text-brand-body underline underline-offset-2 hover:text-white transition-colors"
+              >
+                hello@totaltensorlab.com
+              </a>
+              .
             </p>
 
           </div>

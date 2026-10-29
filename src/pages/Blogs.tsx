@@ -121,10 +121,10 @@ export default function BlogsPage() {
             </p>
             <Link
               to="/?section=contact"
-              className="button-lift group relative inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-white/[0.08] border border-white/12 hover:bg-white/[0.12] hover:border-brand-primary/40 transition-all duration-200"
+              className="lolo-button-primary group"
             >
-              <span>Request a demo</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+              Request a demo
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </motion.div>

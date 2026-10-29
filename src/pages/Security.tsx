@@ -115,12 +115,10 @@ export default function SecurityPage() {
         >
           <Link
             to="/?section=contact"
-            className="button-lift group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl font-semibold text-sm text-white overflow-hidden shadow-[0_0_40px_rgba(245,184,61,0.35)] transition-all duration-200"
+            className="lolo-button-primary group"
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary" />
-            <span className="absolute inset-0 bg-gradient-to-r from-brand-primary to-brand-secondary opacity-0 group-hover:opacity-80 transition-opacity duration-200 blur-xl" />
-            <span className="relative z-10">Request a demo</span>
-            <ArrowRight className="relative z-10 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+            Request a demo
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </motion.div>
       </div>
