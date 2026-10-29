@@ -90,7 +90,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               to="/?section=contact"
-              className="button-lift whitespace-nowrap px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold bg-brand-primary text-brand-ink shadow-lg shadow-brand-primary/20 hover:bg-brand-secondary transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
+              className="lolo-button-primary whitespace-nowrap !px-3 sm:!px-4 !py-2"
             >
               Request a demo
             </Link>
@@ -141,7 +141,7 @@ export default function Navbar() {
             </a>
             <Link
               to="/?section=contact"
-              className="button-lift mt-3 inline-flex w-full items-center justify-center px-5 py-3 rounded-lg text-sm font-semibold bg-brand-primary text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
+              className="lolo-button-primary mt-3 w-full"
               onClick={() => setMobileOpen(false)}
             >
               Request a demo
