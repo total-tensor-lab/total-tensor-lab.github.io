@@ -24,7 +24,8 @@ function RouteScrollManager() {
       if (!target) return;
 
       target.setAttribute("tabindex", "-1");
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
       target.focus({ preventScroll: true });
     });
 

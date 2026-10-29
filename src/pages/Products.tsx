@@ -12,7 +12,7 @@ export default function ProductsPage() {
     <section className="relative overflow-hidden pt-28 pb-28 lg:pt-36 lg:pb-44">
       {/* Ambient lighting layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-bg via-brand-bg to-brand-surface/20 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(139,92,246,0.18),transparent),radial-gradient(circle_at_80%_28%,rgba(6,182,212,0.12),transparent_26%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(245,184,61,0.18),transparent),radial-gradient(circle_at_80%_28%,rgba(248,213,139,0.12),transparent_26%)] pointer-events-none" />
       <div className="absolute top-1/4 -left-40 w-[640px] h-[640px] bg-brand-secondary/[0.04] rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-40 w-[560px] h-[560px] bg-brand-primary/[0.06] rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent pointer-events-none" />
@@ -87,7 +87,7 @@ export default function ProductsPage() {
             transition={{ delay: 0.75 }}
             className="group relative overflow-hidden rounded-2xl border border-brand-primary/35 bg-white/[0.045] p-7 backdrop-blur-sm lg:col-span-2"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(139,92,246,0.15),transparent_48%),radial-gradient(circle_at_90%_90%,rgba(6,182,212,0.08),transparent_45%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(245,184,61,0.15),transparent_48%),radial-gradient(circle_at_90%_90%,rgba(248,213,139,0.08),transparent_45%)] pointer-events-none" />
             <div className="relative z-10">
               <div className="flex items-center justify-between gap-4">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-brand-primary/20 bg-brand-primary/10">
@@ -101,7 +101,7 @@ export default function ProductsPage() {
               </p>
               <Link
                 to="/"
-                className="group/link mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
+                className="button-lift group/link mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-brand-ink transition-all hover:bg-brand-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
               >
                 View Project Lolo
                 <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />

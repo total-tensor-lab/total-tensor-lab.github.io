@@ -22,8 +22,8 @@ export default function Logo({ size = 64, className = "", animated = false }: Lo
     >
       <defs>
         <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#8B5CF6" />
-          <stop offset="100%" stopColor="#06B6D4" />
+          <stop offset="0%" stopColor="var(--color-brand-primary)" />
+          <stop offset="100%" stopColor="var(--color-brand-secondary)" />
         </linearGradient>
       </defs>
 
@@ -34,20 +34,20 @@ export default function Logo({ size = 64, className = "", animated = false }: Lo
       />
 
       {/* Crosshair spokes connecting circles through center */}
-      <line x1="36" y1="100" x2="164" y2="100" stroke="white" strokeWidth="1.5" opacity="0.5" />
-      <line x1="100" y1="36" x2="100" y2="164" stroke="white" strokeWidth="1.5" opacity="0.5" />
+      <line x1="36" y1="100" x2="164" y2="100" stroke="var(--color-brand-ink)" strokeWidth="1.5" opacity="0.5" />
+      <line x1="100" y1="36" x2="100" y2="164" stroke="var(--color-brand-ink)" strokeWidth="1.5" opacity="0.5" />
 
       {/* 4-pointed concave star — cubic bezier with strongly inward-curving sides */}
       <path
         d="M 100,48 C 100,92 122,100 152,100 C 122,100 100,108 100,152 C 100,108 78,100 48,100 C 78,100 100,92 100,48 Z"
-        fill="white"
+        fill="var(--color-brand-ink)"
       />
 
       {/* Cardinal point circles */}
-      <circle cx="100" cy="36" r="7" fill="white" />
-      <circle cx="164" cy="100" r="7" fill="white" />
-      <circle cx="100" cy="164" r="7" fill="white" />
-      <circle cx="36" cy="100" r="7" fill="white" />
+      <circle cx="100" cy="36" r="7" fill="var(--color-brand-ink)" />
+      <circle cx="164" cy="100" r="7" fill="var(--color-brand-ink)" />
+      <circle cx="100" cy="164" r="7" fill="var(--color-brand-ink)" />
+      <circle cx="36" cy="100" r="7" fill="var(--color-brand-ink)" />
     </svg>
   );
 

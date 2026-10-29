@@ -11,7 +11,7 @@ const PROBLEMS = [
     border: "border-brand-primary/20 hover:border-brand-primary/35",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
-    glow: "radial-gradient(circle at 20% 20%, rgba(139,92,246,0.12), transparent 55%)",
+    glow: "radial-gradient(circle at 20% 20%, rgba(245,184,61,0.12), transparent 55%)",
     span: "md:col-span-2 lg:col-span-2",
   },
   {
@@ -23,7 +23,7 @@ const PROBLEMS = [
     border: "border-brand-secondary/20 hover:border-brand-secondary/35",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
-    glow: "radial-gradient(circle at 80% 20%, rgba(6,182,212,0.12), transparent 55%)",
+    glow: "radial-gradient(circle at 80% 20%, rgba(248,213,139,0.12), transparent 55%)",
     span: "",
   },
   {
@@ -35,7 +35,7 @@ const PROBLEMS = [
     border: "border-brand-primary/20 hover:border-brand-primary/35",
     iconBg: "bg-brand-primary/10",
     iconColor: "text-brand-primary",
-    glow: "radial-gradient(circle at 25% 80%, rgba(139,92,246,0.1), transparent 55%)",
+    glow: "radial-gradient(circle at 25% 80%, rgba(245,184,61,0.1), transparent 55%)",
     span: "",
   },
   {
@@ -47,7 +47,7 @@ const PROBLEMS = [
     border: "border-brand-secondary/20 hover:border-brand-secondary/35",
     iconBg: "bg-brand-secondary/10",
     iconColor: "text-brand-secondary",
-    glow: "radial-gradient(circle at 75% 80%, rgba(6,182,212,0.1), transparent 55%)",
+    glow: "radial-gradient(circle at 75% 80%, rgba(248,213,139,0.1), transparent 55%)",
     span: "md:col-span-2",
   },
 ];
@@ -98,7 +98,7 @@ export default function AIRisks() {
                 transition={{ duration: 0.45, delay: i * 0.1 }}
                 className={[
                   "group relative overflow-hidden rounded-[24px] border bg-white/[0.03] p-7 backdrop-blur-sm transition-all duration-300",
-                  "shadow-[0_18px_60px_rgba(2,6,23,0.32)] hover:-translate-y-1 hover:bg-white/[0.04]",
+                  "shadow-[0_18px_60px_rgba(10,8,5,0.32)] hover:-translate-y-1 hover:bg-white/[0.04]",
                   problem.border,
                   problem.span,
                 ].join(" ")}

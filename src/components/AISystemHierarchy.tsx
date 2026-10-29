@@ -125,10 +125,10 @@ export default function AISystemHierarchy() {
     >
       <h2 id="ai-lifecycle-title" className="sr-only">Interactive AI engineering lifecycle</h2>
 
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#080d1c]/90 p-3 shadow-[0_18px_60px_rgba(3,7,18,0.36)] backdrop-blur-sm sm:p-4">
+      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#15110c]/90 p-3 shadow-[0_18px_60px_rgba(10,8,5,0.36)] backdrop-blur-sm sm:p-4">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="absolute -right-12 -top-16 h-40 w-40 rounded-full bg-cyan-400/[0.07] blur-3xl" />
-          <div className="absolute -bottom-20 -left-12 h-40 w-40 rounded-full bg-violet-500/[0.07] blur-3xl" />
+          <div className="absolute -right-12 -top-16 h-40 w-40 rounded-full bg-brand-primary/[0.07] blur-3xl" />
+          <div className="absolute -bottom-20 -left-12 h-40 w-40 rounded-full bg-brand-primary/[0.07] blur-3xl" />
           <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(148,163,184,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.035)_1px,transparent_1px)] [background-size:28px_28px]" />
         </div>
 
@@ -146,8 +146,8 @@ export default function AISystemHierarchy() {
             >
               <defs>
                 <linearGradient id="lifecycle-ring" x1="70" y1="60" x2="430" y2="440" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#8B5CF6" />
-                  <stop offset="1" stopColor="#06B6D4" />
+                  <stop stopColor="#f5b83d" />
+                  <stop offset="1" stopColor="#f8d58b" />
                 </linearGradient>
                 <filter id="lifecycle-ring-glow" x="-30%" y="-30%" width="160%" height="160%">
                   <feGaussianBlur stdDeviation="3" result="blur" />
@@ -157,7 +157,7 @@ export default function AISystemHierarchy() {
                   </feMerge>
                 </filter>
                 <marker id="lifecycle-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M0 0 8 4 0 8Z" fill="#67e8f9" />
+                  <path d="M0 0 8 4 0 8Z" fill="#f8d58b" />
                 </marker>
               </defs>
 
@@ -171,7 +171,7 @@ export default function AISystemHierarchy() {
                   <motion.path
                     key={stage.number}
                     d={stageArc(index)}
-                    stroke={isActive ? "url(#lifecycle-ring)" : "rgba(103,232,249,0.34)"}
+                    stroke={isActive ? "url(#lifecycle-ring)" : "rgba(248,213,139,0.34)"}
                     strokeWidth={isActive ? 2.5 : 1.5}
                     strokeLinecap="round"
                     strokeDasharray={isActive ? "12 8" : "2 8"}
@@ -222,26 +222,26 @@ export default function AISystemHierarchy() {
                         ease: EASE_OUT,
                       }}
                       data-selected={isActive}
-                      className={`lifecycle-stage group relative grid min-h-[56px] w-full grid-cols-[auto_minmax(0,1fr)] items-center gap-x-1.5 rounded-xl border px-2 py-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080d1c] sm:min-h-[66px] sm:gap-x-2 sm:px-2.5 ${
-                        isActive ? "" : "border-slate-500/30 bg-[#0b1121]/95"
+                      className={`lifecycle-stage group relative grid min-h-[56px] w-full grid-cols-[auto_minmax(0,1fr)] items-center gap-x-1.5 rounded-xl border px-2 py-1.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[#15110c] sm:min-h-[66px] sm:gap-x-2 sm:px-2.5 ${
+                        isActive ? "" : "border-slate-500/30 bg-[#1c1710]/95"
                       }`}
                     >
                       <span className="col-start-1 flex shrink-0 flex-col items-center gap-0.5">
                         <span className={`inline-flex w-[2ch] justify-center text-center text-[10px] font-semibold leading-none tabular-nums sm:text-[11px] ${
-                          isActive ? "text-cyan-200" : "text-slate-400"
+                          isActive ? "text-brand-secondary" : "text-slate-400"
                         }`}>
                           {stage.number}
                         </span>
                         <span className={`flex h-6 w-6 items-center justify-center rounded-lg border sm:h-8 sm:w-8 ${
                           isActive
-                            ? "border-cyan-200/25 bg-cyan-200/[0.08]"
+                            ? "border-brand-secondary/25 bg-brand-secondary/[0.08]"
                             : "border-white/[0.07] bg-white/[0.025]"
                         }`}>
                           <Icon
                             className={`h-3.5 w-3.5 transition-[color,filter] duration-200 sm:h-4 sm:w-4 ${
                               isActive
-                                ? "text-cyan-100 drop-shadow-[0_0_7px_rgba(103,232,249,0.4)]"
-                                : "text-slate-400 group-hover:text-cyan-100"
+                                ? "text-brand-accent-pale drop-shadow-[0_0_7px_rgba(248,213,139,0.4)]"
+                                : "text-slate-400 group-hover:text-brand-accent-pale"
                             }`}
                             aria-hidden="true"
                           />
@@ -260,7 +260,7 @@ export default function AISystemHierarchy() {
 
             <div
               id="lifecycle-stage-details"
-              className="absolute left-1/2 top-1/2 flex aspect-square w-[45%] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full border border-cyan-200/15 bg-[#090f1d]/95 p-3 text-center shadow-[inset_0_0_32px_rgba(34,211,238,0.025),0_0_40px_rgba(2,6,23,0.5)] sm:w-[46%] sm:p-6"
+              className="absolute left-1/2 top-1/2 flex aspect-square w-[45%] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full border border-brand-secondary/15 bg-[#19140d]/95 p-3 text-center shadow-[inset_0_0_32px_rgba(248,213,139,0.025),0_0_40px_rgba(10,8,5,0.5)] sm:w-[46%] sm:p-6"
               aria-live="polite"
               aria-atomic="true"
             >
@@ -274,10 +274,10 @@ export default function AISystemHierarchy() {
                   exit={reduceMotion ? undefined : { opacity: 0, scale: 0.98, y: -4 }}
                   transition={{ duration: reduceMotion ? 0 : 0.2, ease: EASE_OUT }}
                 >
-                  <div className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg border border-cyan-200/15 bg-cyan-200/[0.06] sm:h-9 sm:w-9 sm:rounded-xl">
-                    <SelectedStageIcon className="h-3.5 w-3.5 text-cyan-100 sm:h-5 sm:w-5" aria-hidden="true" />
+                  <div className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg border border-brand-secondary/15 bg-brand-secondary/[0.06] sm:h-9 sm:w-9 sm:rounded-xl">
+                    <SelectedStageIcon className="h-3.5 w-3.5 text-brand-accent-pale sm:h-5 sm:w-5" aria-hidden="true" />
                   </div>
-                  <p className="mt-1.5 text-[7px] font-semibold uppercase tracking-[0.14em] text-cyan-200/70 sm:text-[9px]">
+                  <p className="mt-1.5 text-[7px] font-semibold uppercase tracking-[0.14em] text-brand-secondary/70 sm:text-[9px]">
                     Stage {selectedStage.number}
                   </p>
                   <h4 className="mt-0.5 text-[11px] font-semibold leading-tight text-white sm:text-base">
@@ -288,7 +288,7 @@ export default function AISystemHierarchy() {
                   </p>
                   <ul className="mx-auto mt-2 flex max-w-[200px] flex-wrap justify-center gap-1 sm:mt-3" aria-label={`${selectedStage.label} focus areas`}>
                     {selectedStage.capabilities.map((capability) => (
-                      <li key={capability} className="rounded-full border border-cyan-200/10 bg-cyan-200/[0.045] px-1.5 py-0.5 text-[6.5px] leading-tight text-cyan-50/85 sm:px-2 sm:text-[8px]">
+                      <li key={capability} className="rounded-full border border-brand-secondary/10 bg-brand-secondary/[0.045] px-1.5 py-0.5 text-[6.5px] leading-tight text-brand-accent-pale/85 sm:px-2 sm:text-[8px]">
                         {capability}
                       </li>
                     ))}
@@ -298,12 +298,12 @@ export default function AISystemHierarchy() {
             </div>
           </div>
 
-          <div className="relative mt-1 overflow-hidden rounded-xl border border-cyan-200/25 bg-[#0b1c2a]/90 px-3 py-2 text-center shadow-[0_0_18px_rgba(34,211,238,0.05)] sm:mt-2 sm:py-2.5">
-            <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-teal-200/60 to-transparent" aria-hidden="true" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-400/[0.04] via-teal-300/[0.08] to-cyan-400/[0.04]" aria-hidden="true" />
+          <div className="relative mt-1 overflow-hidden rounded-xl border border-brand-secondary/25 bg-[#2c2112]/90 px-3 py-2 text-center shadow-[0_0_18px_rgba(248,213,139,0.05)] sm:mt-2 sm:py-2.5">
+            <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-brand-secondary/60 to-transparent" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-brand-primary/[0.04] via-brand-secondary/[0.08] to-brand-primary/[0.04]" aria-hidden="true" />
             <div className="relative flex items-center justify-center gap-1.5">
-              <ShieldCheck className="h-3.5 w-3.5 text-teal-200" aria-hidden="true" />
-              <span className="text-sm font-semibold tracking-wide text-cyan-50 sm:text-base">
+              <ShieldCheck className="h-3.5 w-3.5 text-brand-secondary" aria-hidden="true" />
+              <span className="text-sm font-semibold tracking-wide text-brand-accent-pale sm:text-base">
                 Security · Privacy · Governance
               </span>
             </div>
