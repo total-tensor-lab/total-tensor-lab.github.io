@@ -1,6 +1,25 @@
-import { ArrowRight, BarChart3, Lock, ShieldCheck } from "lucide-react";
+import { ArrowRight, BarChart3, Lock, ShieldCheck, Terminal } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+
+const FEATURED_PRODUCTS = [
+  {
+    icon: ShieldCheck,
+    title: "Project Lolo",
+    status: "Available",
+    desc: "Runtime privacy and governance infrastructure for protecting sensitive data across prompts, retrieval pipelines, agents, and AI workflows.",
+    to: "/",
+    cta: "View Project Lolo",
+  },
+  {
+    icon: Terminal,
+    title: "PromptVeil",
+    status: "Open source · Alpha",
+    desc: "Free Python middleware that finds PII and secrets in prompts, applies your policy, and logs the result before anything reaches an LLM API.",
+    to: "/products/promptveil",
+    cta: "View PromptVeil",
+  },
+];
 
 const UPCOMING_PRODUCTS = [
   { icon: Lock, title: "Governance Console", desc: "Monitor, audit, and control data flows across your infrastructure." },
@@ -29,7 +48,7 @@ export default function ProductsPage() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-success opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-success"></span>
           </span>
-          <span className="text-xs font-semibold text-brand-success tracking-wide">Project Lolo available</span>
+          <span className="text-xs font-semibold text-brand-success tracking-wide">Project Lolo and PromptVeil available</span>
         </motion.div>
 
         {/* Eyebrow badge */}
@@ -79,37 +98,38 @@ export default function ProductsPage() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-4 w-full"
+          className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-4 w-full"
         >
-          <motion.article
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.75 }}
-            className="group relative overflow-hidden rounded-2xl border border-brand-primary/35 bg-white/[0.045] p-7 backdrop-blur-sm lg:col-span-2"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(245,184,61,0.15),transparent_48%),radial-gradient(circle_at_90%_90%,rgba(248,213,139,0.08),transparent_45%)] pointer-events-none" />
-            <div className="relative z-10">
-              <div className="flex items-center justify-between gap-4">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-brand-primary/20 bg-brand-primary/10">
-                  <ShieldCheck className="h-5 w-5 text-brand-primary" />
-                </span>
-                <span className="rounded-full border border-brand-success/20 bg-brand-success/10 px-3 py-1 text-xs font-semibold text-brand-success">Available</span>
+          {FEATURED_PRODUCTS.map(({ icon: Icon, title, status, desc, to, cta }, i) => (
+            <motion.article
+              key={title}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75 + i * 0.07 }}
+              className="group relative overflow-hidden rounded-2xl border border-brand-primary/35 bg-white/[0.045] p-7 backdrop-blur-sm"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(245,184,61,0.15),transparent_48%),radial-gradient(circle_at_90%_90%,rgba(248,213,139,0.08),transparent_45%)] pointer-events-none" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-brand-primary/20 bg-brand-primary/10">
+                    <Icon className="h-5 w-5 text-brand-primary" />
+                  </span>
+                  <span className="rounded-full border border-brand-success/20 bg-brand-success/10 px-3 py-1 text-xs font-semibold text-brand-success">{status}</span>
+                </div>
+                <h2 className="mt-8 text-3xl font-semibold text-white">{title}</h2>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-muted md:text-base">{desc}</p>
+                <Link
+                  to={to}
+                  className="button-lift group/link mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-brand-ink transition-all hover:bg-brand-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
+                >
+                  {cta}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />
+                </Link>
               </div>
-              <h2 className="mt-8 text-3xl font-semibold text-white">Project Lolo</h2>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-muted md:text-base">
-                Runtime privacy and governance infrastructure for protecting sensitive data across prompts, retrieval pipelines, agents, and AI workflows.
-              </p>
-              <Link
-                to="/"
-                className="button-lift group/link mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-brand-ink transition-all hover:bg-brand-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary"
-              >
-                View Project Lolo
-                <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />
-              </Link>
-            </div>
-          </motion.article>
+            </motion.article>
+          ))}
 
-          <div className="grid gap-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-2">
             {UPCOMING_PRODUCTS.map(({ icon: Icon, title, desc }, i) => (
               <motion.article
                 key={title}
