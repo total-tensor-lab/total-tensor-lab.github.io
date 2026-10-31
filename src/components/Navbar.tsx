@@ -69,7 +69,7 @@ export default function Navbar() {
                 <NavLink
                   key={link.label}
                   to={link.to}
-                  end
+                  end={link.to !== "/products"}
                   className={navLinkClass}
                 >
                   {link.label}
@@ -123,7 +123,7 @@ export default function Navbar() {
               <NavLink
                 key={link.label}
                 to={link.to}
-                end
+                end={link.to !== "/products"}
                 className={({ isActive }) => `button-lift flex items-center gap-2 rounded-lg px-2 py-2.5 text-base font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${isActive ? "bg-brand-primary/10 text-brand-primary" : "text-slate-300 hover:bg-white/[0.06] hover:text-white"}`}
                 onClick={() => setMobileOpen(false)}
               >

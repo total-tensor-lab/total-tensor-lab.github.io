@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import SecurityPage from "@/pages/Security";
 import ProductsPage from "@/pages/Products";
 import ProjectLoloPage from "@/pages/ProjectLolo";
+import PromptVeilPage from "@/pages/PromptVeil";
 import BlogsPage from "@/pages/Blogs";
 
 function RouteScrollManager() {
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/" element={<ProjectLoloPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/project-lolo" element={<ProjectLoloPage />} />
+          <Route path="/products/promptveil" element={<PromptVeilPage />} />
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/security" element={<SecurityPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
