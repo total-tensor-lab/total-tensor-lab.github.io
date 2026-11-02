@@ -3,6 +3,7 @@ const REPO_URL = "https://github.com/total-tensor-lab/PromptVeil";
 export const PROMPTVEIL = {
   version: "0.1.3",
   repoUrl: REPO_URL,
+  docsUrl: "https://www.totaltensorlab.com/PromptVeil/",
   pypiUrl: "https://pypi.org/project/promptveil/",
   releasesUrl: `${REPO_URL}/releases`,
   issuesUrl: `${REPO_URL}/issues`,
