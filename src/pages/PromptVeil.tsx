@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
+  BookOpen,
   ClipboardList,
   FileCheck2,
   Gauge,
@@ -142,6 +143,9 @@ export default function PromptVeilPage() {
               </a>
               <a href={PROMPTVEIL.pypiUrl} target="_blank" rel="noopener noreferrer" className="lolo-button-secondary">
                 <Package aria-hidden="true" className="h-4 w-4" /> View on PyPI
+              </a>
+              <a href={PROMPTVEIL.docsUrl} className="lolo-button-secondary">
+                <BookOpen aria-hidden="true" className="h-4 w-4" /> Documentation
               </a>
             </div>
             <ul className="mt-8 flex flex-wrap gap-2" aria-label="Package details">
