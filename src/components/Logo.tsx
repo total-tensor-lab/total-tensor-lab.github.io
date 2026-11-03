@@ -1,4 +1,3 @@
-import { useId } from "react";
 import { motion } from "motion/react";
 
 interface LogoProps {
@@ -7,56 +6,36 @@ interface LogoProps {
   animated?: boolean;
 }
 
-export default function Logo({ size = 64, className = "", animated = false }: LogoProps) {
-  const uid = useId().replace(/:/g, "");
-  const gradId = `ttl-grad-${uid}`;
+const C = "var(--color-brand-primary)";
 
+/** Total Tensor Labs mark (dark-background variant). Source: public/brand/mark-dark.svg */
+export default function Logo({ size = 64, className = "", animated = false }: LogoProps) {
   const LogoContent = (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 200 200"
+      viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      role="img"
+      aria-label="Total Tensor Labs"
     >
-      <defs>
-        <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="var(--color-brand-primary)" />
-          <stop offset="100%" stopColor="var(--color-brand-secondary)" />
-        </linearGradient>
-      </defs>
-
-      {/* Rounded diamond background */}
-      <path
-        d="M 100,14 Q 136,62 186,100 Q 136,138 100,186 Q 64,138 14,100 Q 64,62 100,14 Z"
-        fill={`url(#${gradId})`}
-      />
-
-      {/* Crosshair spokes connecting circles through center */}
-      <line x1="36" y1="100" x2="164" y2="100" stroke="var(--color-brand-ink)" strokeWidth="1.5" opacity="0.5" />
-      <line x1="100" y1="36" x2="100" y2="164" stroke="var(--color-brand-ink)" strokeWidth="1.5" opacity="0.5" />
-
-      {/* 4-pointed concave star — cubic bezier with strongly inward-curving sides */}
-      <path
-        d="M 100,48 C 100,92 122,100 152,100 C 122,100 100,108 100,152 C 100,108 78,100 48,100 C 78,100 100,92 100,48 Z"
-        fill="var(--color-brand-ink)"
-      />
-
-      {/* Cardinal point circles */}
-      <circle cx="100" cy="36" r="7" fill="var(--color-brand-ink)" />
-      <circle cx="164" cy="100" r="7" fill="var(--color-brand-ink)" />
-      <circle cx="100" cy="164" r="7" fill="var(--color-brand-ink)" />
-      <circle cx="36" cy="100" r="7" fill="var(--color-brand-ink)" />
+      <rect x="10" y="10" width="22" height="22" rx="6" fill={C} />
+      <rect x="39" y="10" width="22" height="22" rx="6" fill={C} fillOpacity="0.22" />
+      <rect x="69.25" y="11.25" width="19.5" height="19.5" rx="5" stroke={C} strokeWidth="2.5" />
+      <rect x="10" y="39" width="22" height="22" rx="6" fill={C} fillOpacity="0.22" />
+      <rect x="39" y="39" width="22" height="22" rx="6" fill={C} />
+      <rect x="68" y="39" width="22" height="22" rx="6" fill={C} fillOpacity="0.22" />
+      <rect x="11.25" y="69.25" width="19.5" height="19.5" rx="5" stroke={C} strokeWidth="2.5" />
+      <rect x="39" y="68" width="22" height="22" rx="6" fill={C} fillOpacity="0.22" />
+      <rect x="68" y="68" width="22" height="22" rx="6" fill={C} />
     </svg>
   );
 
   if (animated) {
     return (
-      <motion.div
-        whileHover={{ rotate: 360 }}
-        transition={{ duration: 0.8 }}
-      >
+      <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.8 }}>
         {LogoContent}
       </motion.div>
     );
