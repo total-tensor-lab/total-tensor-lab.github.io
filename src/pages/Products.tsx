@@ -1,6 +1,7 @@
-import { ArrowRight, BarChart3, Lock, ShieldCheck, Terminal } from "lucide-react";
+import { ArrowRight, BarChart3, Lock, ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import PromptVeilMark from "@/components/promptveil/PromptVeilMark";
 
 const FEATURED_PRODUCTS = [
   {
@@ -12,7 +13,8 @@ const FEATURED_PRODUCTS = [
     cta: "View Project Lolo",
   },
   {
-    icon: Terminal,
+    icon: PromptVeilMark,
+    iconClass: "h-7 w-7",
     title: "PromptVeil",
     status: "Open source · Alpha",
     desc: "Free Python middleware that finds PII and secrets in prompts, applies your policy, and logs the result before anything reaches an LLM API.",
@@ -100,7 +102,7 @@ export default function ProductsPage() {
           transition={{ delay: 0.7 }}
           className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-4 w-full"
         >
-          {FEATURED_PRODUCTS.map(({ icon: Icon, title, status, desc, to, cta }, i) => (
+          {FEATURED_PRODUCTS.map(({ icon: Icon, iconClass = "h-5 w-5", title, status, desc, to, cta }, i) => (
             <motion.article
               key={title}
               initial={{ opacity: 0, y: 10 }}
@@ -112,7 +114,7 @@ export default function ProductsPage() {
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-4">
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-brand-primary/20 bg-brand-primary/10">
-                    <Icon className="h-5 w-5 text-brand-primary" />
+                    <Icon className={`${iconClass} text-brand-primary`} />
                   </span>
                   <span className="rounded-full border border-brand-success/20 bg-brand-success/10 px-3 py-1 text-xs font-semibold text-brand-success">{status}</span>
                 </div>

@@ -16,6 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import CodeBlock from "@/components/promptveil/CodeBlock";
 import PipelineFlow from "@/components/promptveil/PipelineFlow";
+import PromptVeilMark from "@/components/promptveil/PromptVeilMark";
 import { PROMPTVEIL } from "@/lib/promptveil";
 
 const FACTS = [`v${PROMPTVEIL.version}`, "Alpha", "MIT license", "Python 3.10+"];
@@ -131,7 +132,8 @@ export default function PromptVeilPage() {
             <span className="inline-flex items-center rounded-full border border-brand-success/25 bg-brand-success/10 px-3 py-1 text-xs font-semibold text-brand-success">
               Free and open source
             </span>
-            <h1 id="promptveil-heading" className="mt-8 text-5xl font-bold leading-[1.04] tracking-[-0.04em] md:text-6xl">
+            <h1 id="promptveil-heading" className="mt-8 flex items-center gap-4 text-5xl font-bold leading-[1.04] tracking-[-0.04em] md:text-6xl">
+              <PromptVeilMark className="h-14 w-14 shrink-0 text-brand-primary md:h-16 md:w-16" />
               <span className="gradient-text">PromptVeil</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-brand-body">
