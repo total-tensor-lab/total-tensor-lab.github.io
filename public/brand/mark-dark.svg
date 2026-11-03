@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512" role="img" aria-label="TotalTensorLab / Privium mark">
+  <rect x="10" y="10" width="22" height="22" rx="6" fill="#F5B83D"/>
+  <rect x="39" y="10" width="22" height="22" rx="6" fill="#F5B83D" fill-opacity="0.22"/>
+  <rect x="69.25" y="11.25" width="19.5" height="19.5" rx="5" fill="none" stroke="#F5B83D" stroke-width="2.5"/>
+  <rect x="10" y="39" width="22" height="22" rx="6" fill="#F5B83D" fill-opacity="0.22"/>
+  <rect x="39" y="39" width="22" height="22" rx="6" fill="#F5B83D"/>
+  <rect x="68" y="39" width="22" height="22" rx="6" fill="#F5B83D" fill-opacity="0.22"/>
+  <rect x="11.25" y="69.25" width="19.5" height="19.5" rx="5" fill="none" stroke="#F5B83D" stroke-width="2.5"/>
+  <rect x="39" y="68" width="22" height="22" rx="6" fill="#F5B83D" fill-opacity="0.22"/>
+  <rect x="68" y="68" width="22" height="22" rx="6" fill="#F5B83D"/>
+</svg>
