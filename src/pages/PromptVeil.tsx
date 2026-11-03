@@ -116,7 +116,7 @@ export default function PromptVeilPage() {
 
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = "PromptVeil | Total Tensor Labs";
+    document.title = "PromptVeil | Total Tensor Lab";
     return () => {
       document.title = previousTitle;
     };

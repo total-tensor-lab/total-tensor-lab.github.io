@@ -8,7 +8,7 @@ interface LogoProps {
 
 const C = "var(--color-brand-primary)";
 
-/** Total Tensor Labs mark (dark-background variant). Source: public/brand/mark-dark.svg */
+/** Total Tensor Lab mark (dark-background variant). Source: public/brand/mark-dark.svg */
 export default function Logo({ size = 64, className = "", animated = false }: LogoProps) {
   const LogoContent = (
     <svg
@@ -19,7 +19,7 @@ export default function Logo({ size = 64, className = "", animated = false }: Lo
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       role="img"
-      aria-label="Total Tensor Labs"
+      aria-label="Total Tensor Lab"
     >
       <rect x="10" y="10" width="22" height="22" rx="6" fill={C} />
       <rect x="39" y="10" width="22" height="22" rx="6" fill={C} fillOpacity="0.22" />
