@@ -92,7 +92,7 @@ export default function ProductsPage() {
           transition={{ delay: 0.3 }}
           className="text-brand-muted text-lg leading-relaxed max-w-xl mb-12"
         >
-          Explore privacy and governance infrastructure from Total Tensor Labs, with additional products in development.
+          Explore privacy and governance infrastructure from Total Tensor Lab, with additional products in development.
         </motion.p>
 
         {/* Product cards */}

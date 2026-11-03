@@ -56,10 +56,10 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           {/* Logo + Nav Links */}
           <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0" aria-label="Total Tensor Labs home">
+            <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0" aria-label="Total Tensor Lab home">
               <Logo size={52} />
               <span className="font-semibold text-white text-base tracking-tight hidden sm:block">
-                Total Tensor Labs
+                Total Tensor Lab
               </span>
             </Link>
 
